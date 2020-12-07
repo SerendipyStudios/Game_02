@@ -30,12 +30,12 @@
 ### 1.7. Desarrolladores
 
   (Inserte nombre del juego) será desarrollado por el equipo Serendipy Studios, formado por:
-  - Sergio López Serrano: Level design
-  - David González Bella: Programador
-  - Clara Bartolomé Pereira: Artista y programadora (secundario)
-  - Julen Justo Neira: Programador
-  - Alexandra Izquierdo Esteban: Artista
-  - Javier Morales López: Gestor y artista (secundario)
+  - Sergio López Serrano
+  - David González Bella
+  - Clara Bartolomé Pereira
+  - Julen Justo Neira
+  - Alexandra Izquierdo Esteban
+  - Javier Morales López
 
 
 ## 2. Monetización y modelo de negocio
@@ -49,9 +49,42 @@
 
 ### 3.1. Equipo humano
 
+El equipo estará compuesto por los siguientes integrantes con sus respectivos roles:
+- Sergio López Serrano: Level designer y game designer.
+- David González Bella: Programador
+- Clara Bartolomé Pereira: Artista y programadora (auxiliar)
+- Julen Justo Neira: Programador y compositor
+- Alexandra Izquierdo Esteban: Artista
+- Javier Morales López: Gestor, community manager y artista (auxiliar)
+
 ### 3.2. Estimación temporal de desarrollo
 
+Dado que es un juego sin historia, el desarrollo del juego se centrará en definir y pulir bien las mecánicas, al mismo tiempo que se ajustan bien para que la dinámica general del juego sea lo más divertida posible. Dada la cantidad de assets a diseñar y programar un multijugador online, el desarrollo del juego llevará 2 meses aproximadamente.
+No obstante, se seguirá desarrollando en implementando contenido, como puede ser más personajes jugables o distintos mapas, así como diferentes modos de juego. Pensando en este desarrollo constante, se planea mantener el juego en constante evolución durante al menos 2 años, una vez haya sido desarrollado.
+
 ### 3.3. Costes asociados
+
+Se van a estimar costes de cara a tener un equipo trabajando durante dos años, siendo uno de esos años gratis de licencia, por ser alumnos (ya que el año que viene nos graduamos).
+
+Cada programador cobrará 800€ mensuales, por lo que en 2 años será 19200€. Hay 2 programadores, por lo que en total 38400€.
+
+El compositor cobrará 650€ al mes, por lo que en 2 años será 15600€.
+
+Cada artista cobrará 800€ al mes, por lo que en 2 años será 19200€. Hay 2 artistas, por lo que en total 38400€.
+
+El level designer/game designer cobrará 800€ al mes, por lo que en 2 años será 19200€.
+
+El community manager ganará 750€ al mes, por lo que en 2 años será 18000€
+
+El gestor ganará 800€ al mes, por lo que en 2 años será 19200€.
+
+Licencia de Clip Studio Paint Pro: 45€
+
+Licencia de Unity de Empresa: 165€/mes por puesto. Lo usarán los programadores (2 personas), por lo que en total: 3960
+
+Licencia de Visual Studio: 37€/mes. Lo usarán los 2 programadores, por lo que en total: 888€
+
+En total: 154581
 
 
 ## 4. Mecánica
