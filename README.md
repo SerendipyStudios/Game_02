@@ -91,6 +91,12 @@ En total: 154581
 
 ### 4.1. Descripción detallada
 
+El jugador podrá moverse por todo el mapa corriendo. La mecánica principal y lo que distingue al juego son los empujones. Podemos distinguir 2 tipos de empujones:
+- Empujón débil, pensado para esquivar de forma rápida. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Este empujón impulsará al jugador en una pequeña distancia. Si choca con otro jugador, será empujando mínimamente. Este empujón podrá efectuarse cada muy pocos segundos.
+- Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntanto a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al culisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamento (tiempo sin poder usarse) algo mayor que el empujón débil.
+
+Asimismo, el usuario podrá
+
 ### 4.2. Controles
 
 ### 4.3. Cámara
