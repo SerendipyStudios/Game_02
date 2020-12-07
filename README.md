@@ -1,86 +1,86 @@
 # Game_02
 
 
-##1. Concepto
+## 1. Concepto
 
-###1.1. Categoría
+### 1.1. Categoría
 
-###1.2. Sinopsis de Jugabilidad y Contenido
+### 1.2. Sinopsis de Jugabilidad y Contenido
 
-###1.3. Mecánica (descripción general)
+### 1.3. Mecánica (descripción general)
 
-###1.4. Tecnología
+### 1.4. Tecnología
 
-###1.5. Público objetivo
+### 1.5. Público objetivo
 
-###1.6. Desarrolladores
-
-
-##2. Monetización y modelo de negocio
-
-###2.1. Tipo de modelo de negocio
-
-###2.2. Tabla de productos y precios
+### 1.6. Desarrolladores
 
 
-##3. Planificación y costes
+## 2. Monetización y modelo de negocio
 
-###3.1. Equipo humano
+### 2.1. Tipo de modelo de negocio
 
-###3.2. Estimación temporal de desarrollo
-
-###3.3. Costes asociados
+### 2.2. Tabla de productos y precios
 
 
-##4. Mecánica
+## 3. Planificación y costes
 
-###4.1. Descripción detallada
+### 3.1. Equipo humano
 
-###4.2. Controles
+### 3.2. Estimación temporal de desarrollo
 
-###4.3. Cámara
-
-###4.4. Power Ups
-
-###4.5. Arquitectura del Software
+### 3.3. Costes asociados
 
 
-##5. Interfaces
+## 4. Mecánica
+
+### 4.1. Descripción detallada
+
+### 4.2. Controles
+
+### 4.3. Cámara
+
+### 4.4. Power Ups
+
+### 4.5. Arquitectura del Software
 
 
-##6. Estados del juego
+## 5. Interfaces
 
 
-##7. Niveles
+## 6. Estados del juego
 
 
-##8. Personajes
+## 7. Niveles
 
 
-##9. Arte
-
-###9.1. Estética general del juego
-
-###9.2. Apartado visual
-
-###9.3. Mapas
-
-###9.4. Personajes
-
-###9.5. PowerUps
-
-###9.6. DLCs
-
-###9.7. Conceptart y referencias
+## 8. Personajes
 
 
-##10. Música y sonidos
+## 9. Arte
 
-###10.1. Sonido de ambiente y música
+### 9.1. Estética general del juego
 
-###10.2. Efectos sonoros
+### 9.2. Apartado visual
 
-###10.3. Lista de sonidos
+### 9.3. Mapas
+
+### 9.4. Personajes
+
+### 9.5. PowerUps
+
+### 9.6. DLCs
+
+### 9.7. Conceptart y referencias
 
 
-##11. Fecha de lanzamiento 
+## 10. Música y sonidos
+
+### 10.1. Sonido de ambiente y música
+
+### 10.2. Efectos sonoros
+
+### 10.3. Lista de sonidos
+
+
+## 11. Fecha de lanzamiento 
