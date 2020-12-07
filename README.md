@@ -95,15 +95,25 @@ El jugador podrá moverse por todo el mapa corriendo. La mecánica principal y l
 - Empujón débil, pensado para esquivar de forma rápida. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Este empujón impulsará al jugador en una pequeña distancia. Si choca con otro jugador, será empujando mínimamente. Este empujón podrá efectuarse cada muy pocos segundos.
 - Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntanto a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al culisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamento (tiempo sin poder usarse) algo mayor que el empujón débil.
 
-Asimismo, el usuario podrá
+Asimismo, el usuario podrá usar los distintos elementos de los mapas a su favor. Un buen ejemplo puede ser el hecho de llevar al rival a una zona pegajosa para que se mueva más lento, para posteriormente tirarlo del mapa.
 
 ### 4.2. Controles
 
+En cuanto a los controles, serán diferente dependiendo de si el usuario está jugando en un dispósitivo móvil o en pc:
+
+- En dispositivos móviles y tablets, los usuarios tendrán disponible un joystick virtual en la parte inferior izquierda de la pantalla para el movimiento básico del personaje. Para los empujones, tendrá disponibles dos botones en la parte inferior derecha de la pantalla. Un botón corresponderá al empujón débil, mientras que el otro corresponderá al empujón fuerte.
+
+- En pc esto cambia, ya que no se dispone de una pantalla táctil. Para el movimiento básico del personaje, el usuario usará las teclas W (arriba), S (abajo), A (izquierda) y D (derecha). Para los empujones, los controles serán los siguientes: para usar el empujón débil, el usuario pulsará la barra espaciadora. Para el empujón fuerde, se hará uso de la tecla de intro.
+
 ### 4.3. Cámara
+
+La cámara será fija, y no podrá ser controlada por el personaje. Esta cámara estará situada a la espalda del personaje, por lo que el juego contará con una perspectiva de tercera persona. La cámara seguirá de forma automática al personaje que controle el jugador, por lo que no es necesario que el usuario haga nada.
 
 ### 4.4. Power Ups
 
-### 4.5. Arquitectura del Software
+No me acuerdo de si tenemos
+
+### 4.5. Arquitectura del Software (DAVID Y/O JULEN OS TOCA ESTO)
 
 
 ## 5. Interfaces
