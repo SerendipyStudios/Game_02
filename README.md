@@ -119,6 +119,7 @@ No me acuerdo de si tenemos
 ## 5. Interfaces
 
 
+
 ## 6. Estados del juego
 
 
@@ -131,6 +132,8 @@ No me acuerdo de si tenemos
 ## 9. Arte
 
 ### 9.1. Estética general del juego
+
+La estética general el juego es una muy amable y family friendly, pensada para atraer a un espectro grande de público.
 
 ### 9.2. Apartado visual
 
