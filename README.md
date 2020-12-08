@@ -133,9 +133,11 @@ No me acuerdo de si tenemos
 
 ### 9.1. Estética general del juego
 
-La estética general el juego es una muy amable y family friendly, pensada para atraer a un espectro grande de público.
+La estética general el juego es una muy amable y family friendly, pensada para atraer a un espectro grande de público. Dado que se trata de un party game, el jugador debe estar atento a lo que hacen los demás jugadores, por lo que hemos evitado sobrecargar la pantalla con elementos o con diseños demasiados complejos que distraigan al usuario de su objetivo. Y, puesto que queremos llegar a todos los públicos, se ha optado por una temática de chuches y postres, ya que es algo que suele gustar a todo el mundo, y se adecua en su totalidad al estilo en el que se quería desarrollar el juego.
 
 ### 9.2. Apartado visual
+
+Dado que todos los elementos del juego son chuches y postres, habrá todo tipo de colores en pantalla, ya que esta temática permite trabajar con distintas paletas de colores fantasía.
 
 ### 9.3. Mapas
 
