@@ -130,7 +130,7 @@ No me acuerdo de si tenemos
 
 Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugadpr elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
 
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="25">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
 Confite
 
 
@@ -157,18 +157,18 @@ Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con oj
 ### 9.7. Conceptart y referencias
 
 - Personajes:
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="125">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="175">
 Primer Sketch de los Personajes
 
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/Estudio%20de%20color.jpg" width="125">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/Estudio%20de%20color.jpg" width="175">
 Estudio de Color
 
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="125">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
 Diseño Final del Confite
 
 
 - Pantallas:
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="125">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="175">
 Primer Diseño de la pantalla principal
 
 
