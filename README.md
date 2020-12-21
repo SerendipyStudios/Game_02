@@ -5,7 +5,7 @@
 
 ### 1.1. Categoría y objetivos
 
-  (Introduzca nombre de juego) es un party game multijugador online, en el que el objetivo es tirar del mapa a los demás jugadores. El jugador se valdrá de distintos impulsos para esquivar a los demás jugadores y permanecer el mayor tiempo posible sin salirse del mapa, mientras empuja a los demás, jugando con las características especiales de distintos escenarios, como pueden ser columnas o suelo pringoso.
+  Confitados es un party game multijugador online, en el que el objetivo es tirar del mapa a los demás jugadores. El jugador se valdrá de distintos impulsos para esquivar a los demás jugadores y permanecer el mayor tiempo posible sin salirse del mapa, mientras empuja a los demás, jugando con las características especiales de distintos escenarios, como pueden ser columnas o suelo pringoso.
 
 ### 1.2. Sinopsis de Jugabilidad y Contenido
 
@@ -17,7 +17,7 @@
 
 ### 1.4. Tecnología (incluir software de modelado)
 
-  (Inserte nombre del juego) será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint.
+  Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint.
 
 ### 1.5. Estética
 
@@ -25,7 +25,7 @@
 
 ### 1.6. Públco objetivo
 
-  Dada la amigable estética y mecánicas de juego, (inserte nombre del juego) es apto para todo el público, por lo que tendrá pegi 3. No hay elementos que pueda asustar a nadie y en el juego no se encuentra ningún tipo de violencia, solo empujones que no dan pie a ningún tipo de herida.
+  Dada la amigable estética y mecánicas de juego, Confitados es apto para casi todo el público, pero no para todos, puesto que su mecánica principal consiste en empujones, por lo que hay violencia, aunque no demasiada. Por estas razones, se le da un pegi 7.
 
 ### 1.7. Desarrolladores
 
@@ -128,6 +128,11 @@ No me acuerdo de si tenemos
 
 ## 8. Personajes
 
+Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugadpr elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
+Confite
+
 
 ## 9. Arte
 
@@ -143,11 +148,28 @@ Dado que todos los elementos del juego son chuches y postres, habrá todo tipo d
 
 ### 9.4. Personajes
 
+Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades.
+
 ### 9.5. PowerUps
 
 ### 9.6. DLCs
 
 ### 9.7. Conceptart y referencias
+
+- Personajes:
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="175">
+Primer Sketch de los Personajes
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/Estudio%20de%20color.jpg" width="175">
+Estudio de Color
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
+Diseño Final del Confite
+
+
+- Pantallas:
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="175">
+Primer Diseño de la pantalla principal
 
 
 ## 10. Música y sonidos
