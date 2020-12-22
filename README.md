@@ -80,6 +80,11 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 
 ### 2.1. Tipo de modelo de negocio
 
+Para representar el modelo de negocio, se ha creado un business model canvas para que toda la infromación quede bien representada:
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Management/Modelo%20de%20Negocio.PNG" width="175">
+
+
 ### 2.2. Tabla de productos y precios
 
 | Precio | Prodcuto |
