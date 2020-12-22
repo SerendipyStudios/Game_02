@@ -82,7 +82,7 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 
 ### 2.2. Tabla de productos y precios
 
-| Producto | Precio |
+| Precio | Prodcuto |
 | ------------- | ------------- |
 | 0,49€ | 200 galletas |
 | 1,49€ | 5 bombones |
