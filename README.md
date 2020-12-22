@@ -14,20 +14,57 @@
 ### 1.3. Mecánica (descripción general)
 
   La mecánica principal del juego es impulsarse de dos formas diferentes: la primera forma se verá reflejada como un pequeño impulso que estará disponible la mayor parte del tiempo. Este pequeño impulso está pensado para esquivar a los demás jugadores. El otro impulso es otro más potente, pero que tendrá más tiempo de enfriamiento antes de poder usarse. Este gran impulso está pensado para proporcionar un fuerte golpe a otro juegador y tirarlo del mapa. No obstante, también se puede empujar a los demás jugadores simplemente empujándolos sin usar ningún impulso.
+  
+### 1.4. Economía del juego
 
-### 1.4. Tecnología (incluir software de modelado)
+En confitados distinguiremos dos tipos de monetas; las galletas y los bombones. Las galletas se obtendrán al terminar una partida, ganando más o menos en función de la posición en la que quede el jugador. Los bombones se conseguirán al subir de nivel, obteniendo un único bombón por nivel.
+
+Las galletas se conseguirán de la siguiente forma en función de la posición:
+
+| Posición | Galletas obtenidas |
+| ------------- | ------------- |
+| 1º | 20 galletas + 20 xp |
+| 2º | 15 galletas + 15 xp |
+| 3º | 10 bombones + 10 xp |
+| 4º | 5 bombones + 5 xp |
+| 5º | 5 bombones + 5 xp |
+| 6º | 5 bombones + 5 xp |
+
+En cuanto a los produtos que se podrán comprar con la moneda del juego, el jugador podrá adquirir los siguientes elementos:
+
+| Producto | Precio |
+| ------------- | ------------- |
+| Skin común | 200 galletas |
+| Skin épica | 500 galletas / 3 bombones |
+| Skin legendaria | 10 bombones |
+
+También puede haber conversión de un tipo de monedas en otras, tal y cómo se representa en la siguiente tabla
+
+| Bombones | Galletas |
+| ------------- | ------------- |
+| 1 | 50 |
+| 3 | 200 |
+| 10 | 750 |
+
+| Galletas | Bombones |
+| ------------- | ------------- |
+| 300 | 1 |
+| 800 | 3 |
+| 2500 | 10 |
+
+### 1.5. Tecnología (incluir software de modelado)
 
   Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint.
 
-### 1.5. Estética
+### 1.6. Estética
 
   La estética de todo el juego será muy amigable e infantil, siendo los personajes pequeñas chuches, sin haber más violencia más allá del empuje para tirar a otro personaje. Los mapas y los distintos elementos del juego también tendrán forma de dulces o postres. Predominarán los elementos con dinámica de forma circular.
 
-### 1.6. Públco objetivo
+### 1.7. Públco objetivo
 
   Dada la amigable estética y mecánicas de juego, Confitados es apto para casi todo el público, pero no para todos, puesto que su mecánica principal consiste en empujones, por lo que hay violencia, aunque no demasiada. Por estas razones, se le da un pegi 7.
 
-### 1.7. Desarrolladores
+### 1.8. Desarrolladores
 
   (Inserte nombre del juego) será desarrollado por el equipo Serendipy Studios, formado por:
   - Sergio López Serrano
@@ -38,11 +75,21 @@
   - Javier Morales López
 
 
+
 ## 2. Monetización y modelo de negocio
 
 ### 2.1. Tipo de modelo de negocio
 
 ### 2.2. Tabla de productos y precios
+
+| Producto | Precio |
+| ------------- | ------------- |
+| 0,49€ | 200 galletas |
+| 1,49€ | 5 bombones |
+| 2,49€ | 10 bombones |
+| 4,99€ | 25 bombones |
+| 6,99€ | 50 bombones |
+| 9,99€ | 100 bombones |
 
 
 ## 3. Planificación y costes
