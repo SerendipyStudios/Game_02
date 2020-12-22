@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
 
     private bool inputControl = true;
     private bool dashing = false;
+    private bool superDashing = false;
     public float dashTime;
     public float superDashTime;
 
-    private float currentCooldown;
     public float dashAgainCooldown;
     public float superDashAgainCooldown;
+    public float dashAgainCooldownAux;
+    public float superDashAgainCooldownAux;
 
     //References
     private Rigidbody rb;
@@ -45,21 +47,26 @@ public class PlayerController : MonoBehaviour
             targetRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed * Time.deltaTime);
         }
 
-        if (!dashing)
+        if (input.dashInput && !dashing)
         {
-            if (input.dashInput)
-            {
-                Dash(dashTime, dashAgainCooldown);
-                dashMovement = input.faceDirection * dashSpeed;
-            }
-            else if (input.superDashInput)
-            {
-                Dash(superDashTime, superDashAgainCooldown);
-                dashMovement = input.faceDirection * superDashSpeed;
-            }
+            Dash(dashTime, dashAgainCooldown);
+            dashing = true;
+            dashAgainCooldownAux = dashAgainCooldown;
+            dashMovement = input.faceDirection * dashSpeed;
         }
-        else
+        if (input.superDashInput && !superDashing)
+        {
+            Dash(superDashTime, superDashAgainCooldown);
+            superDashing = true;
+            superDashAgainCooldownAux = superDashAgainCooldown;
+            dashMovement = input.faceDirection * superDashSpeed;
+        }
+
+        if(dashing)
             DashCountdown();
+
+        if (superDashing)
+            SuperDashCountdown();
     }
 
     private void FixedUpdate()
@@ -75,18 +82,24 @@ public class PlayerController : MonoBehaviour
 
     private void Dash(float time, float coolDown)
     {
-        currentCooldown = coolDown;
-        dashing = true;
         inputControl = false;
         StartCoroutine(InputControlBack(time));
     }
 
     private void DashCountdown()
     {
-        if (currentCooldown >= 0)
-            currentCooldown -= Time.deltaTime;
+        if (dashAgainCooldownAux >= 0)
+            dashAgainCooldownAux -= Time.deltaTime;
         else
             dashing = false;
+    }
+
+    private void SuperDashCountdown()
+    {
+        if (superDashAgainCooldownAux >= 0)
+            superDashAgainCooldownAux -= Time.deltaTime;
+        else
+            superDashing = false;
     }
 
     IEnumerator InputControlBack(float seconds)
