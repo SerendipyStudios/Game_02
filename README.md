@@ -1,4 +1,4 @@
-# Confitados
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/logoTw.jpg" width="1000">
 
 
 ## 1. Concepto
