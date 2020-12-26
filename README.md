@@ -184,9 +184,13 @@ Confitados cuenta con un gran número de pantallas, estando todas ella conectada
 
 ## 6. Estados del juego
 
+Al empezar una partida, todos los jugadores empezarán con el mismo número de vidas (tres), y el temporizador de cuenta atrás empezará a restarse segundos, por lo que el juego habrá empezado. Cuando un jugador es lanzado fuera del mapa, pierde una vida. Si aun tiene vidas (más de cero), empezará en un lugar aleatorio del escenario, por lo que podrá seguir jugando. No obstante, si se acaba todas sus vidas, pasará al modo espectador, en el que solo podrá ver cómo juegan los jugadores que quedan, hasta que alguien gane. Durante este modo espectador, el jugador no podrá hacer nada, puesto que su personaje no aparecerá en el escenario.
+En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, esto no hará que el juego entre en un estado de pausa, puesto que no tendría sentido tratándose de un juego online. De esta forma, se recomienda que se hayan ajustados los parámetros del juego antes de empezar una nueva partida.
 
-## 7. Niveles
+## 7. Niveles (Abierto a cambios)
 
+Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
+(Aquí se añaden capturas de los niveles)
 
 ## 8. Personajes
 
