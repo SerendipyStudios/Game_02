@@ -6,28 +6,35 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Movement
+    [Header("Player speed")]
     public float moveSpeed;
     private Vector3 movement;
-    private Vector3 dashMovement;
+    private Vector3 dashDirection;
 
     //Rotation
     public float rotationSpeed;
     private Quaternion targetRotation;
 
     //Dashes
-    public float dashSpeed;
-    public float superDashSpeed;
-
-    private bool inputControl = true;
     private bool dashing = false;
     private bool superDashing = false;
-    public float dashTime;
-    public float superDashTime;
+    private bool useDash = false;
+    private bool useSuperDash = false;
 
+    [Header("Dashes impulse")]
+    public float dashImpulse;
+    public float superDashImpulse;
+
+    [Header("Dashes cooldowns")]
     public float dashAgainCooldown;
     public float superDashAgainCooldown;
-    public float dashAgainCooldownAux;
-    public float superDashAgainCooldownAux;
+    private float dashAgainCooldownAux;
+    private float superDashAgainCooldownAux;
+
+    //Surfaces interaction
+    [Header("Surfaces interaction")]
+    public float iceDrag;
+    public float stickyDrag;
 
     //References
     private Rigidbody rb;
@@ -39,30 +46,39 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<InputPlayer>();
     }
 
+    private void Start()
+    {
+        dashDirection = input.faceDirection;
+    }
+
     private void Update()
     {
-        if (inputControl)
-        {
-            movement = new Vector3(input.inputX * moveSpeed, rb.velocity.y, input.inputZ * moveSpeed);
-            targetRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed * Time.deltaTime);
-        }
+        //Calculate movement
+        movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
+        //Calculate rotation
+        targetRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed * Time.deltaTime);
+
+        //If the player uses a dash
         if (input.dashInput && !dashing)
         {
-            Dash(dashTime, dashAgainCooldown);
+            useDash = true;
             dashing = true;
+            dashDirection = input.faceDirection;
             dashAgainCooldownAux = dashAgainCooldown;
-            dashMovement = input.faceDirection * dashSpeed;
-        }
-        if (input.superDashInput && !superDashing)
-        {
-            Dash(superDashTime, superDashAgainCooldown);
-            superDashing = true;
-            superDashAgainCooldownAux = superDashAgainCooldown;
-            dashMovement = input.faceDirection * superDashSpeed;
         }
 
-        if(dashing)
+        //If the player uses a superDash
+        if (input.superDashInput && !superDashing)
+        {
+            useSuperDash = true;
+            superDashing = true;
+            dashDirection = input.faceDirection;
+            superDashAgainCooldownAux = superDashAgainCooldown;
+        }
+
+        //Dashes countdowns and speed reduction
+        if (dashing)
             DashCountdown();
 
         if (superDashing)
@@ -71,19 +87,32 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (inputControl)
+        if (useDash)
         {
-            rb.velocity = movement;
-            transform.rotation = targetRotation;
+            rb.AddForce(dashDirection * dashImpulse, ForceMode.Impulse);
+            useDash = false;
         }
-        else
-            rb.velocity = dashMovement;
+        if (useSuperDash)
+        {
+            rb.AddForce(dashDirection * superDashImpulse, ForceMode.Impulse);
+            useSuperDash = false;
+        }
+        rb.AddForce(movement);        
+        transform.rotation = targetRotation;
     }
 
-    private void Dash(float time, float coolDown)
+    void OnTriggerEnter(Collider other)
     {
-        inputControl = false;
-        StartCoroutine(InputControlBack(time));
+        if (other.gameObject.tag == "IceFloor")
+            rb.drag = iceDrag;
+        if (other.gameObject.tag == "StickyFloor")
+            rb.drag = stickyDrag;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "IceFloor" || other.gameObject.tag == "StickyFloor")
+            rb.drag = 2.5f;
     }
 
     private void DashCountdown()
@@ -100,11 +129,5 @@ public class PlayerController : MonoBehaviour
             superDashAgainCooldownAux -= Time.deltaTime;
         else
             superDashing = false;
-    }
-
-    IEnumerator InputControlBack(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        inputControl = true;
     }
 }
