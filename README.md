@@ -187,15 +187,15 @@ Confitados cuenta con un gran número de pantallas, estando todas ella conectada
 Al empezar una partida, todos los jugadores empezarán con el mismo número de vidas (tres), y el temporizador de cuenta atrás empezará a restarse segundos, por lo que el juego habrá empezado. Cuando un jugador es lanzado fuera del mapa, pierde una vida. Si aun tiene vidas (más de cero), empezará en un lugar aleatorio del escenario, por lo que podrá seguir jugando. No obstante, si se acaba todas sus vidas, pasará al modo espectador, en el que solo podrá ver cómo juegan los jugadores que quedan, hasta que alguien gane. Durante este modo espectador, el jugador no podrá hacer nada, puesto que su personaje no aparecerá en el escenario.
 En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, esto no hará que el juego entre en un estado de pausa, puesto que no tendría sentido tratándose de un juego online. De esta forma, se recomienda que se hayan ajustados los parámetros del juego antes de empezar una nueva partida.
 
-## 7. Niveles (Abierto a cambios)
+## 7. Niveles (NOW IN DEVELOPMENT)
 
 Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
 
 - Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es galleta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="175">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
 
 - Galletown: Este nivel está diseñado de tal forma que los movimientos se escapen del control de los usuarios al haber tanta zona de helado (zona azul), aunque las zonas de caramelo (zonas naranja oscuro) hará que se paren en seco, puesto que se quedarán muy pegados al suelo. Cuando el mapa empiece a caerse, lo hará en círculos, de fuera hacia dentro, por lo que la zona central está diseñada con mucha zona helada precisamente para añadirle dinamismo a la partida.
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="175">
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
 
 ## 8. Personajes
 
