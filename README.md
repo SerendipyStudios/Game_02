@@ -190,7 +190,12 @@ En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, 
 ## 7. Niveles (Abierto a cambios)
 
 Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
-(Aquí se añaden capturas de los niveles)
+
+- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es galleta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="175">
+
+- Galletown: Este nivel está diseñado de tal forma que los movimientos se escapen del control de los usuarios al haber tanta zona de helado (zona azul), aunque las zonas de caramelo (zonas naranja oscuro) hará que se paren en seco, puesto que se quedarán muy pegados al suelo. Cuando el mapa empiece a caerse, lo hará en círculos, de fuera hacia dentro, por lo que la zona central está diseñada con mucha zona helada precisamente para añadirle dinamismo a la partida.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="175">
 
 ## 8. Personajes
 
