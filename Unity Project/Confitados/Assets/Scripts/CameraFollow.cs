@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 cameraPosition;
     private Vector3 camVel;
-    private float dampTime = 0.1f;
+    private readonly float dampTime = 0.001f;
 
     private Vector3 tracking;
 

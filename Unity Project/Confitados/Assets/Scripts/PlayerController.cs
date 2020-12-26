@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 dashDirection;
 
     //Rotation
+    [Range(0.0f, 1.0f)]
     public float rotationSpeed;
     private Quaternion targetRotation;
 
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
         //Calculate rotation
-        targetRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed * Time.deltaTime);
+        targetRotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed);
 
         //If the player uses a dash
         if (input.dashInput && !dashing)
