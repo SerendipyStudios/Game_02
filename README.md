@@ -191,11 +191,14 @@ En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, 
 
 Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
 
-- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es galleta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
+- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es tarta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
 
 - Galletown: Este nivel está diseñado de tal forma que los movimientos se escapen del control de los usuarios al haber tanta zona de helado (zona azul), aunque las zonas de caramelo (zonas naranja oscuro) hará que se paren en seco, puesto que se quedarán muy pegados al suelo. Cuando el mapa empiece a caerse, lo hará en círculos, de fuera hacia dentro, por lo que la zona central está diseñada con mucha zona helada precisamente para añadirle dinamismo a la partida.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
+
+- Tarta de Tortas: Este nivel tiene una forma hexagonal, y está compuesto de los 3 materiales del suelo (helado, caramelo y tarta). A diferencia de los anteriores mapas, este está adornado con florituras en el suelo, lo que hace que el mapa en general se vea menos vacío.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
 
 ## 8. Personajes
 
