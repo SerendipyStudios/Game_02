@@ -6,7 +6,7 @@ using Photon.Pun.Demo.Cockpit;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NetworkController : MonoBehaviourPunCallbacks
+public class Lobby_public : MonoBehaviourPunCallbacks
 {
     /****************************
      *

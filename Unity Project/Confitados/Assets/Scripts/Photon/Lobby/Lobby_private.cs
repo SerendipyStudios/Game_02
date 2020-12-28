@@ -7,7 +7,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NetworkController_private : MonoBehaviourPunCallbacks
+public class Lobby_private : MonoBehaviourPunCallbacks
 {
     /****************************
      *
@@ -30,6 +30,8 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
 
     [HideInInspector]
     public int jeje = 0;
+
+    //private bool isConnecting = false;
     
     #endregion
     
@@ -72,7 +74,7 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
     
     #endregion
 
-    #region Callbacks
+    #region Photon Callbacks
 
     public override void OnConnectedToMaster()
     {
@@ -91,6 +93,17 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
         
         //Disable the join room button to prevent the user from joining multiple rooms.
         joinRandomButton.interactable = false;
+        
+        // #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            Debug.Log("We load the 'Room for 1' ");
+
+
+            // #Critical
+            // Load the Room Level.
+            PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
+        }
     }
 
     //Private room join failed

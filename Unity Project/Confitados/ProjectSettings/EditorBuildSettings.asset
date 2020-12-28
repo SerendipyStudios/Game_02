@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Tests/ResponsiveScene.unity
     guid: 098ac357ce95c224c9c9694ce6cc8036
   - enabled: 1
-    path: Assets/Scenes/Tests/PhotonScene.unity
+    path: Assets/Scenes/Tests/PhotonLoginScene.unity
     guid: 158c9e205bf1f594d99fd0ed36ff561b
+  - enabled: 1
+    path: Assets/Scenes/Tests/PhotonMultiplayerScene.unity
+    guid: b1c2fd6090aca0d40897f8460f5b6b15
   - enabled: 1
     path: Assets/Scenes/Screens/Screen_00_0_LogIn.unity
     guid: 30d9966d6c98a5e4fa5e86f46d9b63a4
