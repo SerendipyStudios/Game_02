@@ -18,19 +18,30 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
 
     #region Variables
 
-    public Button connectButton;
-    public Button joinRandomButton;
-    public Text log;
+    [SerializeField] private Button connectButton;
+    [SerializeField] private Button joinRandomButton;
+    [SerializeField] private Text log;
+    
+    [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
+    [SerializeField] private byte maxPlayersInRoom = 4;
+    [SerializeField] private byte minPlayersInRoom = 2;
+    [SerializeField] private int currentPlayersInRoom = 0;
+    [SerializeField] private Text playerCount;
 
-    public byte maxPlayersInRoom = 4;
-    public byte minPlayersInRoom = 2;
-    public int currentPlayersInRoom = 0;
-    public Text playerCount;
-
+    [HideInInspector]
+    public int jeje = 0;
+    
     #endregion
     
     #region UnityCallbacks
-        
+
+    private void Awake()
+    {
+        //this makes sure we can use PhotonNetwork.LoadLevel() on the master client and
+        //    all clients in the same room sync their level automatically
+        PhotonNetwork.AutomaticallySyncScene = true; 
+    }
+
     void Start()
     {
         //PhotonNetwork.ConnectUsingSettings(); //Connect to Photon servers
@@ -42,9 +53,21 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
     private void FixedUpdate()
     {
         if (PhotonNetwork.CurrentRoom != null)
+        {
             currentPlayersInRoom = PhotonNetwork.CurrentRoom.PlayerCount;
+            playerCount.text = currentPlayersInRoom + "/" + maxPlayersInRoom;
 
-        playerCount.text = currentPlayersInRoom + "/" + maxPlayersInRoom;
+            foreach (var player in PhotonNetwork.CurrentRoom.Players)
+            {
+                playerCount.text += "\nPlayer " + player.Key + ": " + player.Value.NickName;
+            }
+        }
+        else
+        {
+            playerCount.text = currentPlayersInRoom + "/" + maxPlayersInRoom;
+        }
+
+        
     }
     
     #endregion
@@ -96,7 +119,17 @@ public class NetworkController_private : MonoBehaviourPunCallbacks
             log.text += "\nError. Unable to create a new room";
         }
     }
-    
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        //base.OnDisconnected(cause);
+        
+        log.text += "\nDisconnected.";
+        
+        //Enable the connect button
+        connectButton.interactable = true;
+    }
+
     #endregion
 
     #region Methods
