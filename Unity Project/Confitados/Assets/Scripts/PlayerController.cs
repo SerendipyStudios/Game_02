@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private InputPlayer input;
 
+    public Vector3 velocity;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        velocity = rb.velocity;
+
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
