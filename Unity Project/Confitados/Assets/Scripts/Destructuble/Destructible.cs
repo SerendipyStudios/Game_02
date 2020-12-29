@@ -20,24 +20,31 @@ public class Destructible : MonoBehaviour
     public GameObject veryCrackedVersion;
     public GameObject brokenVersion;
 
+    //Colission
+    private bool colided;
+
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.rigidbody.velocity);
         if (collision.rigidbody.tag.CompareTo("Player") == 0 && 
-            Mathf.Abs(collision.rigidbody.velocity.x) > 2f ||
-            Mathf.Abs(collision.rigidbody.velocity.z) > 2f)
+            !colided &&
+            (Mathf.Abs(collision.rigidbody.velocity.x) > 2f ||
+            Mathf.Abs(collision.rigidbody.velocity.z) > 2f))
         {
+            colided = true;
             switch (state)
             {
                 case BrokenState.full:
                     state = BrokenState.cracked;
                     childModelCracked = InstantiateNewModel(crackedVersion, childModelFull, transform);
                     Destroy(childModelFull);
+                    StartCoroutine(CanBreakAgain());
                     break;
                 case BrokenState.cracked:
                     state = BrokenState.veryCracked;
                     childModelVeryCracked = InstantiateNewModel(veryCrackedVersion, childModelCracked, transform);
                     Destroy(childModelCracked);
+                    StartCoroutine(CanBreakAgain());
                     break;
                 case BrokenState.veryCracked:
                     state = BrokenState.broken;
@@ -54,5 +61,11 @@ public class Destructible : MonoBehaviour
         newChild = Instantiate(original, referenceModel.transform.position, referenceModel.transform.rotation, parent);
         newChild.transform.localScale = referenceModel.transform.localScale;
         return newChild;
+    }
+
+    IEnumerator CanBreakAgain()
+    {
+        yield return new WaitForSeconds(0.5f);
+        colided = false;
     }
 }

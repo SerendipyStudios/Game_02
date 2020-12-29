@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IceFloor
   - StickyFloor
+  - Piece
   layers:
   - Default
   - TransparentFX
