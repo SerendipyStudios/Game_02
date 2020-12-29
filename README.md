@@ -240,6 +240,7 @@ Tarta de tortas
 ### 9.4. Personajes
 
 Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sean aptos para jugar a Confitados.
+
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
 Render del confite
 
