@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool dashing = false;
     private bool superDashing = false;
     private bool useDash = false;
-    private bool useSuperDash = false;
+    public bool useSuperDash = false;
 
     [Header("Dashes impulse")]
     public float dashImpulse;
@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private InputPlayer input;
 
-    public Vector3 velocity;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -56,8 +54,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        velocity = rb.velocity;
-
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 

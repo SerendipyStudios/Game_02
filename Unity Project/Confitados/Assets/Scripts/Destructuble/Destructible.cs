@@ -8,14 +8,15 @@ public class Destructible : MonoBehaviour
     public enum BrokenState { full, cracked, veryCracked, broken }
     public BrokenState state = BrokenState.full;
 
+    //Force threshold
+    public float threshold;
+
     //Child models
     public GameObject childModelFull;
     private GameObject childModelCracked;
     private GameObject childModelVeryCracked;
-    //private GameObject childModelBroken;
 
     //Models
-    public GameObject fullVersion;
     public GameObject crackedVersion;
     public GameObject veryCrackedVersion;
     public GameObject brokenVersion;
@@ -25,11 +26,10 @@ public class Destructible : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.rigidbody.velocity);
         if (collision.rigidbody.tag.CompareTo("Player") == 0 && 
             !colided &&
-            (Mathf.Abs(collision.rigidbody.velocity.x) > 2f ||
-            Mathf.Abs(collision.rigidbody.velocity.z) > 2f))
+            (Mathf.Abs(collision.rigidbody.velocity.x) > threshold ||
+            Mathf.Abs(collision.rigidbody.velocity.z) > threshold))
         {
             colided = true;
             switch (state)
@@ -58,7 +58,7 @@ public class Destructible : MonoBehaviour
     private GameObject InstantiateNewModel(GameObject original, GameObject referenceModel, Transform parent)
     {
         GameObject newChild;
-        newChild = Instantiate(original, referenceModel.transform.position, referenceModel.transform.rotation, parent);
+        newChild = Instantiate(original, referenceModel.transform.position, original.transform.rotation, parent);
         newChild.transform.localScale = referenceModel.transform.localScale;
         return newChild;
     }
