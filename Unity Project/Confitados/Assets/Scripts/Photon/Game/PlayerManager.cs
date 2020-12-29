@@ -12,15 +12,18 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
     //Identity variables
     public static GameObject LocalPlayerInstance; //Needed to avoid instancing the player again when updating the scene
 
+    //Referenced objects
+    public GameObject PlayerUIPrefab; 
+    
     //Movement variables
     private Animator animator;
     [SerializeField] private float directionDampTime = 0.25f;
 
     //Action variables
-    private bool isDashing = false;
+    public bool isDashing = false;
 
     //State variables
-    private byte lives = 3;
+    public byte lives = 3;
 
     #endregion
 
@@ -68,6 +71,17 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
         if (!animator)
         {
             Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
+        }
+        
+        //Verify UI
+        if (PlayerUIPrefab != null)
+        {
+            GameObject _uiGo =  Instantiate(PlayerUIPrefab);
+            _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
         }
 
         //Camera work
