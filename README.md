@@ -244,6 +244,9 @@ Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con oj
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
 Render del confite
 
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render3.png" width="225">
+Render de skins de los confites
+
 ### 9.5. PowerUps
 
 ### 9.6. DLCs
@@ -317,3 +320,5 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 
 ## 11. Fecha de lanzamiento 
+
+13/01/2021
