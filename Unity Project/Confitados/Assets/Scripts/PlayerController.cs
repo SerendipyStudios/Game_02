@@ -39,12 +39,18 @@ public class PlayerController : MonoBehaviour
 
     //References
     private Rigidbody rb;
+    private Animator anim;
     private InputPlayer input;
+
+    //Animator
+    private int moveAnimParam;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         input = GetComponent<InputPlayer>();
+        moveAnimParam = Animator.StringToHash("Movement");
     }
 
     private void Start()
@@ -54,6 +60,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Check movement animation
+        anim.SetFloat(moveAnimParam,Mathf.Max(Mathf.Abs(input.inputX), Mathf.Abs(input.inputZ)));
+
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
