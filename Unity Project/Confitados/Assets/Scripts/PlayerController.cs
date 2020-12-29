@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool dashing = false;
     private bool superDashing = false;
     private bool useDash = false;
-    private bool useSuperDash = false;
+    public bool useSuperDash = false;
 
     [Header("Dashes impulse")]
     public float dashImpulse;
