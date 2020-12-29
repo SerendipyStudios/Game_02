@@ -226,9 +226,22 @@ Dado que todos los elementos del juego son chuches y postres, habrá todo tipo d
 
 ### 9.3. Mapas
 
+Los mapas varian en cuanto a diseño y forma, así como la distribución de los distintos elementos que componen el suelo.
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
+Tutorial
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
+Galletown
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
+Tarta de tortas
+
 ### 9.4. Personajes
 
-Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades.
+Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sean aptos para jugar a Confitados.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
+Render del confite
 
 ### 9.5. PowerUps
 
@@ -246,6 +259,15 @@ Estudio de Color
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
 Diseño Final del Confite
 
+- Mapas:
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/galletown.png" width="175">
+Primer Diseño de Galletown
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/tartadetortas.png" width="175">
+Primer Diseño de Tarta de Tortas
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/tartadecastanhas.png" width="175">
+Primer Diseño de Tarta de Castañas
 
 - Pantallas:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="175">
