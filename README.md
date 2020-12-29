@@ -254,11 +254,43 @@ Primer Diseño de la pantalla principal
 
 ## 10. Música y sonidos
 
-### 10.1. Sonido de ambiente y música
+Dada la temática de Confitados, se ha escogido una música animada para las partidas y algo más tranquila para el menú principal, aunque manteniendo el mismo tono. Asimismo, el juego cuenta con una gran variedad de efectos sonoros, dado que todas las acciones del jugador se presentan en pantalla tanto visual como auditivamente. Toda la música y efectos sonoros que se encuentran en el juego han sido sacados de páginas de uso libre, es decir, ninguna pista de audio es completamente original nuestra. No obstante, la gran mayoría de pistas han sido modificadas para que se adapten al juego.
+
+### 10.1. Música
+
+Puesto que Confitados es un juego con acción frenética, se ha decidido que la música a incluir en las partidas incite aun más a la acción. Por ello, se ha escogido una música rápida, amigable y que potencia la rivalidad contra los oponentes del jugador. También se ha escogido teniendo en cuenta que no cause estrés o ansiedad en el jugador, ni que aburra cuando se escuche durante varios minutos.
+Para todas las demás pantallas (a excepción de la pantalla de resultados), se ha escogido una música amigalbe y animada, aunque mucho más relajada que la de las partidas. De esta forma, creamos un ambiente que causa una buena sensación al usuario mientras se pasea por las pantallas, animándole a jugar.
 
 ### 10.2. Efectos sonoros
 
+En cuanto a efectos sonoros, cabe destacar que Confitados incluye efectos de sonido para todas las acciones que el usuario pueda hacer en el juego. En los menús, un click sobre cualquier botón emitirá su efecto de sonido correspondiente, diferenciandose varios efectos diferentes (por ejemplo, el botón de estar listo emitirá uno diferente del de ajustes o del de empezar partida). Asimismo, en la pantalla de partida, también se encuentran varias pistas de efectos sonoros asociados a todas las acciones que puede realizar el usuario.
+Todos estos efectos se han buscado y modificado para que se adapten a la estética de dulces que tiene el propio juego. Un buen ejemplo sería que algunos de los botones tuviesen efecto de sonido de morder galleta, que los pasos del personaje varíen según esté pisando helado, tarta o caramelo o que al caer de la plataforma un personaje suene una voz aguda, acorde con su diminuto cuerpo.
+La propia pantalla de resultados tiene su propio efecto de sonido, siendo éste una pequeña melodía triunfal de fin de partida. 
+
 ### 10.3. Lista de sonidos
+
+- Música:
+Música de partida: https://freesound.org/people/B_Sean/sounds/421886/
+Música de menú: https://freesound.org/people/xsgianni/sounds/388079/
+
+- Efectos de sonido: 
+Pantalla de resultados: https://freesound.org/people/awrecording.it/sounds/547657/
+Fin de partida: https://freesound.org/people/PearceWilsonKing/sounds/249524/
+Romper muros: https://freesound.org/people/InspectorJ/sounds/429593/
+Semáforo de inicio de partida: https://freesound.org/people/Unnecro/sounds/165990/
+Caída de la plataforma: https://freesound.org/people/Robinhood76/sounds/326064/
+Colisión entre confites: https://freesound.org/people/Lukeo135/sounds/540727/
+Subida de nivel de empujón fuerte: https://freesound.org/people/Mativve/sounds/391539/
+Finalización del enfriamiento del empujón (se puede volver a usar): https://freesound.org/people/NenadSimic/sounds/171697/
+Empujón fuerte: https://freesound.org/people/Maemi_no_yume/sounds/398634/
+Empujón débil: https://freesound.org/people/Kastenfrosch/sounds/521999/
+Botón de estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón de empezar partida: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón de cancelar estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón básico: https://freesound.org/people/InspectorJ/sounds/429593/
+Pisadas en caramelo: https://freesound.org/people/Breviceps/sounds/447928/
+Pisadas en helado: https://freesound.org/people/arnaud%20coutancier/sounds/418238/
+Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 
 ## 11. Fecha de lanzamiento 
