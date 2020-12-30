@@ -32,6 +32,7 @@ public class Destructible : MonoBehaviour
             Mathf.Abs(collision.rigidbody.velocity.z) > threshold))
         {
             colided = true;
+            SoundManager.sharedInstance.breakWalls_SND.Play();
             switch (state)
             {
                 case BrokenState.full:
