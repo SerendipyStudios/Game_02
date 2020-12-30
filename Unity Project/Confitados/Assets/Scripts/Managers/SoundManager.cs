@@ -63,6 +63,7 @@ public class SoundManager : MonoBehaviour
             step = caramelStep_SND;
         else
             step = cakeStep_SND;
-        step.Play();
+        step.PlayOneShot(step.clip);
+        OnPlayerSteps -= PlayStepSound;
     }
 }
