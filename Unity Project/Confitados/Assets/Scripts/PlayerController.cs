@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     public float stickyDrag;
 
     //References
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
     private Animator anim;
     private InputPlayer input;
 
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
             dashing = true;
             dashDirection = input.faceDirection;
             dashAgainCooldownAux = dashAgainCooldown;
+            SoundManager.sharedInstance.dash_SND.Play();
         }
 
         //If the player uses a superDash
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
             superDashing = true;
             dashDirection = input.faceDirection;
             superDashAgainCooldownAux = superDashAgainCooldown;
+            SoundManager.sharedInstance.superDash_SND.Play();
         }
 
         //Dashes countdowns and speed reduction
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(dashDirection * superDashImpulse, ForceMode.Impulse);
             useSuperDash = false;
         }
-        rb.AddForce(movement);        
+        rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
 
@@ -131,7 +134,10 @@ public class PlayerController : MonoBehaviour
         if (dashAgainCooldownAux >= 0)
             dashAgainCooldownAux -= Time.deltaTime;
         else
+        {
             dashing = false;
+            SoundManager.sharedInstance.endCooldown_SND.Play();
+        }
     }
 
     private void SuperDashCountdown()
@@ -139,6 +145,15 @@ public class PlayerController : MonoBehaviour
         if (superDashAgainCooldownAux >= 0)
             superDashAgainCooldownAux -= Time.deltaTime;
         else
+        {
             superDashing = false;
+            SoundManager.sharedInstance.endCooldown_SND.Play();
+        }
+    }
+
+    public void PlayCurrentStepsSound()
+    {
+        SoundManager.sharedInstance.OnPlayerSteps += SoundManager.sharedInstance.PlayStepSound;
+        //SoundManager.sharedInstance.PlayStepSound();
     }
 }
