@@ -256,6 +256,9 @@ Tarta de tortas con texturas
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tartadecastanas_model.PNG" width="250">
 Tarta de castañas sin texturas
 
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tartadecastanas_texture.PNG" width="250">
+Tarta de castañas con texturas
+
 ### 9.4. Personajes
 
 Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sean aptos para jugar a Confitados.
