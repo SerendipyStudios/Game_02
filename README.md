@@ -201,6 +201,8 @@ Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
 
 - Tarta de Castañas: La forma de este nivel es triangular, lo que da una sensación de más vulnerabilidad, puesto que los otros niveles tenían una forma mucho más ancha. Esto hace que el jugador tenga que estar siempre pendiente de no caerse. Al igual que en los otros escenarios, el suelo estará compuesto por helado, caramelo y tarta, por lo que el jugador tendrá que jugar con estos elementos para alzarse con la victoria.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tartadecastanas_texture.PNG" width="250">
+
 
 ## 8. Personajes
 
