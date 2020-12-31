@@ -191,18 +191,27 @@ En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, 
 
 Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
 
-- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es galleta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
+- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es tarta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
 
 - Galletown: Este nivel está diseñado de tal forma que los movimientos se escapen del control de los usuarios al haber tanta zona de helado (zona azul), aunque las zonas de caramelo (zonas naranja oscuro) hará que se paren en seco, puesto que se quedarán muy pegados al suelo. Cuando el mapa empiece a caerse, lo hará en círculos, de fuera hacia dentro, por lo que la zona central está diseñada con mucha zona helada precisamente para añadirle dinamismo a la partida.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
 
+- Tarta de Tortas: Este nivel tiene una forma hexagonal, y está compuesto de los 3 materiales del suelo (helado, caramelo y tarta). A diferencia de los anteriores mapas, este está adornado con florituras en el suelo, lo que hace que el mapa en general se vea menos vacío.
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
+
 ## 8. Personajes
 
 Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugadpr elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
 
-<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
-Confite
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="225">
+Imagen 2D del confite
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
+Render del confite
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render2.png" width="225">
+Render de dos confites
 
 
 ## 9. Arte
@@ -217,9 +226,26 @@ Dado que todos los elementos del juego son chuches y postres, habrá todo tipo d
 
 ### 9.3. Mapas
 
+Los mapas varian en cuanto a diseño y forma, así como la distribución de los distintos elementos que componen el suelo.
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
+Tutorial
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
+Galletown
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
+Tarta de tortas
+
 ### 9.4. Personajes
 
-Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades.
+Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sean aptos para jugar a Confitados.
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
+Render del confite
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render3.png" width="225">
+Render de skins de los confites
 
 ### 9.5. PowerUps
 
@@ -237,6 +263,15 @@ Estudio de Color
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
 Diseño Final del Confite
 
+- Mapas:
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/galletown.png" width="175">
+Primer Diseño de Galletown
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/tartadetortas.png" width="175">
+Primer Diseño de Tarta de Tortas
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/tartadecastanhas.png" width="175">
+Primer Diseño de Tarta de Castañas
 
 - Pantallas:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="175">
@@ -245,11 +280,45 @@ Primer Diseño de la pantalla principal
 
 ## 10. Música y sonidos
 
-### 10.1. Sonido de ambiente y música
+Dada la temática de Confitados, se ha escogido una música animada para las partidas y algo más tranquila para el menú principal, aunque manteniendo el mismo tono. Asimismo, el juego cuenta con una gran variedad de efectos sonoros, dado que todas las acciones del jugador se presentan en pantalla tanto visual como auditivamente. Toda la música y efectos sonoros que se encuentran en el juego han sido sacados de páginas de uso libre, es decir, ninguna pista de audio es completamente original nuestra. No obstante, la gran mayoría de pistas han sido modificadas para que se adapten al juego.
+
+### 10.1. Música
+
+Puesto que Confitados es un juego con acción frenética, se ha decidido que la música a incluir en las partidas incite aun más a la acción. Por ello, se ha escogido una música rápida, amigable y que potencia la rivalidad contra los oponentes del jugador. También se ha escogido teniendo en cuenta que no cause estrés o ansiedad en el jugador, ni que aburra cuando se escuche durante varios minutos.
+Para todas las demás pantallas (a excepción de la pantalla de resultados), se ha escogido una música amigalbe y animada, aunque mucho más relajada que la de las partidas. De esta forma, creamos un ambiente que causa una buena sensación al usuario mientras se pasea por las pantallas, animándole a jugar.
 
 ### 10.2. Efectos sonoros
 
+En cuanto a efectos sonoros, cabe destacar que Confitados incluye efectos de sonido para todas las acciones que el usuario pueda hacer en el juego. En los menús, un click sobre cualquier botón emitirá su efecto de sonido correspondiente, diferenciandose varios efectos diferentes (por ejemplo, el botón de estar listo emitirá uno diferente del de ajustes o del de empezar partida). Asimismo, en la pantalla de partida, también se encuentran varias pistas de efectos sonoros asociados a todas las acciones que puede realizar el usuario.
+Todos estos efectos se han buscado y modificado para que se adapten a la estética de dulces que tiene el propio juego. Un buen ejemplo sería que algunos de los botones tuviesen efecto de sonido de morder galleta, que los pasos del personaje varíen según esté pisando helado, tarta o caramelo o que al caer de la plataforma un personaje suene una voz aguda, acorde con su diminuto cuerpo.
+La propia pantalla de resultados tiene su propio efecto de sonido, siendo éste una pequeña melodía triunfal de fin de partida. 
+
 ### 10.3. Lista de sonidos
+
+- Música:
+Música de partida: https://freesound.org/people/B_Sean/sounds/421886/
+Música de menú: https://freesound.org/people/xsgianni/sounds/388079/
+
+- Efectos de sonido: 
+Pantalla de resultados: https://freesound.org/people/awrecording.it/sounds/547657/
+Fin de partida: https://freesound.org/people/PearceWilsonKing/sounds/249524/
+Romper muros: https://freesound.org/people/InspectorJ/sounds/429593/
+Semáforo de inicio de partida: https://freesound.org/people/Unnecro/sounds/165990/
+Caída de la plataforma: https://freesound.org/people/Robinhood76/sounds/326064/
+Colisión entre confites: https://freesound.org/people/Lukeo135/sounds/540727/
+Subida de nivel de empujón fuerte: https://freesound.org/people/Mativve/sounds/391539/
+Finalización del enfriamiento del empujón (se puede volver a usar): https://freesound.org/people/NenadSimic/sounds/171697/
+Empujón fuerte: https://freesound.org/people/Maemi_no_yume/sounds/398634/
+Empujón débil: https://freesound.org/people/Kastenfrosch/sounds/521999/
+Botón de estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón de empezar partida: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón de cancelar estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+Botón básico: https://freesound.org/people/InspectorJ/sounds/429593/
+Pisadas en caramelo: https://freesound.org/people/Breviceps/sounds/447928/
+Pisadas en helado: https://freesound.org/people/arnaud%20coutancier/sounds/418238/
+Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 
 ## 11. Fecha de lanzamiento 
+
+13/01/2021

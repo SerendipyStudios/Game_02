@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool dashing = false;
     private bool superDashing = false;
     private bool useDash = false;
-    private bool useSuperDash = false;
+    public bool useSuperDash = false;
 
     [Header("Dashes impulse")]
     public float dashImpulse;
@@ -39,12 +39,19 @@ public class PlayerController : MonoBehaviour
 
     //References
     private Rigidbody rb;
+    private Animator anim;
     private InputPlayer input;
+
+    //Animations
+    private int runHashCode;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         input = GetComponent<InputPlayer>();
+
+        runHashCode = Animator.StringToHash("Movement");
     }
 
     private void Start()
@@ -59,6 +66,9 @@ public class PlayerController : MonoBehaviour
 
         //Calculate rotation
         targetRotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(input.faceDirection), rotationSpeed);
+
+        //Check the player's animation parameters
+        anim.SetFloat(runHashCode, Mathf.Max(Mathf.Abs(input.inputX), Mathf.Abs(input.inputZ)));
 
         //If the player uses a dash
         if (input.dashInput && !dashing)
