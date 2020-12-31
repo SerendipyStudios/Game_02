@@ -67,11 +67,11 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
     void Start()
     {
         //Setup movement
-        animator = GetComponent<Animator>();
-        if (!animator)
-        {
-            Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
-        }
+        //animator = GetComponent<Animator>();
+        //if (!animator)
+        //{
+        //    Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
+        //}
         
         //Verify UI
         if (PlayerUIPrefab != null)

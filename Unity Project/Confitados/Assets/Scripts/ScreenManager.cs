@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScreenManager : MonoBehaviour
 {
-    private static ScreenManager _screenManager;
+    public static ScreenManager _screenManager { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,11 @@ public class ScreenManager : MonoBehaviour
     }
 
     //Methods
+    public static void GoToScreen(string screen)
+    {
+        SceneManager.LoadScene(screen);
+    }
+    
     public void GoTo_00_0_LogIn()
     {
         SceneManager.LoadScene("Screen_00_0_LogIn");
