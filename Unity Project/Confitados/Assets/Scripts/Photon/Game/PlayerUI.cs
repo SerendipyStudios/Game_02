@@ -6,8 +6,6 @@ namespace Photon.Game
 {
     public class PlayerUI : MonoBehaviour
     {
-        
-        
         #region Variables
 
         [Tooltip("UI Text to display Player's Name")] [SerializeField]
@@ -16,8 +14,7 @@ namespace Photon.Game
 
         [Tooltip("UI Slider to display Player's Health")] [SerializeField]
         private Slider playerHealthSlider;
-
-
+        
         private PlayerManager target;
         
         [Tooltip("Pixel offset from the player target")]
@@ -31,7 +28,6 @@ namespace Photon.Game
         Vector3 targetPosition;
 
         #endregion
-
 
         #region MonoBehaviour Callbacks
 
@@ -52,6 +48,7 @@ namespace Photon.Game
             // Destroy itself if the target is null, It's a fail safe when Photon is destroying Instances of a Player over the network
             if (target == null)
             {
+                Debug.Log("Delete");
                 Destroy(this.gameObject);
                 return;
             }
@@ -82,6 +79,7 @@ namespace Photon.Game
 
         public void SetTarget(PlayerManager _target)
         {
+            Debug.Log("HOLAAAA" +  _target.photonView.Owner.NickName);
             if (_target == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> PlayMakerManager target for PlayerUI.SetTarget.", this);

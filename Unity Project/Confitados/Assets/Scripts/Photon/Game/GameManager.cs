@@ -85,7 +85,7 @@ namespace Photon.Game
             {
                 //Debug.LogFormat("PhotonNetwork: Loading Level {0}", PhotonNetwork.CurrentRoom.PlayerCount);
                 Debug.LogFormat("PhotonNetwork: Loading Level {0}", 1);
-                PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
+                //PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
             }
             
         }

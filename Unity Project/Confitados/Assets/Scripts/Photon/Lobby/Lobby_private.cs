@@ -18,8 +18,11 @@ public class Lobby_private : MonoBehaviourPunCallbacks
 
     #region Variables
 
+    [SerializeField] private InputField if_roomCode;
+
     [SerializeField] private Button connectButton;
-    [SerializeField] private Button joinRandomButton;
+    [SerializeField] private Button createPrivateButton;
+    [SerializeField] private Button joinPrivateButton;
     [SerializeField] private Text log;
     
     [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
@@ -82,7 +85,8 @@ public class Lobby_private : MonoBehaviourPunCallbacks
 
         //Enable the join room button
         connectButton.interactable = false;
-        joinRandomButton.interactable = true;
+        createPrivateButton.interactable = true;
+        joinPrivateButton.interactable = true;
     }
 
     public override void OnJoinedRoom()
@@ -92,7 +96,8 @@ public class Lobby_private : MonoBehaviourPunCallbacks
         log.text += "\nJoined to room " + PhotonNetwork.CurrentRoom.Name + ".";
         
         //Disable the join room button to prevent the user from joining multiple rooms.
-        joinRandomButton.interactable = false;
+        createPrivateButton.interactable = false;
+        joinPrivateButton.interactable = false;
         
         // #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
@@ -165,16 +170,25 @@ public class Lobby_private : MonoBehaviourPunCallbacks
     //Private room create
     public void CreatePrivateRoom()
     {
+        string _roomCode = if_roomCode.text;
+        if (_roomCode.Length < 4)
+        {
+            log.text += "\nEnter a roomCode with a length greater than 4.";
+            return;
+        }
+        
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = false;
         roomOptions.MaxPlayers = maxPlayersInRoom;
-        PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default);
+        PhotonNetwork.CreateRoom(_roomCode, roomOptions, TypedLobby.Default);
     }
     
     //Private room join
-    public void JoinPrivateRoom(string name)
+    public void JoinPrivateRoom()
     {
-        PhotonNetwork.JoinRoom(name);
+        string _roomCode = if_roomCode.text;
+
+        PhotonNetwork.JoinRoom(_roomCode);
     }
 
     #endregion
