@@ -209,11 +209,14 @@ Los personajes serán llamados Confites. Si bien su diseño varía según la ski
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="225">
 Imagen 2D del confite
 
+
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
 Render del confite
 
+
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render2.png" width="225">
 Render de dos confites
+
 
 
 ## 9. Arte
