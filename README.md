@@ -200,6 +200,8 @@ Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma
 - Tarta de Tortas: Este nivel tiene una forma hexagonal, y está compuesto de los 3 materiales del suelo (helado, caramelo y tarta). A diferencia de los anteriores mapas, este está adornado con florituras en el suelo, lo que hace que el mapa en general se vea menos vacío.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
 
+- Tarta de Castañas: La forma de este nivel es triangular, lo que da una sensación de más vulnerabilidad, puesto que los otros niveles tenían una forma mucho más ancha. Esto hace que el jugador tenga que estar siempre pendiente de no caerse. Al igual que en los otros escenarios, el suelo estará compuesto por helado, caramelo y tarta, por lo que el jugador tendrá que jugar con estos elementos para alzarse con la victoria.
+
 ## 8. Personajes
 
 Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugadpr elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
@@ -228,14 +230,26 @@ Dado que todos los elementos del juego son chuches y postres, habrá todo tipo d
 
 Los mapas varian en cuanto a diseño y forma, así como la distribución de los distintos elementos que componen el suelo.
 
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial_model.PNG" width="250">
+Tutorial sin texturas
+
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
-Tutorial
+Tutorial con texturas
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown_model.PNG" width="250">
+Galletown sin texturas
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/galletown.jpeg" width="250">
-Galletown
+Galletown con texturas
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_model.PNG" width="250">
+Tarta de tortas sin texturas
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tarta%20de%20tortas_final.PNG" width="250">
-Tarta de tortas
+Tarta de tortas con texturas
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tartadecastanas_model.PNG" width="250">
+Tarta de castañas sin texturas
 
 ### 9.4. Personajes
 
