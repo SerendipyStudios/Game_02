@@ -485,79 +485,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253538633}
   m_CullTransparentMesh: 0
---- !u!1 &275041396
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 275041398}
-  - component: {fileID: 275041397}
-  - component: {fileID: 275041399}
-  m_Layer: 0
-  m_Name: NetworkController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &275041397
+--- !u!114 &275041399 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 223543351448041322}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275041396}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db130609897612a418124e96c549a07a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectButton: {fileID: 552372817}
-  joinRandomButton: {fileID: 1563765155}
-  log: {fileID: 2070340395}
-  maxPlayersInRoom: 4
-  minPlayersInRoom: 2
-  currentPlayersInRoom: 0
-  playerCount: {fileID: 322229316}
---- !u!4 &275041398
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275041396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 465.99384, y: 287.06708, z: -0.4375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &275041399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275041396}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90eb39455748ab749a98607d8ae149d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  if_roomCode: {fileID: 1330649928}
-  connectButton: {fileID: 552372817}
-  createPrivateButton: {fileID: 1563765155}
-  joinPrivateButton: {fileID: 180285739}
-  log: {fileID: 2070340395}
-  maxPlayersInRoom: 4
-  minPlayersInRoom: 2
-  currentPlayersInRoom: 0
-  playerCount: {fileID: 322229316}
-  jeje: 0
 --- !u!1 &322229314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +952,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275041397}
+      - m_Target: {fileID: 0}
         m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
@@ -2376,3 +2315,102 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 686.57635}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &223543351448041322
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 465.99384
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 287.06708
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874972, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: log
+      value: 
+      objectReference: {fileID: 2070340395}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: if_roomCode
+      value: 
+      objectReference: {fileID: 1330649928}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: playerCount
+      value: 
+      objectReference: {fileID: 322229316}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: connectButton
+      value: 
+      objectReference: {fileID: 552372817}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: joinPrivateButton
+      value: 
+      objectReference: {fileID: 180285739}
+    - target: {fileID: 223543351709874973, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: createPrivateButton
+      value: 
+      objectReference: {fileID: 1563765155}
+    - target: {fileID: 223543351709874974, guid: a114bbde0a0709c419279457189510d7,
+        type: 3}
+      propertyPath: m_Name
+      value: NetworkController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a114bbde0a0709c419279457189510d7, type: 3}
