@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public enum Platforms { PC, Mobile }
 
-public class InputPlayer : MonoBehaviour
+public class InputPlayer : MonoBehaviourPunCallbacks
 {
     public Platforms platform;
 
-    public Joystick joystick;
+    private Joystick joystick;
     public float inputX{ get; private set; }
     public float inputZ{ get; private set; }
     public float inputX_RAW { get; private set; }
@@ -23,7 +24,15 @@ public class InputPlayer : MonoBehaviour
 
     void Start()
     {
+        if (!photonView.IsMine) this.enabled = false;
         faceDirection = new Vector3(0.0f, 0.0f, 1.0f);
+    }
+
+    public void Initialize(PlayerControlUI playerControlUi)
+    {
+        joystick = playerControlUi.joystick;
+        playerControlUi.dashButton.onClick.AddListener(this.Dash_MobileInput);
+        playerControlUi.superDashButton.onClick.AddListener(this.SuperDash_MobileInput);
     }
 
     public void Dash_MobileInput() => StartCoroutine(UseDashMobile()); //Methods to use dashes with mobile controls

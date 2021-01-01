@@ -26,7 +26,7 @@ namespace Photon.Game
             {
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
                 
-                if (PlayerManager.LocalPlayerInstance == null)
+                if (PlayerManager_Test.LocalPlayerInstance == null)
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate

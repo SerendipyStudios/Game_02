@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Game;
+using Photon.Pun;
 using UnityEngine;
 
 [RequireComponent(typeof(InputPlayer))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
+    #region Variables
+    
     //Movement
     [Header("Player speed")]
     public float moveSpeed;
@@ -13,14 +17,12 @@ public class PlayerController : MonoBehaviour
 
     //Rotation
     [Range(0.0f, 1.0f)]
-    public float rotationSpeed;
+    [SerializeField] private float rotationSpeed;
     private Quaternion targetRotation;
 
-    //Dashes
-    private bool dashing = false;
-    private bool superDashing = false;
-    private bool useDash = false;
-    public bool useSuperDash = false;
+    //Dash flag
+    private bool executeDash = false;
+    private bool executeSuperDash = false;
 
     [Header("Dashes impulse")]
     public float dashImpulse;
@@ -42,12 +44,50 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private Animator anim;
     private InputPlayer input;
+    private PlayerInfo playerInfo;
 
     //Animations
     private int runHashCode;
+    
+    //Identity variables
+    //public static GameObject LocalPlayerInstance; //Needed to avoid instancing the player again when updating the scene
+
+    //Linked objects
+    [Header("Player UI")]
+    public PlayerUI PlayerUIPrefab; 
+    public PlayerControlUI PlayerInputUIPrefab; 
+    
+    [Header("Sound")]
+    public SoundManager SoundManagerPrefab;
+
+    #endregion
+    
+    #region Unity Callbacks
 
     private void Awake()
     {
+        // #Critical
+        // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
+        DontDestroyOnLoad(this.gameObject);
+        
+        //Instantiate UI
+        if (PlayerUIPrefab != null)
+        {
+            playerInfo = GetComponent<PlayerInfo>();
+            PlayerUI _uiGo =  Instantiate(PlayerUIPrefab);
+            _uiGo.SendMessage ("SetTarget", playerInfo, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
+        
+        // #Important
+        // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
+        if (!photonView.IsMine) this.enabled = false;
+        PlayerManager.LocalPlayerInstance = this.gameObject;
+        
+        //Get local references
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         input = GetComponent<InputPlayer>();
@@ -57,7 +97,33 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //Setup movement
         dashDirection = input.faceDirection;
+        
+        //Set camera follow
+        if (Camera.main != null) Camera.main.gameObject.GetComponent<CameraFollow>().player = this.gameObject.transform;
+
+        //Instantiate Controls
+        if (PlayerInputUIPrefab != null)
+        {
+            PlayerControlUI _inputUiGo =  Instantiate(PlayerInputUIPrefab);
+            input.Initialize(_inputUiGo.GetComponent<PlayerControlUI>());
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
+        }
+        
+        //Instantiate SoundManager
+        if (SoundManagerPrefab != null)
+        {
+            SoundManager _soundManager =  Instantiate(SoundManagerPrefab);
+            _soundManager.Initialize(this);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
+        }
     }
 
     private void Update()
@@ -72,48 +138,52 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat(runHashCode, Mathf.Max(Mathf.Abs(input.inputX), Mathf.Abs(input.inputZ)));
 
         //If the player uses a dash
-        if (input.dashInput && !dashing)
+        if (input.dashInput && !playerInfo.IsDashing)
         {
-            useDash = true;
-            dashing = true;
+            executeDash = true;
+            playerInfo.IsDashing = true;
             dashDirection = input.faceDirection;
             dashAgainCooldownAux = dashAgainCooldown;
             SoundManager.sharedInstance.dash_SND.Play();
         }
 
         //If the player uses a superDash
-        if (input.superDashInput && !superDashing)
+        if (input.superDashInput && !playerInfo.IsSuperDashing)
         {
-            useSuperDash = true;
-            superDashing = true;
+            executeSuperDash = true;
+            playerInfo.IsSuperDashing = true;
             dashDirection = input.faceDirection;
             superDashAgainCooldownAux = superDashAgainCooldown;
             SoundManager.sharedInstance.superDash_SND.Play();
         }
 
         //Dashes countdowns and speed reduction
-        if (dashing)
+        if (playerInfo.IsDashing)
             DashCountdown();
 
-        if (superDashing)
+        if (playerInfo.IsSuperDashing)
             SuperDashCountdown();
     }
 
     private void FixedUpdate()
     {
-        if (useDash)
+        if (executeDash)
         {
             rb.AddForce(dashDirection * dashImpulse, ForceMode.Impulse);
-            useDash = false;
+            executeDash = false;
         }
-        if (useSuperDash)
+        if (executeSuperDash)
         {
             rb.AddForce(dashDirection * superDashImpulse, ForceMode.Impulse);
-            useSuperDash = false;
+            executeSuperDash = false;
         }
         rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
+    
+    #endregion
+
+    #region Triggers
 
     void OnTriggerEnter(Collider other)
     {
@@ -128,6 +198,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "IceFloor" || other.gameObject.tag == "StickyFloor")
             rb.drag = 2.5f;
     }
+    
+    #endregion
+    
+    #region CountDowns
 
     private void DashCountdown()
     {
@@ -135,7 +209,7 @@ public class PlayerController : MonoBehaviour
             dashAgainCooldownAux -= Time.deltaTime;
         else
         {
-            dashing = false;
+            playerInfo.IsDashing = false;
             SoundManager.sharedInstance.endCooldown_SND.Play();
         }
     }
@@ -146,14 +220,20 @@ public class PlayerController : MonoBehaviour
             superDashAgainCooldownAux -= Time.deltaTime;
         else
         {
-            superDashing = false;
+            playerInfo.IsSuperDashing = false;
             SoundManager.sharedInstance.endCooldown_SND.Play();
         }
     }
+    
+    #endregion
 
+    #region Sound
+    
     public void PlayCurrentStepsSound()
     {
         SoundManager.sharedInstance.OnPlayerSteps += SoundManager.sharedInstance.PlayStepSound;
         //SoundManager.sharedInstance.PlayStepSound();
     }
+    
+    #endregion
 }

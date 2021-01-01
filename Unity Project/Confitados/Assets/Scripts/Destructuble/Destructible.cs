@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class Destructible : MonoBehaviour
+public class Destructible : MonoBehaviourPun
 {
+    #region Variables
+    
     //State enum
     public enum BrokenState { full, cracked, veryCracked, broken }
     public BrokenState state = BrokenState.full;
@@ -23,6 +26,38 @@ public class Destructible : MonoBehaviour
 
     //Colission
     private bool colided;
+    
+    #endregion
+    
+    #region Photon Callbacks
+
+    [PunRPC]
+    private void Collided()
+    {
+        SoundManager.sharedInstance.breakWalls_SND.Play();
+        switch (state)
+        {
+            case BrokenState.full:
+                state = BrokenState.cracked;
+                childModelCracked = InstantiateNewModel(crackedVersion, childModelFull, transform);
+                Destroy(childModelFull);
+                StartCoroutine(CanBreakAgain());
+                break;
+            case BrokenState.cracked:
+                state = BrokenState.veryCracked;
+                childModelVeryCracked = InstantiateNewModel(veryCrackedVersion, childModelCracked, transform);
+                Destroy(childModelCracked);
+                StartCoroutine(CanBreakAgain());
+                break;
+            case BrokenState.veryCracked:
+                state = BrokenState.broken;
+                InstantiateNewModel(brokenVersion, childModelVeryCracked, transform);
+                Destroy(childModelVeryCracked);
+                break;
+        }
+    }
+    
+    #endregion
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,27 +67,7 @@ public class Destructible : MonoBehaviour
             Mathf.Abs(collision.rigidbody.velocity.z) > threshold))
         {
             colided = true;
-            SoundManager.sharedInstance.breakWalls_SND.Play();
-            switch (state)
-            {
-                case BrokenState.full:
-                    state = BrokenState.cracked;
-                    childModelCracked = InstantiateNewModel(crackedVersion, childModelFull, transform);
-                    Destroy(childModelFull);
-                    StartCoroutine(CanBreakAgain());
-                    break;
-                case BrokenState.cracked:
-                    state = BrokenState.veryCracked;
-                    childModelVeryCracked = InstantiateNewModel(veryCrackedVersion, childModelCracked, transform);
-                    Destroy(childModelCracked);
-                    StartCoroutine(CanBreakAgain());
-                    break;
-                case BrokenState.veryCracked:
-                    state = BrokenState.broken;
-                    InstantiateNewModel(brokenVersion, childModelVeryCracked, transform);
-                    Destroy(childModelVeryCracked);
-                    break;
-            }
+            this.photonView.RPC("Collided", RpcTarget.All);
         }
     }
 

@@ -840,8 +840,11 @@ GameObject:
   - component: {fileID: 8016238185680841763}
   - component: {fileID: 8016238185680841774}
   - component: {fileID: 8944780062287510649}
-  - component: {fileID: 8016238185680841772}
   - component: {fileID: 8016238185680841773}
+  - component: {fileID: 8016238185680841772}
+  - component: {fileID: 4602959155221127720}
+  - component: {fileID: 3216132245782938207}
+  - component: {fileID: 8173258551299607441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -918,21 +921,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8016238185680841772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8016238185680841775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb7ce544fd2de440acf91213cf9b0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platform: 0
-  joystick: {fileID: 0}
-  faceDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &8016238185680841773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +935,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   rotationSpeed: 0.1
-  useSuperDash: 0
   dashImpulse: 5
   superDashImpulse: 7.5
   dashAgainCooldown: 1
@@ -955,6 +942,80 @@ MonoBehaviour:
   iceDrag: 1
   stickyDrag: 8
   rb: {fileID: 0}
+  PlayerUIPrefab: {fileID: 8291213710839660956, guid: acd190ee7ac61ce4d8cf1cc742691b39,
+    type: 3}
+  PlayerInputUIPrefab: {fileID: 5808052384162107659, guid: e3ae4c394d1397747a32547c3d8f67e0,
+    type: 3}
+  SoundManagerPrefab: {fileID: 4053661352139720574, guid: 6d44c625afde14147abb3d47f0d4262f,
+    type: 3}
+--- !u!114 &8016238185680841772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016238185680841775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb7ce544fd2de440acf91213cf9b0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: 0
+  faceDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &4602959155221127720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016238185680841775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 8173258551299607441}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3216132245782938207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016238185680841775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca1560ae0e64e84abf1b679f6ced42f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  isDashing: 0
+  isSuperDashing: 0
+--- !u!114 &8173258551299607441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016238185680841775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8129139743619496366
 GameObject:
   m_ObjectHideFlags: 0

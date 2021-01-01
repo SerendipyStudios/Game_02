@@ -42,10 +42,20 @@ public class SoundManager : MonoBehaviour
     [HideInInspector]
     public event Action OnPlayerSteps;
 
+    private void Awake()
+    {
+        this.transform.SetParent(GameObject.Find("--Managers--").transform, false);
+    }
+    
     private void Start()
     {
         if (sharedInstance == null)
             sharedInstance = this;
+    }
+
+    public void Initialize(PlayerController _playerController)
+    {
+        this.player = _playerController;
     }
 
     private void Update()

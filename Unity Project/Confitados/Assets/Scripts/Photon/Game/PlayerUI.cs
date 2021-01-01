@@ -15,7 +15,7 @@ namespace Photon.Game
         [Tooltip("UI Slider to display Player's Health")] [SerializeField]
         private Slider playerHealthSlider;
         
-        private PlayerManager target;
+        private PlayerInfo targetInfo;
         
         [Tooltip("Pixel offset from the player target")]
         [SerializeField]
@@ -42,11 +42,11 @@ namespace Photon.Game
             // Reflect the Player Health
             if (playerHealthSlider != null)
             {
-                playerHealthSlider.value = ((float)target.lives)/3f;
+                playerHealthSlider.value = ((float)targetInfo.Lives)/3f;
             }
             
             // Destroy itself if the target is null, It's a fail safe when Photon is destroying Instances of a Player over the network
-            if (target == null)
+            if (targetInfo == null)
             {
                 Debug.Log("Delete");
                 Destroy(this.gameObject);
@@ -77,24 +77,24 @@ namespace Photon.Game
 
         #region Public Methods
 
-        public void SetTarget(PlayerManager _target)
+        public void SetTarget(PlayerInfo _targetInfo)
         {
-            Debug.Log("HOLAAAA" +  _target.photonView.Owner.NickName);
-            if (_target == null)
+            Debug.Log("HOLAAAA" +  _targetInfo.photonView.Owner.NickName);
+            if (_targetInfo == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> PlayMakerManager target for PlayerUI.SetTarget.", this);
                 return;
             }
             
-            target = _target;
+            targetInfo = _targetInfo;
             if (playerNameText != null)
             {
-                playerNameText.text = target.photonView.Owner.NickName;
+                playerNameText.text = targetInfo.photonView.Owner.NickName;
             }
             
-            targetTransform = this.target.GetComponent<Transform>();
-            targetRenderer = this.target.GetComponent<Renderer>();
-            CharacterController characterController = _target.GetComponent<CharacterController> ();
+            targetTransform = this.targetInfo.GetComponent<Transform>();
+            targetRenderer = this.targetInfo.GetComponent<Renderer>();
+            CharacterController characterController = _targetInfo.GetComponent<CharacterController> ();
             // Get data from the Player that won't change during the lifetime of this Component
             if (characterController != null)
             {

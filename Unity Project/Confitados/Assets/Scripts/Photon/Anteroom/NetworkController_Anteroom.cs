@@ -10,11 +10,13 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
 {
     #region Variables
 
-    [SerializeField] private InputField if_roomCode_create;
-    [SerializeField] private InputField if_roomCode_join;
-
+    [SerializeField] private GameObject connectingDialog;
+    
     [SerializeField] private Button createPrivateButton;
     [SerializeField] private Button joinPrivateButton;
+    
+    [SerializeField] private InputField if_roomCode_create;
+    [SerializeField] private InputField if_roomCode_join;
 
     [SerializeField] private Text log;
 
@@ -35,7 +37,13 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        //Disable the buttons
+        createPrivateButton.interactable = false;
+        joinPrivateButton.interactable = false;
+        
+        //Connect
         Connect();
+        connectingDialog.SetActive(true);
     }
 
     #endregion
@@ -49,6 +57,7 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
         //Enable the join room button
         createPrivateButton.interactable = true;
         joinPrivateButton.interactable = true;
+        connectingDialog.SetActive(false);
     }
 
     public override void OnJoinedRoom()

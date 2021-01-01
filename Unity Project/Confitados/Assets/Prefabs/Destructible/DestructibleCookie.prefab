@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2924348021449303910}
-  - component: {fileID: 2924348021449303911}
   - component: {fileID: 2924348021449303929}
+  - component: {fileID: 2924348021449303911}
+  - component: {fileID: 8054618944083296296}
   m_Layer: 0
   m_Name: DestructibleCookie
   m_TagString: Untagged
@@ -33,27 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2924348021449303911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2924348021449303908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3fd9cfd887aa2940ba6412f097d7207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  threshold: 6.5
-  childModelFull: {fileID: 8184543522808981765}
-  crackedVersion: {fileID: 7990054279201736982, guid: 9249499937daf714fba846720f246830,
-    type: 3}
-  veryCrackedVersion: {fileID: 7990054279201736982, guid: 6b116bb18766a8c48971547dae935f5d,
-    type: 3}
-  brokenVersion: {fileID: 1144852109742819436, guid: 23686de2bc7ce5746bda16290de9be4d,
-    type: 3}
 --- !u!54 &2924348021449303929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70,6 +50,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2924348021449303911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924348021449303908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3fd9cfd887aa2940ba6412f097d7207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  threshold: 1
+  childModelFull: {fileID: 8184543522808981765}
+  crackedVersion: {fileID: 7990054279201736982, guid: 9249499937daf714fba846720f246830,
+    type: 3}
+  veryCrackedVersion: {fileID: 7990054279201736982, guid: 6b116bb18766a8c48971547dae935f5d,
+    type: 3}
+  brokenVersion: {fileID: 1144852109742819436, guid: 23686de2bc7ce5746bda16290de9be4d,
+    type: 3}
+--- !u!114 &8054618944083296296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924348021449303908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &2924348022347195117
 PrefabInstance:
   m_ObjectHideFlags: 0
