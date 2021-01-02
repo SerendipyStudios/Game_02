@@ -328,7 +328,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             //Setup camera mode
             GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
-                PhotonNetwork.LocalPlayer.ActorNumber, 0);
+                PhotonNetwork.LocalPlayer.ActorNumber, 
+                -1,
+                null
+                );
             
             //Show camera spectator GUI
             Instantiate(PlayerCameraSpectatorUIPrefab).Initialize(this);
@@ -363,10 +366,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     public void ChangeCameraSpectatorPlayer(bool forward)
     {
+        Debug.Log("ChangeCameraSpectatorPlayer");
+        
         //Setup camera mode
         GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
             PhotonNetwork.LocalPlayer.ActorNumber, 
-            forward ? cameraFollow.GetPlayer() + 1 : cameraFollow.GetPlayer() - 1
+            cameraFollow.GetPlayer(),
+            forward
             );
     }
 
