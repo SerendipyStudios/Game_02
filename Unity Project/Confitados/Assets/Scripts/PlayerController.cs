@@ -302,11 +302,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     //Client side only
-    public void SetRespawnPos(Transform respawnTransform)
+    public void SetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
     {
         Debug.Log("Rpc: Respawning.");
-        transform.position = respawnTransform.position;
-        transform.rotation = respawnTransform.rotation;
+        transform.position = respawnPos;
+        transform.rotation = respawnRot;
     }
 
     #endregion
