@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using Photon.Game;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -42,7 +44,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private InputPlayer input;
     private PlayerInfo playerInfo;
     private CameraFollow cameraFollow;
-    private GameManager gameManager;
 
     //Animations
     [Header("Animations")] private int runHashCode;
@@ -91,14 +92,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (Camera.main != null)
             cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        //Get global references
-        gameManager = FindObjectOfType<GameManager>();
-
         runHashCode = Animator.StringToHash("Movement");
+        
+        
     }
 
     private void Start()
     {
+        //Register player on gameManager
+        if(photonView.IsMine)
+            GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All, photonView.ViewID, PhotonNetwork.LocalPlayer.ActorNumber);
+
         //Setup movement
         dashDirection = input.faceDirection;
 
@@ -270,7 +274,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         executeFall = false;
         
         //Desconectar cámara
-        cameraFollow.SetFollowing(false);
+        cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
 
         //Rutina de reacción
         StartCoroutine(FallResponse());
@@ -281,24 +285,31 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //Espera un tiempo para que se vea la animación
         yield return new WaitForSeconds(fallTime);
 
-        if (playerInfo.Lives > 1)
+        //Restar una vida
+        playerInfo.Lives--;
+        
+        if (playerInfo.Lives > 0)
         {
-            //Restar una vida
-            playerInfo.Lives--;
-            
             //Linkar cámara
-            cameraFollow.SetFollowing(true);
+            cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Following);
             
             //Respawn
-            gameManager.RequestRespawn(this);
+            //RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient};
+            //PhotonNetwork.RaiseEvent(GameManager.RequestRespawnCode, null, raiseEventOptions, SendOptions.SendReliable);
+            GameManager.Instance.RequestRespawn(this);
         }
         else
         {
-            //Modo observador si no (Linkar cámara a otro jugador)
+            //Dejar de mostrar al jugador, controlar sus inputs...
+            input.enabled = false;
+            //Dejar de mostrarlo
             
+            //Modo observador si no (Linkar cámara a otro jugador)
+            GameManager.Instance.photonView.RPC("CmdPlayerDied", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
+            
+            //Setup camera mode
+            GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient, 0, photonView.ViewID);
         }
-        
-        playerInfo.IsFalling = false;
     }
 
     //Client side only
@@ -307,6 +318,22 @@ public class PlayerController : MonoBehaviourPunCallbacks
         Debug.Log("Rpc: Respawning.");
         transform.position = respawnPos;
         transform.rotation = respawnRot;
+        playerInfo.IsFalling = false;
+    }
+
+    //Client side only
+    [PunRPC]
+    public void RpcSetCameraDied(int _goViewId)
+    {
+        if (_goViewId != -1)
+        {
+            cameraFollow.SetPlayer(PhotonView.Find(_goViewId).GetComponent<PlayerController>());
+            cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Spectator);
+        }
+        else
+        {
+            cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
+        }
     }
 
     #endregion

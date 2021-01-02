@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -8,7 +10,14 @@ public class CameraFollow : MonoBehaviour
     public PlayerController player;
     
     //State
-    public bool isFollowing = false;
+    public enum CameraModeEnum
+    {
+        Disconnected = 0,
+        Following = 1,
+        Spectator = 2,
+    }
+
+    [SerializeField] private CameraModeEnum cameraMode = CameraModeEnum.Disconnected;
 
     //Camera follow
     public Vector3 offset;
@@ -28,38 +37,73 @@ public class CameraFollow : MonoBehaviour
     public void Initialize(PlayerController player)
     {
         this.player = player;
-        SetFollowing(true);
+        SetCameraMode(CameraModeEnum.Following);
+    }
+    
+    public void SetPlayer(PlayerController player)
+    {
+        Debug.Log("Changing focus to " + player.photonView.Owner.NickName);
+        this.player = player;
     }
 
     private void Update()
     {
-        if (!isFollowing) return;
-        
-        var position = player.transform.position;
-        cameraPosition = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
-        tracking = Vector3.SmoothDamp(transform.position, cameraPosition, ref camVel, dampTime);
+        switch (cameraMode)
+        {
+            case CameraModeEnum.Disconnected:
+                break;
+            case CameraModeEnum.Following:
+                UpdateFollow();
+                break;
+            case CameraModeEnum.Spectator:
+                UpdateFollow();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!isFollowing) return;
+        if (cameraMode == CameraModeEnum.Disconnected) return;
         
         transform.position = tracking;
     }
     
     #region Methods
 
-    public void SetFollowing(bool _isFollowing)
+    public void SetCameraMode(CameraModeEnum _cameraMode)
     {
-        isFollowing = _isFollowing;
-        
-        if(isFollowing)
+        cameraMode = _cameraMode;
+
+        switch (cameraMode)
         {
-            var position = player.transform.position;
-            transform.position = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
+            case CameraModeEnum.Disconnected:
+                break;
+            case CameraModeEnum.Following:
+                TeleportCamera();
+                break;
+            case CameraModeEnum.Spectator:
+                TeleportCamera();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
-    
+
+    private void UpdateFollow()
+    {
+        var position = player.transform.position;
+        cameraPosition = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
+        tracking = Vector3.SmoothDamp(transform.position, cameraPosition, ref camVel, dampTime);
+    }
+
+    private void TeleportCamera()
+    {
+        var position = player.transform.position;
+        transform.position = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
+    }
+
     #endregion
 
 }

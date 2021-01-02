@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -6,14 +7,16 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviourPunCallbacks
 {
     //Player variables
-    [SerializeField] private byte lives = 3;
+    [SerializeField] private int lives = 3;
     [SerializeField] private bool isDashing = false;
     [SerializeField] private bool isSuperDashing = false;
     [SerializeField] private bool isFalling = false;
+    
+    [SerializeField] private byte rankPosition = Byte.MaxValue;
 
     #region Getters/Setters
 
-    public byte Lives
+    public int Lives
     {
         get => lives;
         set => lives = value;
@@ -35,6 +38,12 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
     {
         get => isFalling;
         set => isFalling = value;
+    }
+
+    public byte RankPosition
+    {
+        get => rankPosition;
+        set => rankPosition = value;
     }
 
     #endregion
