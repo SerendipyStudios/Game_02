@@ -54,8 +54,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     //public static GameObject LocalPlayerInstance; //Needed to avoid instancing the player again when updating the scene
 
     //Linked objects
-    [Header("Player UI")] public PlayerUI PlayerUIPrefab;
+    [Header("Player UI")] 
+    public PlayerUI PlayerUIPrefab;
     public PlayerControlUI PlayerInputUIPrefab;
+    public PlayerCameraSpectatorUI PlayerCameraSpectatorUIPrefab;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -327,6 +329,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             //Setup camera mode
             GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
                 PhotonNetwork.LocalPlayer.ActorNumber, 0);
+            
+            //Show camera spectator GUI
+            Instantiate(PlayerCameraSpectatorUIPrefab).Initialize(this);
         }
     }
 
@@ -337,6 +342,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         Debug.Log("Rpc: Respawning.");
         transform.position = respawnPos;
         transform.rotation = respawnRot;
+        rb.velocity = Vector3.zero;
         playerInfo.IsFalling = false;
     }
 
@@ -353,6 +359,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
         }
+    }
+
+    public void ChangeCameraSpectatorPlayer(bool forward)
+    {
+        //Setup camera mode
+        GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
+            PhotonNetwork.LocalPlayer.ActorNumber, 
+            forward ? cameraFollow.GetPlayer() + 1 : cameraFollow.GetPlayer() - 1
+            );
     }
 
     //Clients

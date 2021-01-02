@@ -12,7 +12,7 @@ namespace Photon.Pun.Simple.Pooling
 	/// <summary>
 	/// A VERY basic pooling system, because not using pooling is a bad for things like projectiles. 
 	/// The statics are the pool manager. The non-static fields and methods are for pool members this is attached to.
-	/// Objects are returned to the pool when they are SetActive(false).
+	/// Objects are returned to the pool when they are Initialize(false).
 	/// </summary>
 	public class Pool : MonoBehaviour
 	{

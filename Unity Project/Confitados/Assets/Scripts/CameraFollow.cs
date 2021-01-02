@@ -46,6 +46,11 @@ public class CameraFollow : MonoBehaviour
         this.player = player;
     }
 
+    public int GetPlayer()
+    {
+        return player.photonView.Owner.ActorNumber;
+    }
+
     private void Update()
     {
         switch (cameraMode)

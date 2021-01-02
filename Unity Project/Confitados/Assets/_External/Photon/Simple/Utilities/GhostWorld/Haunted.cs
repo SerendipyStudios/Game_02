@@ -65,7 +65,7 @@ namespace Photon.Pun.Simple.GhostWorlds
 		private void Start()
 		{
 			ghost = GhostWorld.CreateRewindGhost(this);
-			ghost.gameObject.SetActive(true);
+			ghost.gameObject.Initialize(true);
 		}
 
 		private void OnDestroy()
