@@ -9,6 +9,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
     [SerializeField] private byte lives = 3;
     [SerializeField] private bool isDashing = false;
     [SerializeField] private bool isSuperDashing = false;
+    [SerializeField] private bool isFalling = false;
 
     #region Getters/Setters
 
@@ -30,6 +31,12 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
         set => isSuperDashing = value;
     }
 
+    public bool IsFalling
+    {
+        get => isFalling;
+        set => isFalling = value;
+    }
+
     #endregion
     
     #region IPunObservable implementation
@@ -42,6 +49,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
             stream.SendNext(lives);
             stream.SendNext(isDashing);
             stream.SendNext(isSuperDashing);
+            stream.SendNext(isFalling);
         }
         else
         {
@@ -49,6 +57,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
             this.lives = (byte) stream.ReceiveNext();
             this.isDashing = (bool) stream.ReceiveNext();
             this.isSuperDashing = (bool) stream.ReceiveNext();
+            this.isFalling = (bool) stream.ReceiveNext();
         }
     }
 
