@@ -17,6 +17,7 @@ namespace Photon.Game
 
         private void Awake()
         {
+            DontDestroyOnLoad(this.gameObject);
             this.transform.SetParent(GameObject.Find("--Managers--").GetComponent<Transform>(), false);
         }
 
@@ -42,8 +43,8 @@ namespace Photon.Game
             for (var i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
                 Player player = PhotonNetwork.PlayerList[i];
-                Transform pos = LevelInfo.GetInitPos(i);
-                photonView.RPC("RpcInstantiatePlayer", player, pos);
+                Transform initPos = LevelInfo.GetInitPos(i);
+                photonView.RPC("RpcInstantiatePlayer", player, initPos.position, initPos.rotation);
             }
         }
 
@@ -100,10 +101,10 @@ namespace Photon.Game
         }
 
         [PunRPC]
-        private void RpcInstantiatePlayer(Transform initPos)
+        private void RpcInstantiatePlayer(Vector3 initPos, Quaternion initRot)
         {
             Debug.Log("Instantiating my player...");
-            PhotonNetwork.Instantiate(this.playerPrefab.name, initPos.position, initPos.rotation,
+            PhotonNetwork.Instantiate(this.playerPrefab.name, initPos, initRot,
                 0);
         }
         
@@ -129,13 +130,13 @@ namespace Photon.Game
             Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
             
             //Devuelve la posición de respawn al player que la solicitó
-            photonView.RPC("RpcSetRespawnPos", player, initPos);
+            photonView.RPC("RpcSetRespawnPos", player, initPos.position, initPos.rotation);
         }
 
         [PunRPC]
-        private void RpcSetRespawnPos(Transform respawnTransform)
+        private void RpcSetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
         {
-            playerController.SetRespawnPos(respawnTransform);
+            playerController.SetRespawnPos(respawnPos, respawnRot);
         }
         
         #endregion

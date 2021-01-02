@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class GameManagerCreator : MonoBehaviourPunCallbacks
 {
+    public GameObject GameManagerPrefab;
+    
     //Needed to instantiate the manager with PhotonNetwork.Instantiate Method
-    private void Awake()
+    private void Start()
     {
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate("GameManager", Vector3.zero, Quaternion.identity, 0);
-        Destroy(this.gameObject);
+            PhotonNetwork.Instantiate(GameManagerPrefab.name, Vector3.zero, Quaternion.identity, 0);
+        //Destroy(this.gameObject);
     }
 }
