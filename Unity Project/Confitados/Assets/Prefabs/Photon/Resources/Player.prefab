@@ -1002,6 +1002,7 @@ MonoBehaviour:
   isDashing: 0
   isSuperDashing: 0
   isFalling: 0
+  rankPosition: 255
 --- !u!114 &8173258551299607441
 MonoBehaviour:
   m_ObjectHideFlags: 0
