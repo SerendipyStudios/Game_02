@@ -6,6 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using Random = System.Random;
 
 [RequireComponent(typeof(InputPlayer))]
 public class PlayerController : MonoBehaviourPunCallbacks
@@ -93,15 +94,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
             cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
         runHashCode = Animator.StringToHash("Movement");
-        
-        
     }
 
     private void Start()
     {
         //Register player on gameManager
-        if(photonView.IsMine)
-            GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All, photonView.ViewID, PhotonNetwork.LocalPlayer.ActorNumber);
+        if (photonView.IsMine)
+            GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All,
+                PhotonNetwork.LocalPlayer.ActorNumber,
+                photonView.ViewID
+            );
 
         //Setup movement
         dashDirection = input.faceDirection;
@@ -170,7 +172,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         if (playerInfo.IsSuperDashing)
             SuperDashCountdown();
-        
+
         //Check if the player is falling off the stage
         if (transform.position.y < LevelInfo.worldLimit
             && !playerInfo.IsFalling)
@@ -185,7 +187,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //Check if I'm dead
 
         //Check if I'm falling
-        if(executeFall)
+        if (executeFall)
             Fall();
 
         //Check if I have to do a dash
@@ -272,7 +274,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void Fall()
     {
         executeFall = false;
-        
+
+        //Quitarle el control al jugador
+        input.enabled = false;
+
         //Desconectar cámara
         cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
 
@@ -287,33 +292,47 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         //Restar una vida
         playerInfo.Lives--;
-        
+
         if (playerInfo.Lives > 0)
         {
+            //Devolver el control al jugador
+            input.enabled = true;
+
             //Linkar cámara
             cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Following);
-            
+
             //Respawn
+            GameManager.Instance.photonView.RPC("CmdRespawnPlayer", RpcTarget.MasterClient,
+                PhotonNetwork.LocalPlayer.ActorNumber);
+
+            //Other options for respawn
             //RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient};
             //PhotonNetwork.RaiseEvent(GameManager.RequestRespawnCode, null, raiseEventOptions, SendOptions.SendReliable);
-            GameManager.Instance.RequestRespawn(this);
+            //GameManager.Instance.RequestRespawn(this);
         }
         else
         {
-            //Dejar de mostrar al jugador, controlar sus inputs...
-            input.enabled = false;
-            //Dejar de mostrarlo
-            
+            //Dejar de sincronizar su posición
+            Random random = new Random();
+            photonView.RPC("RpcSetRagdoll", RpcTarget.All,
+                ((float) random.Next(0, 100)) / 100f,
+                ((float) random.Next(0, 100)) / 100f,
+                ((float) random.Next(0, 100)) / 100f
+            );
+
             //Modo observador si no (Linkar cámara a otro jugador)
-            GameManager.Instance.photonView.RPC("CmdPlayerDied", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
-            
+            GameManager.Instance.photonView.RPC("CmdPlayerDied", RpcTarget.MasterClient,
+                PhotonNetwork.LocalPlayer.ActorNumber);
+
             //Setup camera mode
-            GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient, 0, photonView.ViewID);
+            GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
+                PhotonNetwork.LocalPlayer.ActorNumber, 0);
         }
     }
 
     //Client side only
-    public void SetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
+    [PunRPC]
+    public void RpcSetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
     {
         Debug.Log("Rpc: Respawning.");
         transform.position = respawnPos;
@@ -334,6 +353,29 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
         }
+    }
+
+    //Clients
+    [PunRPC]
+    private void RpcSetRagdoll(float torqueX, float torqueY, float torqueZ)
+    {
+        int strength = 10000;
+        rb.constraints = RigidbodyConstraints.None;
+
+        //No se como hacer que se comporte como un ragdoll. [HERE]
+        Vector3 movementDir = rb.velocity.normalized;
+        rb.AddTorque(
+            movementDir[0] * strength,
+            movementDir[1] * strength,
+            movementDir[2] * strength
+        );
+
+        //rb.AddTorque(
+        //    torqueX * strength, 
+        //    torqueY * strength, 
+        //    torqueZ * strength
+        //    );
+        //GetComponent<PhotonTransformView>().enabled = false; //Execute it for all instances
     }
 
     #endregion

@@ -10,36 +10,42 @@ namespace Photon.Game
 {
     public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
+        #region Variables
+        
         public static GameManager Instance;
-        public GameObject playerPrefab;
+        [SerializeField] public GameObject playerPrefab;
 
-        private PlayerController playerController;
+        /* Old player tracking data structure
+        //private PlayerInfo[] playerInfos;
+        //private List<int> alivePlayers = new List<int>();
+        */
 
-        private PlayerInfo[] playerInfos;
-        private List<int> alivePlayers = new List<int>();
+        private int[] allPlayers_ViewIds;
+        private List<int> alivePlayers_ViewIds;
 
         //Event codes
         //Use events when the sender does not need to know what is going to happen next
         //    and multiple actions have to be made in consequence, in order to save RPC calls.
         //public const byte RequestRespawnCode = 1;
+        
+        #endregion
 
         #region Unity Callbacks
 
         private void Awake()
         {
+            //Gameobject configuration
             DontDestroyOnLoad(this.gameObject);
             this.transform.SetParent(GameObject.Find("--Managers--").GetComponent<Transform>(), false);
 
-            playerInfos = new PlayerInfo[PhotonNetwork.PlayerList.Length];
+            //Init player tracking data structure
+            allPlayers_ViewIds = new int[PhotonNetwork.PlayerList.Length];
+            alivePlayers_ViewIds = new List<int>(PhotonNetwork.PlayerList.Length);
         }
 
         private void Start()
         {
             Instance = this;
-            foreach (var player in PhotonNetwork.PlayerList)
-            {
-                alivePlayers.Add(player.ActorNumber);
-            }
 
             if (!PhotonNetwork.IsMasterClient) return;
 
@@ -53,10 +59,8 @@ namespace Photon.Game
                     this);
                 return;
             }
-
-            //Instantiate players
+            
             Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
-
             for (var i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
                 Player player = PhotonNetwork.PlayerList[i];
@@ -67,14 +71,14 @@ namespace Photon.Game
 
         public override void OnEnable()
         {
-            //base.OnEnable();
-            PhotonNetwork.AddCallbackTarget(this);
+            base.OnEnable();
+            //PhotonNetwork.AddCallbackTarget(this);
         }
 
         public override void OnDisable()
         {
-            //base.OnDisable();
-            PhotonNetwork.RemoveCallbackTarget(this);
+            base.OnDisable();
+            //PhotonNetwork.RemoveCallbackTarget(this);
         }
 
         #endregion
@@ -114,6 +118,8 @@ namespace Photon.Game
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
+            /* Load adaptable arena
+            //Load new arena
             Debug.LogFormat("OnPlayerEnteredRoom() {0}", newPlayer.NickName);
 
             if (PhotonNetwork.IsMasterClient)
@@ -123,10 +129,12 @@ namespace Photon.Game
 
                 LoadArena();
             }
+            */
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
+            /*Load adaptable arena
             Debug.LogFormat("OnPlayerLeftRoom() {0}", otherPlayer.NickName); // seen when other disconnects
 
             if (!PhotonNetwork.IsMasterClient) return;
@@ -135,9 +143,12 @@ namespace Photon.Game
                 PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
             //LoadArena();
+            */
 
             //Check if he was alive
-            if (playerInfos[otherPlayer.ActorNumber].Lives == 0)
+            PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[otherPlayer.ActorNumber - 1])
+                .GetComponent<PlayerInfo>();
+            if (playerInfo.Lives == 0)
                 CmdPlayerDied(otherPlayer.ActorNumber);
         }
 
@@ -148,7 +159,7 @@ namespace Photon.Game
 
         #endregion
 
-        #region Methods
+        #region SceneMethods
 
         private void LoadArena()
         {
@@ -161,9 +172,23 @@ namespace Photon.Game
                 //PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
             }
         }
+        
+        
+        private void GameEnd()
+        {
+            Debug.Log("Game Ended");
+        }
 
-        //Called on client side only
-        [PunRPC]
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        
+        #endregion
+
+        #region PlayerMethods
+
+        [PunRPC] //Called on client side only
         private void RpcInstantiatePlayer(Vector3 initPos, Quaternion initRot)
         {
             Debug.Log("Instantiating my player...");
@@ -171,16 +196,16 @@ namespace Photon.Game
                 0);
         }
 
-        //Both client and server
-        [PunRPC]
-        private void CmdRegisterPlayer(int viewId, int actorNumber)
+        
+        [PunRPC] //Both client and server
+        private void CmdRegisterPlayer(int actorNumber, int viewId)
         {
             PlayerInfo playerInfo = PhotonView.Find(viewId).gameObject.GetComponent<PlayerInfo>();
-            playerInfos[actorNumber - 1] = playerInfo;
+            allPlayers_ViewIds[actorNumber - 1] = viewId;
+            alivePlayers_ViewIds.Add(viewId);
         }
 
-        #region Respawn
-
+        /* Old respawn call system
         //Executed in client
         public void RequestRespawn(PlayerController playerController)
         {
@@ -207,57 +232,70 @@ namespace Photon.Game
         {
             playerController.SetRespawnPos(respawnPos, respawnRot);
         }
+        */
 
-        #endregion
+        
+        [PunRPC] //Executed in server
+        private void CmdRespawnPlayer(int actorNumber, PhotonMessageInfo photonMessageInfo)
+        {
+            Debug.Log("Cmd: Checking for free respawn slots...");
+            Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
 
-        //Executed in server
-        [PunRPC]
+            //Devuelve la posición de respawn al player que la solicitó
+            PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerController>()
+                .photonView.RPC("RpcSetRespawnPos", photonMessageInfo.Sender,
+                    initPos.position, initPos.rotation);
+        }
+        
+        
+        [PunRPC] //Server side only
+        public void CmdGetAlivePlayer(int actorNumber, int requiredPlayerIndex, PhotonMessageInfo photonMessageInfo)
+        {
+            //Debug.Log("Get Alive player.");
+            Debug.Log("GetAlivePlayer. Alive players: " + alivePlayers_ViewIds.Count);
+
+            //Revisar actor numbers
+            if (alivePlayers_ViewIds.Count > requiredPlayerIndex)
+                PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject.GetComponent<PlayerController>()
+                    .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
+                        PhotonView.Find(alivePlayers_ViewIds[requiredPlayerIndex]).GetComponent<PlayerController>()
+                            .photonView.ViewID
+                    );
+            else
+            {
+                PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject
+                    .GetComponent<PlayerController>().photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender, -1);
+            }
+
+            //Debug.Log("Donete");
+        }
+
+        
+        [PunRPC] //Executed in server
         private void CmdPlayerDied(int actorNumber)
         {
-            playerInfos[actorNumber - 1].RankPosition = (byte) alivePlayers.Count;
-            alivePlayers.Remove(actorNumber);
-            photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
+            //Debug.Log("Player Died: " + actorNumber);
+            PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerInfo>();
+            playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;
+            
+            alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
+            //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
 
-            if (alivePlayers.Count == 1)
+            if (alivePlayers_ViewIds.Count <= 1)
                 GameEnd();
         }
 
+        /* Remove alivePlayer also from client
         //Only in client side
         [PunRPC]
         private void RpcRemoveAlivePlayer(int actorNumber)
         {
             //Can't guarantee that alivePlayers is going to be sync!
-            alivePlayers.Remove(actorNumber);
+            //    Execute all related methods in server.
+            alivePlayers_ViewIds.Remove(actorNumber);
         }
-
-        //Server side only
-        [PunRPC]
-        public void CmdGetAlivePlayer(int index, int viewId, PhotonMessageInfo photonMessageInfo)
-        {
-            Debug.Log("Alive players: " + alivePlayers.Count);
-            //Revisar actor numbers
-            if (alivePlayers.Count > index)
-                PhotonView.Find(viewId).gameObject.GetComponent<PlayerController>()
-                    .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
-                        playerInfos[alivePlayers[index]-1].photonView.ViewID);
-            else
-            {
-                GameObject aux = PhotonView.Find(viewId).gameObject;
-                aux.GetComponent<PlayerController>().photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender, -1);
-            }
-
-            Debug.Log("Donete");
-        }
-
-        private void GameEnd()
-        {
-        }
-
-        public void LeaveRoom()
-        {
-            PhotonNetwork.LeaveRoom();
-        }
-
+        */
+        
         #endregion
     }
 }
