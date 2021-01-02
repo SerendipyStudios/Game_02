@@ -42,8 +42,17 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
         joinPrivateButton.interactable = false;
         
         //Connect
-        Connect();
-        connectingDialog.SetActive(true);
+        if (!PhotonNetwork.IsConnected)
+        {
+            Connect();
+            connectingDialog.SetActive(true);
+        }
+        else
+        {
+            connectingDialog.SetActive(false);
+            createPrivateButton.interactable = true;
+            joinPrivateButton.interactable = true;
+        }
     }
 
     #endregion
@@ -134,6 +143,11 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
             log.text += "\nEnter a valid room code";
         else
             PhotonNetwork.JoinRoom(_roomCode);
+    }
+
+    public void Disconnect()
+    {
+        PhotonNetwork.Disconnect();
     }
 
     #endregion

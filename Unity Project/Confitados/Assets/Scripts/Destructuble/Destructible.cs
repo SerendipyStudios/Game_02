@@ -32,7 +32,7 @@ public class Destructible : MonoBehaviourPun
     #region Photon Callbacks
 
     [PunRPC]
-    private void Collided()
+    private void RpcCollided()
     {
         SoundManager.sharedInstance.breakWalls_SND.Play();
         switch (state)
@@ -67,7 +67,7 @@ public class Destructible : MonoBehaviourPun
             Mathf.Abs(collision.rigidbody.velocity.z) > threshold))
         {
             colided = true;
-            this.photonView.RPC("Collided", RpcTarget.All);
+            this.photonView.RPC("RpcCollided", RpcTarget.All);
         }
     }
 

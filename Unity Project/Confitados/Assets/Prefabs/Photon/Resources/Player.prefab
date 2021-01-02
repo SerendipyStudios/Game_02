@@ -942,6 +942,7 @@ MonoBehaviour:
   iceDrag: 1
   stickyDrag: 8
   rb: {fileID: 0}
+  fallTime: 1
   PlayerUIPrefab: {fileID: 8291213710839660956, guid: acd190ee7ac61ce4d8cf1cc742691b39,
     type: 3}
   PlayerInputUIPrefab: {fileID: 5808052384162107659, guid: e3ae4c394d1397747a32547c3d8f67e0,
@@ -1000,6 +1001,7 @@ MonoBehaviour:
   lives: 3
   isDashing: 0
   isSuperDashing: 0
+  isFalling: 0
 --- !u!114 &8173258551299607441
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     //References
-    public Transform player;
+    public PlayerController player;
+    
+    //State
+    public bool isFollowing = false;
 
     //Camera follow
     public Vector3 offset;
@@ -22,15 +25,41 @@ public class CameraFollow : MonoBehaviour
         transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
     }
 
+    public void Initialize(PlayerController player)
+    {
+        this.player = player;
+        SetFollowing(true);
+    }
+
     private void Update()
     {
-        cameraPosition = new Vector3(player.position.x + offset.x, player.position.y + offset.y, player.position.z + offset.z);
+        if (!isFollowing) return;
+        
+        var position = player.transform.position;
+        cameraPosition = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
         tracking = Vector3.SmoothDamp(transform.position, cameraPosition, ref camVel, dampTime);
     }
 
     private void FixedUpdate()
-    { 
+    {
+        if (!isFollowing) return;
+        
         transform.position = tracking;
     }
+    
+    #region Methods
+
+    public void SetFollowing(bool _isFollowing)
+    {
+        isFollowing = _isFollowing;
+        
+        if(isFollowing)
+        {
+            var position = player.transform.position;
+            transform.position = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
+        }
+    }
+    
+    #endregion
 
 }
