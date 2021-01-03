@@ -950,6 +950,8 @@ MonoBehaviour:
   useSuperDash: 0
   dashImpulse: 5
   superDashImpulse: 7.5
+  superDashIncrease: 2
+  superDashImprovements: 0
   dashAgainCooldown: 1
   superDashAgainCooldown: 3
   iceDrag: 1

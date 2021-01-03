@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [Header("Dashes impulse")]
     public float dashImpulse;
     public float superDashImpulse;
+    public float superDashIncrease = 5.0f;
+    private int superDashImprovements = 0;
 
     [Header("Dashes cooldowns")]
     public float dashAgainCooldown;
@@ -154,6 +156,14 @@ public class PlayerController : MonoBehaviour
     public void PlayCurrentStepsSound()
     {
         SoundManager.sharedInstance.OnPlayerSteps += SoundManager.sharedInstance.PlayStepSound;
-        //SoundManager.sharedInstance.PlayStepSound();
+    }
+
+    public void ImproveSuperDash()
+    {
+        if (superDashImprovements < 5)
+        {
+            superDashImpulse += superDashIncrease;
+            superDashImprovements++;
+        }    
     }
 }
