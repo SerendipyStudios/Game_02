@@ -937,6 +937,7 @@ MonoBehaviour:
   rotationSpeed: 0.1
   dashImpulse: 5
   superDashImpulse: 7.5
+  superDashIncrease: 2
   dashAgainCooldown: 1
   superDashAgainCooldown: 3
   iceDrag: 1

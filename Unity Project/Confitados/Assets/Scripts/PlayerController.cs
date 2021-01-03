@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     [Header("Dashes impulse")] public float dashImpulse;
     public float superDashImpulse;
+    public float superDashIncrease;
+    private int superDashImprovements = 0;
 
     [Header("Dashes cooldowns")] public float dashAgainCooldown;
     public float superDashAgainCooldown;
@@ -436,5 +438,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         //GetComponent<PhotonTransformView>().enabled = false; //Execute it for all instances
     }
 
+    #endregion
+
+    #region Interaction Methods
+    public void ImproveSuperDash()
+    {
+        if (superDashImprovements < 5)
+        {
+            superDashImpulse += superDashIncrease;
+            superDashImprovements++;
+        }
+    }
     #endregion
 }
