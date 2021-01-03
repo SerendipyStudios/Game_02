@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     #endregion
 
-    #region Methods
+    #region Fall Methods
 
     private void Fall()
     {
@@ -382,6 +382,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         playerInfo.IsFalling = false;
     }
 
+    #region Camera Methods
+    
     //Client side only
     [PunRPC]
     public void RpcSetCameraDied(int _goViewId)
@@ -408,6 +410,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             forward
             );
     }
+    
+    #endregion
 
     //Clients
     [PunRPC]
