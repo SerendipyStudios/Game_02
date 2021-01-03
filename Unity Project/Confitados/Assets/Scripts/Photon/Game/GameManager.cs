@@ -27,6 +27,7 @@ namespace Photon.Game
         //Use events when the sender does not need to know what is going to happen next
         //    and multiple actions have to be made in consequence, in order to save RPC calls.
         //public const byte RequestRespawnCode = 1;
+        public const byte PlayerDeadCode = 2;
 
         #endregion
 
@@ -294,6 +295,10 @@ namespace Photon.Game
 
             alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
             //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
+            
+            //Send event
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
+            PhotonNetwork.RaiseEvent(GameManager.PlayerDeadCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
 
             if (alivePlayers_ViewIds.Count <= 1)
                 GameEnd();

@@ -9,7 +9,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 using Random = System.Random;
 
 [RequireComponent(typeof(InputPlayer))]
-public class PlayerController : MonoBehaviourPunCallbacks
+public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     #region Variables
 
@@ -208,7 +208,40 @@ public class PlayerController : MonoBehaviourPunCallbacks
         rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
+    
+    public void OnEnable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
 
+    public void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    #endregion
+    
+    #region Photon Callbacks
+    
+    public void OnEvent(EventData photonEvent)
+    {
+        //Debug.Log("Camera Spectator: EventCode received.");
+        byte eventCode = photonEvent.Code;
+
+        switch (eventCode)
+        {
+            case GameManager.PlayerDeadCode:
+                Debug.Log("Camera Spectator: PlayerDeadCode received.");
+                object[] datas = ((object[]) photonEvent.CustomData);
+                int _actorNumber = (int) datas[0];
+                if (_actorNumber == cameraFollow.GetPlayer())
+                    ChangeCameraSpectatorPlayer(true);
+                break;
+            default:
+                break;
+        }
+    }
+    
     #endregion
 
     #region Triggers
