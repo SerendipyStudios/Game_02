@@ -234,10 +234,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             case GameManager.PlayerDeadCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
-                datas = ((object[]) photonEvent.CustomData);
-                _actorNumber = (int) datas[0];
-                if (_actorNumber == cameraFollow.GetPlayer())
-                    ChangeCameraSpectatorPlayer(true);
+                if (cameraFollow.GetCameraMode() != CameraFollow.CameraModeEnum.Win)
+                {
+                    datas = ((object[]) photonEvent.CustomData);
+                    _actorNumber = (int) datas[0];
+                    if (_actorNumber == cameraFollow.GetPlayer())
+                        ChangeCameraSpectatorPlayer(true);
+                }
                 break;
             case GameManager.WinCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
@@ -248,6 +251,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 
                 //Set close-up camera
+                cameraFollow.SetPlayer(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber)).GetComponent<PlayerController>());
                 cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Win);
                 break;
             default:
@@ -404,7 +408,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         if (_goViewId != -1)
         {
             cameraFollow.SetPlayer(PhotonView.Find(_goViewId).GetComponent<PlayerController>());
-            cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Spectator);
+            if(cameraFollow.GetCameraMode() == CameraFollow.CameraModeEnum.Disconnected)
+                cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Spectator);
         }
         else
         {

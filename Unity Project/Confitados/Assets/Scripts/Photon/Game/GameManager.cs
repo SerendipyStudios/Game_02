@@ -161,6 +161,15 @@ namespace Photon.Game
         }
 
         #endregion
+        
+        #region Getters
+
+        public int GetPlayerViewId(int _actorNumber)
+        {
+            return allPlayers_ViewIds[_actorNumber - 1];
+        }
+        
+        #endregion
 
         #region SceneMethods
 

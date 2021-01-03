@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun.Demo.PunBasics;
+using UnityEditor;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -129,6 +130,11 @@ public class CameraFollow : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    public CameraModeEnum GetCameraMode()
+    {
+        return cameraMode;
     }
     
     #endregion
