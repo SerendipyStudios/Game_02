@@ -273,11 +273,12 @@ namespace Photon.Game
 
 
         [PunRPC] //Server side only
-        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerIndex, bool forward, PhotonMessageInfo photonMessageInfo)
+        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerActorNumber, bool forward, PhotonMessageInfo photonMessageInfo)
         {
             //Debug.Log("Get Alive player.");
             Debug.Log("GetAlivePlayer. Alive players: " + alivePlayers_ViewIds.Count);
 
+            //If there are not alive players
             if (alivePlayers_ViewIds.Count == 0)
             {
                 PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject
@@ -285,13 +286,27 @@ namespace Photon.Game
                 return;
             }
 
-            //Revisar actor numbers
+            //If it is the first time
+            if (currentPlayerActorNumber == -1)
+            {
+                PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject.GetComponent<PlayerController>()
+                    .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
+                        PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>()
+                            .photonView.ViewID
+                    );
+
+                return;
+            }
+
+            //Encontrar el índice del actual y avanzar/retroceder al deseado
             int index;
+            int currentPlayerViewId = allPlayers_ViewIds[currentPlayerActorNumber - 1];
+            int currentPlayerIndex = alivePlayers_ViewIds.FindIndex((value) => value == currentPlayerViewId);
             if (currentPlayerIndex == -1)
                 index = 0;
             else
             {
-                index = (currentPlayerIndex - 1) +
+                index = (currentPlayerIndex) +
                         (forward ? 1 : -1);
                 index %= alivePlayers_ViewIds.Count;
 
