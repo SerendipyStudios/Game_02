@@ -17,7 +17,7 @@ namespace Photon.Game
         
         private PlayerInfo targetInfo;
         
-        [Tooltip("Pixel offset from the player target")]
+        [Tooltip("Pixel followOffset from the player target")]
         [SerializeField]
         private Vector3 screenOffset = new Vector3(0f,30f,0f);
         

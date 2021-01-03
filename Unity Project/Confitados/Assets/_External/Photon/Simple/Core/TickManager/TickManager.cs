@@ -201,7 +201,7 @@ namespace Photon.Pun.Simple.Internal
 		{
 			int currentFrame = NetMaster.CurrentFrameId;
 
-			/// Apply default offset from current local frame
+			/// Apply default followOffset from current local frame
 			int startingFrameId = currentFrame + (TickEngineSettings.targetBufferSize /*+ 1*/);
 			while (startingFrameId >= frameCount)
 				startingFrameId -= frameCount;

@@ -227,15 +227,28 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         //Debug.Log("Camera Spectator: EventCode received.");
         byte eventCode = photonEvent.Code;
-
+        object[] datas;
+        int _actorNumber;
+            
         switch (eventCode)
         {
             case GameManager.PlayerDeadCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
-                object[] datas = ((object[]) photonEvent.CustomData);
-                int _actorNumber = (int) datas[0];
+                datas = ((object[]) photonEvent.CustomData);
+                _actorNumber = (int) datas[0];
                 if (_actorNumber == cameraFollow.GetPlayer())
                     ChangeCameraSpectatorPlayer(true);
+                break;
+            case GameManager.WinCode:
+                Debug.Log("Camera Spectator: PlayerDeadCode received.");
+                datas = ((object[]) photonEvent.CustomData);
+                _actorNumber = (int) datas[0];
+                
+                //Paralyze all players
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                
+                //Set close-up camera
+                cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Win);
                 break;
             default:
                 break;

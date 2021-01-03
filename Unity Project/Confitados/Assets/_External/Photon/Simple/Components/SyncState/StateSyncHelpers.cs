@@ -11,7 +11,7 @@
 //	public static class StateSyncHelpers
 //	{
 //		/// <summary>
-//		/// Apply the vectors (offset, pos, rot, velocity) in StateChangeInfo to the syncState object. Returns true if teleport is required for change.
+//		/// Apply the vectors (followOffset, pos, rot, velocity) in StateChangeInfo to the syncState object. Returns true if teleport is required for change.
 //		/// </summary>
 //		public static void ApplyVectors(this SyncState syncState, StateChangeInfo stateChangeInfo, Transform prevParent, List<IFlagTeleport> callbacks)
 //		{
@@ -44,8 +44,8 @@
 //				//{
 //				//	{
 //				//		var parRot = prevParent ? prevParent.rotation : transform.rotation;
-//				//		/// TODO: offset and vel likely should be part of the ChangeState itself
-//				//		/// Apply offset before changing state
+//				//		/// TODO: followOffset and vel likely should be part of the ChangeState itself
+//				//		/// Apply followOffset before changing state
 //				//		var localOffset = stateChangeInfo.offsetPos;
 
 //				//		//Debug.Log(Time.time + " " + transform.name + " Dequeue " + transform.position + " " + transform.position + prevParent.rotation * localOffset);
