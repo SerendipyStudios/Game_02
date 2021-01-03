@@ -51,18 +51,35 @@ public class LevelInfo : MonoBehaviour
     //Server side only
     public Transform GetRandomFreeInitPos()
     {
-        int index = new Random().Next(freeInitialPositions.Count);
-        freeInitialPositions.Remove(index);
-        StartCoroutine(InitPosCooldown(index));
+        //Get a position
+        int initialIndex = new Random().Next(freeInitialPositions.Count);
+        int index = initialIndex;
+        
+        //Check if there's nobody below it
+        RaycastHit hitInfo;
+        Physics.Raycast(initialPositions[index].position, Vector3.down, out hitInfo, 10);
+        while (hitInfo.collider.gameObject.GetComponent<PlayerController>() != null)
+        {
+            index = (index + 1) % freeInitialPositions.Count;
+            if(index == initialIndex)
+                throw new Exception("Player Respawn at LevelInfo. Inifite loop. There's no valid respawn point.");
+            Physics.Raycast(initialPositions[index].position, Vector3.down, out hitInfo, 10);
+        }
+
+        //Remove it from the pull and start cooldown routine
+        //freeInitialPositions.Remove(index);
+        //StartCoroutine(InitPosCooldown(index));
 
         return initialPositions[index];
     }
 
+    /* Unnecesary due to the new raycast check respawn system
     private static IEnumerator InitPosCooldown(int index)
     {
         yield return new WaitForSeconds(1);
         freeInitialPositions.Add(index);
     }
+    */
 
     #region GUI
     
