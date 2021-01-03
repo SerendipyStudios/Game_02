@@ -9,7 +9,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 using Random = System.Random;
 
 [RequireComponent(typeof(InputPlayer))]
-public class PlayerController : MonoBehaviourPunCallbacks
+public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     #region Variables
 
@@ -54,8 +54,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     //public static GameObject LocalPlayerInstance; //Needed to avoid instancing the player again when updating the scene
 
     //Linked objects
-    [Header("Player UI")] public PlayerUI PlayerUIPrefab;
+    [Header("Player UI")] 
+    public PlayerUI PlayerUIPrefab;
     public PlayerControlUI PlayerInputUIPrefab;
+    public PlayerCameraSpectatorUI PlayerCameraSpectatorUIPrefab;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -206,7 +208,40 @@ public class PlayerController : MonoBehaviourPunCallbacks
         rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
+    
+    public void OnEnable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
 
+    public void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    #endregion
+    
+    #region Photon Callbacks
+    
+    public void OnEvent(EventData photonEvent)
+    {
+        //Debug.Log("Camera Spectator: EventCode received.");
+        byte eventCode = photonEvent.Code;
+
+        switch (eventCode)
+        {
+            case GameManager.PlayerDeadCode:
+                Debug.Log("Camera Spectator: PlayerDeadCode received.");
+                object[] datas = ((object[]) photonEvent.CustomData);
+                int _actorNumber = (int) datas[0];
+                if (_actorNumber == cameraFollow.GetPlayer())
+                    ChangeCameraSpectatorPlayer(true);
+                break;
+            default:
+                break;
+        }
+    }
+    
     #endregion
 
     #region Triggers
@@ -269,7 +304,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     #endregion
 
-    #region Methods
+    #region Fall Methods
 
     private void Fall()
     {
@@ -326,7 +361,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             //Setup camera mode
             GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
-                PhotonNetwork.LocalPlayer.ActorNumber, 0);
+                PhotonNetwork.LocalPlayer.ActorNumber, 
+                -1,
+                null
+                );
+            
+            //Show camera spectator GUI
+            Instantiate(PlayerCameraSpectatorUIPrefab).Initialize(this);
         }
     }
 
@@ -337,9 +378,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
         Debug.Log("Rpc: Respawning.");
         transform.position = respawnPos;
         transform.rotation = respawnRot;
+        rb.velocity = Vector3.zero;
         playerInfo.IsFalling = false;
     }
 
+    #region Camera Methods
+    
     //Client side only
     [PunRPC]
     public void RpcSetCameraDied(int _goViewId)
@@ -354,6 +398,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
             cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Disconnected);
         }
     }
+
+    public void ChangeCameraSpectatorPlayer(bool forward)
+    {
+        Debug.Log("ChangeCameraSpectatorPlayer");
+        
+        //Setup camera mode
+        GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
+            PhotonNetwork.LocalPlayer.ActorNumber, 
+            cameraFollow.GetPlayer(),
+            forward
+            );
+    }
+    
+    #endregion
 
     //Clients
     [PunRPC]

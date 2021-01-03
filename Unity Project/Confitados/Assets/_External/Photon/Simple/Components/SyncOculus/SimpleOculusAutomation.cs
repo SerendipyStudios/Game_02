@@ -72,7 +72,7 @@ namespace Photon.Pun.Simple
 				//if (cam.name == "CenterEyeAnchor")
 				//cam.enabled = false;
 				//else
-				cam.gameObject.SetActive(IsMine);
+				cam.gameObject.Initialize(IsMine);
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Photon.Pun.Simple
 				//if (cam.name == "CenterEyeAnchor")
 				//	cam.enabled = false;
 				//else
-				cam.gameObject.SetActive(IsMine);
+				cam.gameObject.Initialize(IsMine);
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace Photon.Pun.Simple
 				//if (cam.name == "CenterEyeAnchor")
 				//	cam.enabled = false;
 				//else
-				cam.gameObject.SetActive(IsMine);
+				cam.gameObject.Initialize(IsMine);
 			}
 		}
 

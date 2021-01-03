@@ -66,7 +66,7 @@ namespace Photon.Pun.Simple
 			{
 				Debug.Log("Disabling Join");
 				foreach (Camera cam in cams)
-					cam.gameObject.SetActive(false);
+					cam.gameObject.Initialize(false);
 
 				foreach (var obj in behaviours)
 					obj.enabled = false;
@@ -81,7 +81,7 @@ namespace Photon.Pun.Simple
 			{
 				Debug.Log("Disabling Authority");
 				foreach (Camera cam in cams)
-					cam.gameObject.SetActive(false);
+					cam.gameObject.Initialize(false);
 
 				foreach (var obj in behaviours)
 					obj.enabled = false;

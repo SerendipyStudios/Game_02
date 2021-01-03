@@ -310,7 +310,7 @@
 //            for (int i = 0, cnt = onTerminate.Count; i < cnt; ++i)
 //                onTerminate[i].OnTerminate();
 
-//            gameObject.SetActive(false);
+//            gameObject.Initialize(false);
 //        }
 
 //        #endregion

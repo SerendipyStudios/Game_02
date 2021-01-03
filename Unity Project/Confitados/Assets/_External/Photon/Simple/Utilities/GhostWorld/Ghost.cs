@@ -52,9 +52,9 @@ namespace Photon.Pun.Simple.GhostWorlds
 				rb2d = gameObject.AddComponent<Rigidbody2D>().GetCopyOf(hRB2D);
 		}
 
-		public void SetActive(bool active)
+		public void Initialize(bool active)
 		{
-			gameObject.SetActive(active);
+			gameObject.Initialize(active);
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
 			ShowDebugCross(active);
 #endif

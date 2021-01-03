@@ -11,7 +11,7 @@ namespace Photon.Game
     public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         #region Variables
-        
+
         public static GameManager Instance;
         [SerializeField] public GameObject playerPrefab;
 
@@ -27,7 +27,8 @@ namespace Photon.Game
         //Use events when the sender does not need to know what is going to happen next
         //    and multiple actions have to be made in consequence, in order to save RPC calls.
         //public const byte RequestRespawnCode = 1;
-        
+        public const byte PlayerDeadCode = 2;
+
         #endregion
 
         #region Unity Callbacks
@@ -59,7 +60,7 @@ namespace Photon.Game
                     this);
                 return;
             }
-            
+
             Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
             for (var i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
@@ -172,8 +173,8 @@ namespace Photon.Game
                 //PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
             }
         }
-        
-        
+
+
         private void GameEnd()
         {
             Debug.Log("Game Ended");
@@ -183,7 +184,7 @@ namespace Photon.Game
         {
             PhotonNetwork.LeaveRoom();
         }
-        
+
         #endregion
 
         #region PlayerMethods
@@ -196,7 +197,7 @@ namespace Photon.Game
                 0);
         }
 
-        
+
         [PunRPC] //Both client and server
         private void CmdRegisterPlayer(int actorNumber, int viewId)
         {
@@ -234,7 +235,7 @@ namespace Photon.Game
         }
         */
 
-        
+
         [PunRPC] //Executed in server
         private void CmdRespawnPlayer(int actorNumber, PhotonMessageInfo photonMessageInfo)
         {
@@ -246,40 +247,58 @@ namespace Photon.Game
                 .photonView.RPC("RpcSetRespawnPos", photonMessageInfo.Sender,
                     initPos.position, initPos.rotation);
         }
-        
-        
+
+
         [PunRPC] //Server side only
-        public void CmdGetAlivePlayer(int actorNumber, int requiredPlayerIndex, PhotonMessageInfo photonMessageInfo)
+        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerIndex, bool forward, PhotonMessageInfo photonMessageInfo)
         {
             //Debug.Log("Get Alive player.");
             Debug.Log("GetAlivePlayer. Alive players: " + alivePlayers_ViewIds.Count);
 
-            //Revisar actor numbers
-            if (alivePlayers_ViewIds.Count > requiredPlayerIndex)
-                PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject.GetComponent<PlayerController>()
-                    .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
-                        PhotonView.Find(alivePlayers_ViewIds[requiredPlayerIndex]).GetComponent<PlayerController>()
-                            .photonView.ViewID
-                    );
-            else
+            if (alivePlayers_ViewIds.Count == 0)
             {
                 PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject
                     .GetComponent<PlayerController>().photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender, -1);
+                return;
             }
+
+            //Revisar actor numbers
+            int index;
+            if (currentPlayerIndex == -1)
+                index = 0;
+            else
+            {
+                index = (currentPlayerIndex - 1) +
+                        (forward ? 1 : -1);
+                index %= alivePlayers_ViewIds.Count;
+
+                if (index < 0)
+                    index += alivePlayers_ViewIds.Count;
+            }
+
+            PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject.GetComponent<PlayerController>()
+                .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
+                    PhotonView.Find(alivePlayers_ViewIds[index]).GetComponent<PlayerController>()
+                        .photonView.ViewID
+                );
 
             //Debug.Log("Donete");
         }
 
-        
+
         [PunRPC] //Executed in server
         private void CmdPlayerDied(int actorNumber)
         {
             //Debug.Log("Player Died: " + actorNumber);
             PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerInfo>();
             playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;
-            
+
             alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
             //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
+            
+            //Send event
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
+            PhotonNetwork.RaiseEvent(GameManager.PlayerDeadCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
 
             if (alivePlayers_ViewIds.Count <= 1)
                 GameEnd();
@@ -295,7 +314,7 @@ namespace Photon.Game
             alivePlayers_ViewIds.Remove(actorNumber);
         }
         */
-        
+
         #endregion
     }
 }

@@ -19,7 +19,7 @@ namespace Photon.Pun.Simple
 	{
 
 		[HideInInspector]
-		[Tooltip("How this object should be toggled. GameObject toggles gameObject.SetActive(), Renderer toggles renderer.enabled, and Component toggles component.enabled.")]
+		[Tooltip("How this object should be toggled. GameObject toggles gameObject.Initialize(), Renderer toggles renderer.enabled, and Component toggles component.enabled.")]
 		public DisplayToggle toggle = DisplayToggle.GameObject;
 
 		[Tooltip("User specified component to toggle enabled.")]
