@@ -157,7 +157,16 @@ namespace Photon.Game
 
         public override void OnLeftRoom()
         {
-            SceneManager.LoadScene("Screen_02_0_anteroom");
+            //Does not execute because this is a networked object. Thus will be destroyed on disconnect.
+        }
+
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            //Does not execute because this is a networked object. Thus will be destroyed on disconnect.
+            
+            Debug.Log("OnDisconnected");
+            //SceneManager.LoadScene("Screen_02_0_anteroom");
+            //base.OnDisconnected(cause);
         }
 
         #endregion
@@ -212,8 +221,14 @@ namespace Photon.Game
             PhotonNetwork.LoadLevel("Screen_02_3_results");
         }
         
-        public void LeaveRoom()
+        public void LeaveGame()
         {
+            Debug.Log("LeaveGame");
+
+            GameObject player = PhotonView.Find(GetPlayerViewId(PhotonNetwork.LocalPlayer.ActorNumber)).gameObject;
+            player.GetComponent<PlayerController>().Delete();
+
+            //Leave
             PhotonNetwork.LeaveRoom();
         }
 
@@ -340,7 +355,9 @@ namespace Photon.Game
             PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerInfo>();
             playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;
 
-            alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
+            //Si no es el último, borrarlo (esto puede pasar cuando la batalla final está muy ajustada)
+            if(alivePlayers_ViewIds.Count != 1)
+                alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
             //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
             
             //Send event

@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     public PlayerUI PlayerUIPrefab;
     public PlayerControlUI PlayerInputUIPrefab;
     public PlayerCameraSpectatorUI PlayerCameraSpectatorUIPrefab;
+    public PlayerInterfaceUI PlayerInterfaceUIPrefab;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -136,6 +137,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
         }
+        
+        //Instantiate interface
+        if (PlayerInterfaceUIPrefab != null)
+            Instantiate(PlayerInterfaceUIPrefab).Initialize(this);
     }
 
     private void Update()
@@ -219,6 +224,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     public void OnDisable()
     {
         PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    public void Delete()
+    {
+        cameraFollow.enabled = false;
     }
 
     #endregion
