@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
 using Photon.Pun;
@@ -28,6 +29,7 @@ namespace Photon.Game
         //    and multiple actions have to be made in consequence, in order to save RPC calls.
         //public const byte RequestRespawnCode = 1;
         public const byte PlayerDeadCode = 2;
+        public const byte WinCode = 3;
 
         #endregion
 
@@ -159,9 +161,19 @@ namespace Photon.Game
         }
 
         #endregion
+        
+        #region Getters
+
+        public int GetPlayerViewId(int _actorNumber)
+        {
+            return allPlayers_ViewIds[_actorNumber - 1];
+        }
+        
+        #endregion
 
         #region SceneMethods
 
+        /*
         private void LoadArena()
         {
             if (!PhotonNetwork.IsMasterClient)
@@ -173,13 +185,33 @@ namespace Photon.Game
                 //PhotonNetwork.LoadLevel("PhotonMultiplayerScene");
             }
         }
+        */
 
 
-        private void GameEnd()
+        private void GameEnd(int actorNumber)
         {
             Debug.Log("Game Ended");
+            
+            //Send event
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
+            PhotonNetwork.RaiseEvent(GameManager.WinCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
+            
+            //Wait x seconds and launch nextLevel method
+            StartCoroutine(NextLevelCoroutine());
         }
 
+        private IEnumerator NextLevelCoroutine()
+        {
+            yield return new WaitForSeconds(3);
+            NextLevel();
+        }
+
+        private void NextLevel()
+        {
+            //Implement here a script if we want to support multiple games in a row. [HERE]
+            PhotonNetwork.LoadLevel("Screen_02_3_results");
+        }
+        
         public void LeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
@@ -250,11 +282,12 @@ namespace Photon.Game
 
 
         [PunRPC] //Server side only
-        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerIndex, bool forward, PhotonMessageInfo photonMessageInfo)
+        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerActorNumber, bool forward, PhotonMessageInfo photonMessageInfo)
         {
             //Debug.Log("Get Alive player.");
             Debug.Log("GetAlivePlayer. Alive players: " + alivePlayers_ViewIds.Count);
 
+            //If there are not alive players
             if (alivePlayers_ViewIds.Count == 0)
             {
                 PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject
@@ -262,13 +295,27 @@ namespace Photon.Game
                 return;
             }
 
-            //Revisar actor numbers
+            //If it is the first time
+            if (currentPlayerActorNumber == -1)
+            {
+                PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).gameObject.GetComponent<PlayerController>()
+                    .photonView.RPC("RpcSetCameraDied", photonMessageInfo.Sender,
+                        PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>()
+                            .photonView.ViewID
+                    );
+
+                return;
+            }
+
+            //Encontrar el índice del actual y avanzar/retroceder al deseado
             int index;
+            int currentPlayerViewId = allPlayers_ViewIds[currentPlayerActorNumber - 1];
+            int currentPlayerIndex = alivePlayers_ViewIds.FindIndex((value) => value == currentPlayerViewId);
             if (currentPlayerIndex == -1)
                 index = 0;
             else
             {
-                index = (currentPlayerIndex - 1) +
+                index = (currentPlayerIndex) +
                         (forward ? 1 : -1);
                 index %= alivePlayers_ViewIds.Count;
 
@@ -301,7 +348,7 @@ namespace Photon.Game
             PhotonNetwork.RaiseEvent(GameManager.PlayerDeadCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
 
             if (alivePlayers_ViewIds.Count <= 1)
-                GameEnd();
+                GameEnd(PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>().photonView.Owner.ActorNumber);
         }
 
         /* Remove alivePlayer also from client

@@ -225,7 +225,7 @@ namespace Photon.Pun.UtilityScripts
 		//				string dname = l.name + "." + t.destinationState.name;
 		//				int dhash = Animator.StringToHash(dname);
 		//				int hash = Animator.StringToHash(sname + " -> " + dname);
-		//				TransitionInfo ti = new TransitionInfo(index, hash, shash, dhash, t.duration, t.offset, t.hasFixedDuration);
+		//				TransitionInfo ti = new TransitionInfo(index, hash, shash, dhash, t.duration, t.followOffset, t.hasFixedDuration);
 		//				transInfo.Add(ti);
 		//				//Debug.Log(index + " " + sname + " -> " + dname + "   " + Animator.StringToHash(sname + " -> " + dname));
 		//				index++;

@@ -11,7 +11,7 @@
             </summary>
         </member>
         <member name="T:Photon.Compression.QuatCompress.FastAbs">
-            <summary>Uses fieldoffset to allow quick setting of the sign bit of floats.</summary>
+            <summary>Uses fieldfollowOffset to allow quick setting of the sign bit of floats.</summary>
         </member>
         <member name="F:Photon.Compression.QuatCompress.invHalfRange">
             <summary>
