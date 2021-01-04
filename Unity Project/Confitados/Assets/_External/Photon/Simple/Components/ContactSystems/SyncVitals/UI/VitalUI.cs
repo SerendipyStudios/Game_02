@@ -99,7 +99,7 @@ namespace Photon.Pun.Simple
 
 		protected virtual void AutoAlign()
 		{
-			/// Set the auto height offset of default bars when the target vital is changed in the editor
+			/// Set the auto height followOffset of default bars when the target vital is changed in the editor
 			if (autoOffset && transform.parent)
 				transform.localPosition = offset * vitalIndex;
 		}

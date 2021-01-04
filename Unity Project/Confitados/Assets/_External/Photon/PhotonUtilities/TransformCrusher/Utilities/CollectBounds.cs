@@ -145,7 +145,7 @@ namespace Photon.Utilities
 			}
 
 			// Get a starting bounds. We need this because the default of centered 0,0,0 will break things if the map is
-			// offset and doesn't encapsulte the world origin.
+			// followOffset and doesn't encapsulte the world origin.
 			Bounds compositeBounds;
 			
 			if (meshRenderers.Count > 0)

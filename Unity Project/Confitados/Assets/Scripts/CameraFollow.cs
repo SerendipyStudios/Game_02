@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun.Demo.PunBasics;
+using UnityEditor;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    #region Variables
+    
     //References
     public PlayerController player;
     
@@ -15,24 +18,81 @@ public class CameraFollow : MonoBehaviour
         Disconnected = 0,
         Following = 1,
         Spectator = 2,
+        Win = 3,
     }
-
     [SerializeField] private CameraModeEnum cameraMode = CameraModeEnum.Disconnected;
 
-    //Camera follow
-    public Vector3 offset;
+    //Camera variables
     public Vector3 rotation;
+    
+    //Camera follow
+    public Vector3 followOffset = new Vector3(0, 15, -14);
+    public Vector3 winOffset = new Vector3(0, 3, 7);
 
+    //Transitions
+    public float winTransitionSpeed = 10;
+    private float deltaTime;
+
+    //Script variables
     private Vector3 cameraPosition;
+    private Vector3 trackingPosition;
     private Vector3 camVel;
     private readonly float dampTime = 0.001f;
-
-    private Vector3 tracking;
+    
+    #endregion    
+    
+    #region Unity Callbacks
 
     private void Start()
     {
         transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
     }
+    
+    private void Update()
+    {
+        deltaTime = Time.deltaTime;
+        
+        switch (cameraMode)
+        {
+            case CameraModeEnum.Disconnected:
+                break;
+            case CameraModeEnum.Following:
+                UpdateFollow(followOffset);
+                break;
+            case CameraModeEnum.Spectator:
+                UpdateFollow(followOffset);
+                break;
+            case CameraModeEnum.Win:
+                LerpToCloseUp(winOffset);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        switch (cameraMode)
+        {
+            case CameraModeEnum.Disconnected:
+                break;
+            case CameraModeEnum.Following:
+                transform.position = trackingPosition;
+                break;
+            case CameraModeEnum.Spectator:
+                transform.position = trackingPosition;
+                break;
+            case CameraModeEnum.Win:
+                transform.position = trackingPosition;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+    
+    #endregion
+    
+    #region Getters & Setters
 
     public void Initialize(PlayerController player)
     {
@@ -51,32 +111,6 @@ public class CameraFollow : MonoBehaviour
         return player.photonView.Owner.ActorNumber;
     }
 
-    private void Update()
-    {
-        switch (cameraMode)
-        {
-            case CameraModeEnum.Disconnected:
-                break;
-            case CameraModeEnum.Following:
-                UpdateFollow();
-                break;
-            case CameraModeEnum.Spectator:
-                UpdateFollow();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (cameraMode == CameraModeEnum.Disconnected) return;
-        
-        transform.position = tracking;
-    }
-    
-    #region Methods
-
     public void SetCameraMode(CameraModeEnum _cameraMode)
     {
         cameraMode = _cameraMode;
@@ -86,29 +120,57 @@ public class CameraFollow : MonoBehaviour
             case CameraModeEnum.Disconnected:
                 break;
             case CameraModeEnum.Following:
-                TeleportCamera();
+                TeleportCamera(followOffset);
                 break;
             case CameraModeEnum.Spectator:
-                TeleportCamera();
+                TeleportCamera(followOffset);
+                break;
+            case CameraModeEnum.Win:
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
 
-    private void UpdateFollow()
+    public CameraModeEnum GetCameraMode()
     {
+        return cameraMode;
+    }
+    
+    #endregion
+
+    #region Update Camera Methods
+    
+    private void UpdateFollow(Vector3 offset)
+    {
+        //Position
         var position = player.transform.position;
         cameraPosition = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
-        tracking = Vector3.SmoothDamp(transform.position, cameraPosition, ref camVel, dampTime);
+        trackingPosition = Vector3.SmoothDamp(transform.position, cameraPosition, ref camVel, dampTime);
+
+        //Look at player
+        transform.LookAt(position);
     }
 
-    private void TeleportCamera()
+    private void TeleportCamera(Vector3 offset)
     {
         var position = player.transform.position;
         transform.position = new Vector3(position.x + offset.x, position.y + offset.y, position.z + offset.z);
     }
 
-    #endregion
+    private void LerpToCloseUp(Vector3 offset)
+    {
+        //Lerp position
+        Vector3 target = player.transform.TransformPoint(offset);
+        trackingPosition = Vector3.Lerp(
+            transform.position,
+            target,
+            deltaTime * winTransitionSpeed
+        );
+        
+        //Look at player
+        transform.LookAt(player.transform.position);
+    }
 
+    #endregion
 }

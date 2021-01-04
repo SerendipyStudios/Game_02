@@ -27,7 +27,7 @@ namespace Photon.Pun.Simple
             "Exclude layers that won't include any objects that you don't want to test (such as walls).")]
         public LayerMask layerMask = -1;
         public bool useOffset;
-        public Vector3 offset1 = new Vector3(0, 0, 0); // Used offset and first sphere of capsule
+        public Vector3 offset1 = new Vector3(0, 0, 0); // Used followOffset and first sphere of capsule
         public Vector3 offset2 = new Vector3(0, 1, 0); // Used for second sphere of capsule
         public Vector3 halfExtents = new Vector3(1, 1, 1);
         public Vector3 orientation = new Vector3(0, 0, 0);
