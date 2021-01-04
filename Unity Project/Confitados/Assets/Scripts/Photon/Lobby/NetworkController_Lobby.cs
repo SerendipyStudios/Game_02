@@ -12,12 +12,16 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     
     [SerializeField] private Text log;
     
+    //Player configurations
     [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
-    [SerializeField] private byte maxPlayersInRoom = 4;
+    [SerializeField] private byte maxPlayersInRoom = 6;
     [SerializeField] private byte minPlayersInRoom = 2;
     [SerializeField] private int currentPlayersInRoom = 0;
     [SerializeField] private Text playerCount;
 
+    //Level
+    private Levels.LevelsEnum choosedLevel = Levels.LevelsEnum.Galletown;
+    
     #endregion
     
     #region UnityCallbacks
@@ -61,7 +65,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         //When multiple levels are made, select between them here
-        PhotonNetwork.LoadLevel("Screen_02_2_game");
+        PhotonNetwork.LoadLevel(Levels.GetScene(choosedLevel));
     }
     
     public void LeaveRoom()

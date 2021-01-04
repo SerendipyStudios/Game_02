@@ -13,6 +13,7 @@ namespace Photon.Game
     {
         #region Variables
 
+        //Game
         public static GameManager Instance;
         [SerializeField] public GameObject playerPrefab;
 
@@ -21,6 +22,7 @@ namespace Photon.Game
         //private List<int> alivePlayers = new List<int>();
         */
 
+        //Player tracking data structures
         private int[] allPlayers_ViewIds;
         private List<int> alivePlayers_ViewIds;
 
@@ -31,6 +33,16 @@ namespace Photon.Game
         public const byte PlayerDeadCode = 2;
         public const byte WinCode = 3;
 
+        //GameState
+        public enum GameStateEnum
+        {
+            Init = 0,
+            Playing = 1,
+            Finished = 2,
+        }
+
+        public GameStateEnum gameState = GameStateEnum.Init;
+        
         #endregion
 
         #region Unity Callbacks
@@ -49,6 +61,7 @@ namespace Photon.Game
         private void Start()
         {
             Instance = this;
+            gameState = GameStateEnum.Playing;
 
             if (!PhotonNetwork.IsMasterClient) return;
 
@@ -200,6 +213,7 @@ namespace Photon.Game
         private void GameEnd(int actorNumber)
         {
             Debug.Log("Game Ended");
+            gameState = GameStateEnum.Finished;
             
             //Send event
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
