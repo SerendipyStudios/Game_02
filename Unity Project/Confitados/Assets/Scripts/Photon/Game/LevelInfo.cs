@@ -15,14 +15,18 @@ public class LevelInfo : MonoBehaviour
     public static float worldLimit = -5f;
 
     //Initial positions
-    public GameObject initialPositions_GameObject;
+    [SerializeField] public GameObject initialPositions_GameObject;
     [SerializeField] private static List<Transform> initialPositions = new List<Transform>();
-
     private static List<int> freeInitialPositions = new List<int>();
 
     private void Awake()
     {
+        Debug.Log("Awake LevelInfo");
         Instance = this;
+        
+        //Restart data structures
+        initialPositions = new List<Transform>();
+        freeInitialPositions = new List<int>();
         
         for(int i = 0; i<initialPositions_GameObject.transform.childCount; i++)
         {
@@ -45,6 +49,7 @@ public class LevelInfo : MonoBehaviour
     //Server side only
     public static Transform GetInitPos(int index)
     {
+        Debug.Log("LevelInfo: GetInitPos. Initial positions: " + initialPositions.Count);
         return initialPositions[index];
     }
 

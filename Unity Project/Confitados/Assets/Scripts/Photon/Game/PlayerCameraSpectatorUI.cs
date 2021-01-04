@@ -11,6 +11,7 @@ public class PlayerCameraSpectatorUI : MonoBehaviour
 {
     private PlayerController playerController;
     
+    //Interface elements
     [SerializeField] private Button changeBackwards;
     [SerializeField] private Button changeForwards;
 
