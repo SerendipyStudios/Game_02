@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             SuperDashCountdown();
 
         //Check if the player is falling off the stage
-        if (transform.position.y < LevelInfo.worldLimit
+        if (transform.position.y < LevelInfo.Instance.worldLimit
             && !playerInfo.IsFalling)
         {
             executeFall = true;
