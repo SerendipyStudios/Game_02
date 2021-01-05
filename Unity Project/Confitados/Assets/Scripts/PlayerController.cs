@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Player speed")] public float moveSpeed;
     private Vector3 movement;
     private Vector3 dashDirection;
+    private float pushImpulse = 30f; //Just a multiplier for the push interaction between two players 
 
     //Rotation
     [Range(0.0f, 1.0f)] [SerializeField] private float rotationSpeed;
@@ -225,6 +226,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         transform.rotation = targetRotation;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.CompareTo("Player") == 0)
+        {
+            Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
+        }
+        if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            rb.drag = 2.5f;
+
+    }
+
     public void OnEnable()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
@@ -302,12 +315,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     void OnTriggerEnter(Collider other)
     {
         //Floors
-        if (other.gameObject.tag == "IceFloor")
+        if (other.gameObject.tag.CompareTo("IceFloor") == 0)
             rb.drag = iceDrag;
-        if (other.gameObject.tag == "StickyFloor")
+        if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = stickyDrag;
 
-        if (other.gameObject.tag == "Limit")
+        if (other.gameObject.tag.CompareTo("Limit") == 0)
             return;
     }
 
@@ -315,8 +328,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         //Floors
         //En realidad, el suelo por defecto debería ser un tipo de suelo también
-        if (other.gameObject.tag == "IceFloor" || other.gameObject.tag == "StickyFloor")
+        if (other.gameObject.tag.CompareTo("IceFloor") == 0 || other.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = 2.5f;
+
     }
 
     #endregion
@@ -362,6 +376,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     private void Fall()
     {
         executeFall = false;
+
+        //Now that we are falling, our drag is 0
+        rb.drag = 0f;
 
         //Quitarle el control al jugador
         input.enabled = false;
