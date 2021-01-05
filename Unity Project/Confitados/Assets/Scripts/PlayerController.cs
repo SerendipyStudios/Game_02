@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Player speed")] public float moveSpeed;
     private Vector3 movement;
     private Vector3 dashDirection;
+    private float pushImpulse = 30f; //Just a multiplier for the push interaction between two players 
 
     //Rotation
     [Range(0.0f, 1.0f)] [SerializeField] private float rotationSpeed;
@@ -215,7 +216,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.CompareTo("Player") == 0)
+        {
+            Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
+        }
+    }
+
     public void OnEnable()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
