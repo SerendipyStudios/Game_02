@@ -952,6 +952,7 @@ MonoBehaviour:
     type: 3}
   PlayerInterfaceUIPrefab: {fileID: 6016479596591847941, guid: 09c9cb5ad953b4949922fe74d996a7eb,
     type: 3}
+  playerInterfaceUI: {fileID: 0}
   SoundManagerPrefab: {fileID: 4053661352139720574, guid: 6d44c625afde14147abb3d47f0d4262f,
     type: 3}
 --- !u!114 &8016238185680841772
@@ -961,7 +962,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8016238185680841775}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feb7ce544fd2de440acf91213cf9b0b0, type: 3}
   m_Name: 

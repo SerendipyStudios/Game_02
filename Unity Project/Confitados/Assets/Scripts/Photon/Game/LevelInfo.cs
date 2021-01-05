@@ -61,11 +61,6 @@ public class LevelInfo : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        StartCoroutine(PieceFallCoroutine());
-    }
-
     #endregion
 
     #region Getters
@@ -121,6 +116,11 @@ public class LevelInfo : MonoBehaviour
     #endregion
 
     #region WorldPieces Methods
+    
+    public void StartGame()
+    {
+        StartCoroutine(PieceFallCoroutine());
+    }
 
     private IEnumerator PieceFallCoroutine()
     {
