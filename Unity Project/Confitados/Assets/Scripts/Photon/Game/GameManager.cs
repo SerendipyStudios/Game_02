@@ -17,6 +17,8 @@ namespace Photon.Game
         public static GameManager Instance;
         [SerializeField] public GameObject playerPrefab;
         [SerializeField] private int countdownTime = 3;
+        private int countdownTimeActual;
+        WaitForSeconds waitASecond = new WaitForSeconds(1);
 
         /* Old player tracking data structure
         //private PlayerInfo[] playerInfos;
@@ -62,7 +64,7 @@ namespace Photon.Game
         private void Start()
         {
             Instance = this;
-            gameState = GameStateEnum.Playing;
+            gameState = GameStateEnum.Init;
 
             if (!PhotonNetwork.IsMasterClient) return;
 
@@ -268,28 +270,43 @@ namespace Photon.Game
             allPlayers_ViewIds[actorNumber - 1] = viewId;
             alivePlayers_ViewIds.Add(viewId);
 
+            if (!PhotonNetwork.IsMasterClient) return;
+
             //Si se han registrado todos, iniciar la cuenta atrás
-            if (allPlayers_ViewIds.Length == PhotonNetwork.PlayerList.Length)
-                StartCoroutine(GameStartCountdownCoroutine(countdownTime));
+            if (alivePlayers_ViewIds.Count == PhotonNetwork.PlayerList.Length)
+            {
+                photonView.RPC("RpcStartGame", RpcTarget.All);
+                //countdownTimeActual = countdownTime;
+                //StartCoroutine(GameStartCountdownCoroutine());
+            }
         }
 
-        private IEnumerator GameStartCountdownCoroutine(int time)
+        private IEnumerator GameStartCountdownCoroutine()
         {
-            while (time != 0)
+            int localCountdown = countdownTimeActual;
+            while (countdownTimeActual > 0)
             {
-                photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
-                yield return new WaitForSeconds(1);
-                time--;
+                Debug.Log("Inicio del while");
+                Debug.Log("Countdown local: " + localCountdown);
+                Debug.Log("Countdown: " + countdownTimeActual);
+                photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+                localCountdown--;
+                countdownTimeActual--;
+                Debug.Log("Wait for seconds enter: " + countdownTimeActual);
+                yield return waitASecond;
+                //Debug.Log("Wait for seconds exit: " + countdownTimeActual);
             }
             
             //Zero
-            photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
+            Debug.Log("Countdown: " + countdownTimeActual);
+            photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
             photonView.RPC("RpcStartGame", RpcTarget.All);
-            
+
             //Deactivate countdown
-            yield return new WaitForSeconds(1);
-            time--;
-            photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
+            yield return waitASecond;
+            countdownTimeActual--;
+            Debug.Log("Countdown: " + countdownTimeActual);
+            photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
         }
 
         [PunRPC] //All
@@ -302,6 +319,8 @@ namespace Photon.Game
         [PunRPC] //All
         private void RpcStartGame()
         {
+            Debug.Log("Start game: GameManager");
+            gameState = GameStateEnum.Playing;
             PhotonView.Find(allPlayers_ViewIds[PhotonNetwork.LocalPlayer.ActorNumber - 1])
                 .GetComponent<PlayerController>().StartGame();
             LevelInfo.Instance.StartGame();

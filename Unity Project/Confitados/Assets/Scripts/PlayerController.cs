@@ -110,13 +110,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             playerInterfaceUI = Instantiate(PlayerInterfaceUIPrefab);
             playerInterfaceUI.Initialize(this);
         }
-        
+
+
         //Register player on gameManager
-        if (photonView.IsMine)
-            GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All,
-                PhotonNetwork.LocalPlayer.ActorNumber,
-                photonView.ViewID
-            );
+        GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All,
+            PhotonNetwork.LocalPlayer.ActorNumber,
+            photonView.ViewID
+        );
 
         //Setup movement
         dashDirection = input.faceDirection;
@@ -149,6 +149,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void Update()
     {
+        if (GameManager.Instance.gameState != GameManager.GameStateEnum.Playing) return;
+        
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
@@ -197,7 +199,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.gameState != GameManager.GameStateEnum.Playing) return;
+        
         //Check if I'm dead
+        if(playerInfo.Lives == 0) return;
 
         //Check if I'm falling
         if (executeFall)
@@ -278,14 +283,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
     #endregion
-    
+
     #region Game Start
 
     public void StartGame()
     {
         if (photonView.IsMine) input.enabled = true;
     }
-    
+
     #endregion
 
     #region Triggers

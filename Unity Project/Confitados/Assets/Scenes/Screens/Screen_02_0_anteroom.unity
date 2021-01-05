@@ -2194,5 +2194,5 @@ MonoBehaviour:
   if_roomCode_create: {fileID: 1282732422}
   if_roomCode_join: {fileID: 134601823}
   log: {fileID: 873327315}
-  maxPlayersInRoom: 4
+  maxPlayersInRoom: 6
   minPlayersInRoom: 2
