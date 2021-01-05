@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 {
     #region Variables
+
+    [SerializeField] private Lobby_PlayerInfo playerLobbyInfoPrefab;
     
     [SerializeField] private Text log;
     
@@ -18,13 +20,27 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     [SerializeField] private byte minPlayersInRoom = 2;
     [SerializeField] private int currentPlayersInRoom = 0;
     [SerializeField] private Text playerCount;
-
+    
+    private int readyPlayersCount = 0;
+    private List<int> playerViewIds;
+    
     //Level
     private Levels.LevelsEnum choosedLevel = Levels.LevelsEnum.Galletown;
     
     #endregion
     
     #region UnityCallbacks
+
+    private void Start()
+    {
+        playerViewIds = new List<int>();
+        playerViewIds.Add(-1);
+
+        PhotonNetwork.Instantiate(playerLobbyInfoPrefab.name, Vector3.zero, Quaternion.identity, 0)
+            .GetComponent<Lobby_PlayerInfo>().Initialize(this);
+        
+        GetComponent<Lobby_UI>().SetLevelText(Levels.GetString(choosedLevel));
+    }
 
     private void FixedUpdate()
     {
@@ -49,6 +65,40 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
     #region Photon Callbacks
 
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        
+        //base.OnPlayerEnteredRoom(newPlayer);
+        Debug.Log("Player Entered room");
+        playerViewIds.Add(-1);
+        CheckAllReady();
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        
+        Debug.Log("Player Left room");
+        //base.OnPlayerLeftRoom(otherPlayer);
+
+        bool wasReady = PhotonView.Find(playerViewIds[otherPlayer.ActorNumber - 1]).GetComponent<Lobby_PlayerInfo>().GetReady();
+
+        if (wasReady)
+        {
+            readyPlayersCount--;
+        }
+        
+        CheckAllReady();
+    }
+
+    public override void OnLeftRoom()
+    {
+        //base.OnLeftRoom();
+        
+        ScreenManager.GoToScreen("Screen_02_0_anteroom");
+    }
+
     public override void OnDisconnected(DisconnectCause cause)
     {
         //base.OnDisconnected(cause);
@@ -70,9 +120,55 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     
     public void LeaveRoom()
     {
+        //ScreenManager.GoToScreen("Screen_02_0_anteroom");
         PhotonNetwork.LeaveRoom(true);
-        ScreenManager.GoToScreen("Screen_02_0_anteroom");
+        //ScreenManager.GoToScreen("Screen_02_0_anteroom");
+    }
+
+    public void NextLevel()
+    {
+        choosedLevel = Levels.GetNextEnum(choosedLevel);
+        photonView.RPC("RpcShowLevel", RpcTarget.All, Levels.GetString(choosedLevel));
+    }
+
+    public void PreviousLevel()
+    {
+        choosedLevel = Levels.GetPreviousEnum(choosedLevel);
+        photonView.RPC("RpcShowLevel", RpcTarget.All, Levels.GetString(choosedLevel));
+    }
+
+    [PunRPC] //All clients
+    private void RpcShowLevel(string levelName)
+    {
+        GetComponent<Lobby_UI>().SetLevelText(levelName);
+    }
+
+    [PunRPC] //Only server
+    public void CmdRegister(int actorNumber, int viewId)
+    {
+        playerViewIds[actorNumber-1] = viewId;
+    }
+    
+    [PunRPC] //Only server
+    public void CmdSetReady(int actorNumber, bool ready)
+    {
+        this.readyPlayersCount += ready ? 1 : -1;
+
+        CheckAllReady();
+    }
+
+    private void CheckAllReady()
+    {
+        if (readyPlayersCount == PhotonNetwork.PlayerList.Length)
+        {
+            GetComponent<Lobby_UI>().SetReady(true);
+        }
+        else
+        {
+            GetComponent<Lobby_UI>().SetReady(false);
+        }
     }
     
     #endregion
+    
 }

@@ -25,4 +25,49 @@ public class Levels : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
         }
     }
+
+    public static LevelsEnum GetNextEnum(LevelsEnum level)
+    {
+        switch (level)
+        {
+            case LevelsEnum.Galletown:
+                return LevelsEnum.TartaDeTortas;
+                break;
+            case LevelsEnum.TartaDeTortas:
+                return LevelsEnum.Galletown;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(level), level, null);
+        }
+    }
+    
+    public static LevelsEnum GetPreviousEnum(LevelsEnum level)
+    {
+        switch (level)
+        {
+            case LevelsEnum.Galletown:
+                return LevelsEnum.TartaDeTortas;
+                break;
+            case LevelsEnum.TartaDeTortas:
+                return LevelsEnum.Galletown;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(level), level, null);
+        }
+    }
+
+    public static string GetString(LevelsEnum level)
+    {
+        switch (level)
+        {
+            case LevelsEnum.Galletown:
+                return "Galletown";
+                break;
+            case LevelsEnum.TartaDeTortas:
+                return "Tarta de tortas";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(level), level, null);
+        }
+    }
 }
