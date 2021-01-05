@@ -33,6 +33,7 @@ namespace Photon.Game
         //Use events when the sender does not need to know what is going to happen next
         //    and multiple actions have to be made in consequence, in order to save RPC calls.
         //public const byte RequestRespawnCode = 1;
+        public const byte CountdownCode = 1;
         public const byte PlayerDeadCode = 2;
         public const byte WinCode = 3;
 
@@ -251,8 +252,103 @@ namespace Photon.Game
         }
 
         #endregion
+        
+        #region Game Countdown
 
-        #region PlayerMethods
+        /* Cuidado! Si mandas demasiados RPCs en el mismo game loop, el navegador excede su límite de memoria!!
+        private IEnumerator GameStartCountdownCoroutine()
+        {
+            //int localCountdown = countdownTimeActual;
+            while (countdownTimeActual > 0)
+            {
+                Debug.Log("Inicio del while");
+                //Debug.Log("Countdown local: " + localCountdown);
+                Debug.Log("Countdown: " + countdownTimeActual);
+                //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+                //localCountdown--;
+                countdownTimeActual--;
+                //Debug.Log("Wait for seconds enter: " + countdownTimeActual);
+                //yield return waitASecond;
+                //Debug.Log("Wait for seconds exit: " + countdownTimeActual);
+            }
+            
+            //Zero
+            //Debug.Log("Countdown: " + countdownTimeActual);
+            //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+            photonView.RPC("RpcStartGame", RpcTarget.All);
+
+            //Deactivate countdown
+            //yield return waitASecond;
+            countdownTimeActual--;
+            Debug.Log("Countdown: " + countdownTimeActual);
+            //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+            
+            yield break;
+        }
+        */
+
+        /*
+        [PunRPC] //All
+        private void RpcSetCountdownText(int time)
+        {
+            PlayerManager.LocalPlayerInstance
+                .GetComponent<PlayerController>().playerInterfaceUI.SetCountdown(time);
+        }
+        */
+        
+        //Usando eventos
+        private IEnumerator GameStartCountdownCoroutine()
+        {
+            //Event init
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions {Receivers = ReceiverGroup.All};
+
+            while (countdownTimeActual > 0)
+            {
+                Debug.Log("Inicio del while");
+                Debug.Log("Countdown: " + countdownTimeActual);
+
+                //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+                PhotonNetwork.RaiseEvent(GameManager.CountdownCode, new object[] {(object) countdownTimeActual},
+                    raiseEventOptions,
+                    SendOptions.SendReliable);
+
+                countdownTimeActual--;
+                //Debug.Log("Wait for seconds enter: " + countdownTimeActual);
+                yield return waitASecond;
+                //Debug.Log("Wait for seconds exit: " + countdownTimeActual);
+            }
+
+            //Zero
+            Debug.Log("Countdown: " + countdownTimeActual);
+            PhotonNetwork.RaiseEvent(GameManager.CountdownCode, new object[] {(object) countdownTimeActual},
+                raiseEventOptions,
+                SendOptions.SendReliable);
+            //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+            photonView.RPC("RpcStartGame", RpcTarget.All);
+
+            //Deactivate countdown
+            yield return waitASecond;
+            countdownTimeActual--;
+            Debug.Log("Countdown: " + countdownTimeActual);
+            PhotonNetwork.RaiseEvent(GameManager.CountdownCode, new object[] {(object) countdownTimeActual},
+                raiseEventOptions,
+                SendOptions.SendReliable);
+            //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
+        }
+
+        [PunRPC] //All
+        private void RpcStartGame()
+        {
+            Debug.Log("Start game: GameManager");
+            gameState = GameStateEnum.Playing;
+            PhotonView.Find(allPlayers_ViewIds[PhotonNetwork.LocalPlayer.ActorNumber - 1])
+                .GetComponent<PlayerController>().StartGame();
+            LevelInfo.Instance.StartGame();
+        }
+        
+        #endregion
+        
+        #region Player Methods
 
         [PunRPC] //Called on client side only
         private void RpcInstantiatePlayer(Vector3 initPos, Quaternion initRot)
@@ -275,99 +371,11 @@ namespace Photon.Game
             //Si se han registrado todos, iniciar la cuenta atrás
             if (alivePlayers_ViewIds.Count == PhotonNetwork.PlayerList.Length)
             {
-                photonView.RPC("RpcStartGame", RpcTarget.All);
-                //countdownTimeActual = countdownTime;
-                //StartCoroutine(GameStartCountdownCoroutine());
+                //photonView.RPC("RpcStartGame", RpcTarget.All);
+                countdownTimeActual = countdownTime;
+                StartCoroutine(GameStartCountdownCoroutine());
             }
         }
-
-        private IEnumerator GameStartCountdownCoroutine()
-        {
-            int localCountdown = countdownTimeActual;
-            while (countdownTimeActual > 0)
-            {
-                Debug.Log("Inicio del while");
-                Debug.Log("Countdown local: " + localCountdown);
-                Debug.Log("Countdown: " + countdownTimeActual);
-                photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
-                localCountdown--;
-                countdownTimeActual--;
-                Debug.Log("Wait for seconds enter: " + countdownTimeActual);
-                yield return waitASecond;
-                //Debug.Log("Wait for seconds exit: " + countdownTimeActual);
-            }
-            
-            //Zero
-            Debug.Log("Countdown: " + countdownTimeActual);
-            photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
-            photonView.RPC("RpcStartGame", RpcTarget.All);
-
-            //Deactivate countdown
-            yield return waitASecond;
-            countdownTimeActual--;
-            Debug.Log("Countdown: " + countdownTimeActual);
-            photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
-        }
-
-        [PunRPC] //All
-        private void RpcSetCountdownText(int time)
-        {
-            PlayerManager.LocalPlayerInstance
-                .GetComponent<PlayerController>().playerInterfaceUI.SetCountdown(time);
-        }
-
-        [PunRPC] //All
-        private void RpcStartGame()
-        {
-            Debug.Log("Start game: GameManager");
-            gameState = GameStateEnum.Playing;
-            PhotonView.Find(allPlayers_ViewIds[PhotonNetwork.LocalPlayer.ActorNumber - 1])
-                .GetComponent<PlayerController>().StartGame();
-            LevelInfo.Instance.StartGame();
-        }
-
-        /* Old respawn call system
-        //Executed in client
-        public void RequestRespawn(PlayerController playerController)
-        {
-            if (this.playerController == null)
-                this.playerController = playerController;
-
-            photonView.RPC("CmdRespawnPlayer", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        }
-
-        //Executed in server
-        [PunRPC]
-        private void CmdRespawnPlayer(Player player)
-        {
-            Debug.Log("Cmd: Checking for free respawn slots...");
-            Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
-
-            //Devuelve la posición de respawn al player que la solicitó
-            photonView.RPC("RpcSetRespawnPos", player, initPos.position, initPos.rotation);
-        }
-
-        //Executed in client
-        [PunRPC]
-        private void RpcSetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
-        {
-            playerController.SetRespawnPos(respawnPos, respawnRot);
-        }
-        */
-
-
-        [PunRPC] //Executed in server
-        private void CmdRespawnPlayer(int actorNumber, PhotonMessageInfo photonMessageInfo)
-        {
-            Debug.Log("Cmd: Checking for free respawn slots...");
-            Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
-
-            //Devuelve la posición de respawn al player que la solicitó
-            PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerController>()
-                .photonView.RPC("RpcSetRespawnPos", photonMessageInfo.Sender,
-                    initPos.position, initPos.rotation);
-        }
-
 
         [PunRPC] //Server side only
         public void CmdGetAlivePlayer(int actorNumber, int currentPlayerActorNumber, bool forward,
@@ -455,6 +463,52 @@ namespace Photon.Game
         }
         */
 
+        #region Player Respawn
+
+        /* Old respawn call system
+        //Executed in client
+        public void RequestRespawn(PlayerController playerController)
+        {
+            if (this.playerController == null)
+                this.playerController = playerController;
+
+            photonView.RPC("CmdRespawnPlayer", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
+        }
+
+        //Executed in server
+        [PunRPC]
+        private void CmdRespawnPlayer(Player player)
+        {
+            Debug.Log("Cmd: Checking for free respawn slots...");
+            Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
+
+            //Devuelve la posición de respawn al player que la solicitó
+            photonView.RPC("RpcSetRespawnPos", player, initPos.position, initPos.rotation);
+        }
+
+        //Executed in client
+        [PunRPC]
+        private void RpcSetRespawnPos(Vector3 respawnPos, Quaternion respawnRot)
+        {
+            playerController.SetRespawnPos(respawnPos, respawnRot);
+        }
+        */
+
+
+        [PunRPC] //Executed in server
+        private void CmdRespawnPlayer(int actorNumber, PhotonMessageInfo photonMessageInfo)
+        {
+            Debug.Log("Cmd: Checking for free respawn slots...");
+            Transform initPos = LevelInfo.GetInstance().GetRandomFreeInitPos();
+
+            //Devuelve la posición de respawn al player que la solicitó
+            PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerController>()
+                .photonView.RPC("RpcSetRespawnPos", photonMessageInfo.Sender,
+                    initPos.position, initPos.rotation);
+        }
+        
+        #endregion
+        
         #endregion
     }
 }

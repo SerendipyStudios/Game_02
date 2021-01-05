@@ -253,6 +253,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
         switch (eventCode)
         {
+            case GameManager.CountdownCode:
+                datas = ((object[]) photonEvent.CustomData);
+                playerInterfaceUI.SetCountdown((int) datas[0]);
+                break;
             case GameManager.PlayerDeadCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
                 if (cameraFollow.GetCameraMode() != CameraFollow.CameraModeEnum.Win)
