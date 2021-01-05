@@ -56,11 +56,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     //public static GameObject LocalPlayerInstance; //Needed to avoid instancing the player again when updating the scene
 
     //Linked objects
-    [Header("Player UI")] 
-    public PlayerUI PlayerUIPrefab;
+    [Header("Player UI")] public PlayerUI PlayerUIPrefab;
     public PlayerControlUI PlayerInputUIPrefab;
     public PlayerCameraSpectatorUI PlayerCameraSpectatorUIPrefab;
     public PlayerInterfaceUI PlayerInterfaceUIPrefab;
+
+    public PlayerInterfaceUI playerInterfaceUI;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -103,6 +104,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void Start()
     {
+        //Instantiate interface
+        if (PlayerInterfaceUIPrefab != null)
+        {
+            playerInterfaceUI = Instantiate(PlayerInterfaceUIPrefab);
+            playerInterfaceUI.Initialize(this);
+        }
+        
         //Register player on gameManager
         if (photonView.IsMine)
             GameManager.Instance.photonView.RPC("CmdRegisterPlayer", RpcTarget.All,
@@ -137,10 +145,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
         }
-        
-        //Instantiate interface
-        if (PlayerInterfaceUIPrefab != null)
-            Instantiate(PlayerInterfaceUIPrefab).Initialize(this);
     }
 
     private void Update()
@@ -215,7 +219,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         rb.AddForce(movement);
         transform.rotation = targetRotation;
     }
-    
+
     public void OnEnable()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
@@ -232,16 +236,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
     #endregion
-    
+
     #region Photon Callbacks
-    
+
     public void OnEvent(EventData photonEvent)
     {
         //Debug.Log("Camera Spectator: EventCode received.");
         byte eventCode = photonEvent.Code;
         object[] datas;
         int _actorNumber;
-            
+
         switch (eventCode)
         {
             case GameManager.PlayerDeadCode:
@@ -253,22 +257,33 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
                     if (_actorNumber == cameraFollow.GetPlayer())
                         ChangeCameraSpectatorPlayer(true);
                 }
+
                 break;
             case GameManager.WinCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
                 datas = ((object[]) photonEvent.CustomData);
                 _actorNumber = (int) datas[0];
-                
+
                 //Paralyze all players
                 rb.constraints = RigidbodyConstraints.FreezeAll;
-                
+
                 //Set close-up camera
-                cameraFollow.SetPlayer(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber)).GetComponent<PlayerController>());
+                cameraFollow.SetPlayer(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber))
+                    .GetComponent<PlayerController>());
                 cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Win);
                 break;
             default:
                 break;
         }
+    }
+
+    #endregion
+    
+    #region Game Start
+
+    public void StartGame()
+    {
+        if (photonView.IsMine) input.enabled = true;
     }
     
     #endregion
@@ -390,11 +405,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
             //Setup camera mode
             GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
-                PhotonNetwork.LocalPlayer.ActorNumber, 
+                PhotonNetwork.LocalPlayer.ActorNumber,
                 -1,
                 null
-                );
-            
+            );
+
             //Show camera spectator GUI
             Instantiate(PlayerCameraSpectatorUIPrefab).Initialize(this);
         }
@@ -412,7 +427,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
     #region Camera Methods
-    
+
     //Client side only
     [PunRPC]
     public void RpcSetCameraDied(int _goViewId)
@@ -420,7 +435,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         if (_goViewId != -1)
         {
             cameraFollow.SetPlayer(PhotonView.Find(_goViewId).GetComponent<PlayerController>());
-            if(cameraFollow.GetCameraMode() == CameraFollow.CameraModeEnum.Disconnected)
+            if (cameraFollow.GetCameraMode() == CameraFollow.CameraModeEnum.Disconnected)
                 cameraFollow.SetCameraMode(CameraFollow.CameraModeEnum.Spectator);
         }
         else
@@ -432,15 +447,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     public void ChangeCameraSpectatorPlayer(bool forward)
     {
         Debug.Log("ChangeCameraSpectatorPlayer");
-        
+
         //Setup camera mode
         GameManager.Instance.photonView.RPC("CmdGetAlivePlayer", RpcTarget.MasterClient,
-            PhotonNetwork.LocalPlayer.ActorNumber, 
+            PhotonNetwork.LocalPlayer.ActorNumber,
             cameraFollow.GetPlayer(),
             forward
-            );
+        );
     }
-    
+
     #endregion
 
     //Clients
@@ -469,6 +484,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     #endregion
 
     #region Interaction Methods
+
     public void ImproveSuperDash()
     {
         if (superDashImprovements < 5)
@@ -477,5 +493,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             superDashImprovements++;
         }
     }
+
     #endregion
 }

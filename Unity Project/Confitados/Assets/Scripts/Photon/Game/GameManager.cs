@@ -16,6 +16,7 @@ namespace Photon.Game
         //Game
         public static GameManager Instance;
         [SerializeField] public GameObject playerPrefab;
+        [SerializeField] private int countdownTime = 3;
 
         /* Old player tracking data structure
         //private PlayerInfo[] playerInfos;
@@ -42,7 +43,7 @@ namespace Photon.Game
         }
 
         public GameStateEnum gameState = GameStateEnum.Init;
-        
+
         #endregion
 
         #region Unity Callbacks
@@ -176,21 +177,21 @@ namespace Photon.Game
         public override void OnDisconnected(DisconnectCause cause)
         {
             //Does not execute because this is a networked object. Thus will be destroyed on disconnect.
-            
+
             Debug.Log("OnDisconnected");
             //SceneManager.LoadScene("Screen_02_0_anteroom");
             //base.OnDisconnected(cause);
         }
 
         #endregion
-        
+
         #region Getters
 
         public int GetPlayerViewId(int _actorNumber)
         {
             return allPlayers_ViewIds[_actorNumber - 1];
         }
-        
+
         #endregion
 
         #region SceneMethods
@@ -214,11 +215,12 @@ namespace Photon.Game
         {
             Debug.Log("Game Ended");
             gameState = GameStateEnum.Finished;
-            
+
             //Send event
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
-            PhotonNetwork.RaiseEvent(GameManager.WinCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
-            
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions {Receivers = ReceiverGroup.All};
+            PhotonNetwork.RaiseEvent(GameManager.WinCode, new object[] {(object) actorNumber}, raiseEventOptions,
+                SendOptions.SendReliable);
+
             //Wait x seconds and launch nextLevel method
             StartCoroutine(NextLevelCoroutine());
         }
@@ -234,7 +236,7 @@ namespace Photon.Game
             //Implement here a script if we want to support multiple games in a row. [HERE]
             PhotonNetwork.LoadLevel("Screen_02_3_results");
         }
-        
+
         public void LeaveGame()
         {
             Debug.Log("LeaveGame");
@@ -265,6 +267,44 @@ namespace Photon.Game
             PlayerInfo playerInfo = PhotonView.Find(viewId).gameObject.GetComponent<PlayerInfo>();
             allPlayers_ViewIds[actorNumber - 1] = viewId;
             alivePlayers_ViewIds.Add(viewId);
+
+            //Si se han registrado todos, iniciar la cuenta atrás
+            if (allPlayers_ViewIds.Length == PhotonNetwork.PlayerList.Length)
+                StartCoroutine(GameStartCountdownCoroutine(countdownTime));
+        }
+
+        private IEnumerator GameStartCountdownCoroutine(int time)
+        {
+            while (time != 0)
+            {
+                photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
+                yield return new WaitForSeconds(1);
+                time--;
+            }
+            
+            //Zero
+            photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
+            photonView.RPC("RpcStartGame", RpcTarget.All);
+            
+            //Deactivate countdown
+            yield return new WaitForSeconds(1);
+            time--;
+            photonView.RPC("RpcSetCountdownText", RpcTarget.All, time);
+        }
+
+        [PunRPC] //All
+        private void RpcSetCountdownText(int time)
+        {
+            PlayerManager.LocalPlayerInstance
+                .GetComponent<PlayerController>().playerInterfaceUI.SetCountdown(time);
+        }
+
+        [PunRPC] //All
+        private void RpcStartGame()
+        {
+            PhotonView.Find(allPlayers_ViewIds[PhotonNetwork.LocalPlayer.ActorNumber - 1])
+                .GetComponent<PlayerController>().StartGame();
+            LevelInfo.Instance.StartGame();
         }
 
         /* Old respawn call system
@@ -311,7 +351,8 @@ namespace Photon.Game
 
 
         [PunRPC] //Server side only
-        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerActorNumber, bool forward, PhotonMessageInfo photonMessageInfo)
+        public void CmdGetAlivePlayer(int actorNumber, int currentPlayerActorNumber, bool forward,
+            PhotonMessageInfo photonMessageInfo)
         {
             //Debug.Log("Get Alive player.");
             Debug.Log("GetAlivePlayer. Alive players: " + alivePlayers_ViewIds.Count);
@@ -370,16 +411,18 @@ namespace Photon.Game
             playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;
 
             //Si no es el último, borrarlo (esto puede pasar cuando la batalla final está muy ajustada)
-            if(alivePlayers_ViewIds.Count != 1)
+            if (alivePlayers_ViewIds.Count != 1)
                 alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
             //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
-            
+
             //Send event
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All};
-            PhotonNetwork.RaiseEvent(GameManager.PlayerDeadCode, new object[]{(object)actorNumber}, raiseEventOptions, SendOptions.SendReliable);
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions {Receivers = ReceiverGroup.All};
+            PhotonNetwork.RaiseEvent(GameManager.PlayerDeadCode, new object[] {(object) actorNumber}, raiseEventOptions,
+                SendOptions.SendReliable);
 
             if (alivePlayers_ViewIds.Count <= 1)
-                GameEnd(PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>().photonView.Owner.ActorNumber);
+                GameEnd(PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>().photonView.Owner
+                    .ActorNumber);
         }
 
         /* Remove alivePlayer also from client
