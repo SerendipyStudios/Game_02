@@ -163,7 +163,7 @@ La cámara será fija, y no podrá ser controlada por el personaje. Esta cámara
 
 ### 4.4. Power Ups
 
-No me acuerdo de si tenemos
+Los power ups que los jugadores pueden encontrarse en confitados son potenciadores del empujón fuerte. De esta forma, cada vez que el jugador consiga un potenciador del empujón fuerte, éste ganará más fuerza, por lo que le será más fácil arrojar enemigos de la plataforma. El empujón pequeño esté pensado para esquivar y moverse rápido, por lo que no tiene sentido que se potencia, puesto que si fuese más fuerte se convertiría automáticamente en el empujón fuerte. Potenciando el empujón fuerte se le otorga una clara ventaja a quien consiga el power up, siendo éste el único power up de todo el juego.
 
 ### 4.5. Arquitectura del Software (DAVID Y/O JULEN OS TOCA ESTO)
 
