@@ -66,7 +66,7 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 
 ### 1.8. Desarrolladores
 
-  (Inserte nombre del juego) será desarrollado por el equipo Serendipy Studios, formado por:
+  Confitados será desarrollado por el equipo Serendipy Studios, formado por:
   - Sergio López Serrano
   - David González Bella
   - Clara Bartolomé Pereira
