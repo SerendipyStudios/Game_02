@@ -271,6 +271,11 @@ Render de skins de los confites
 
 ### 9.5. PowerUps
 
+El power up de pontenciación del empujón fuerte queda representado como una galleta, que aparecerá en algún punto aleatoria del mapa.
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/powerUp.PNG" width="175">
+Galleta de power up
+
 ### 9.6. DLCs
 
 ### 9.7. Conceptart y referencias
