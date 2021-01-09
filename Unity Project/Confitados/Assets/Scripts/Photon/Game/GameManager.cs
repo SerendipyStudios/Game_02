@@ -5,7 +5,6 @@ using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
 
 namespace Photon.Game
@@ -253,7 +252,7 @@ namespace Photon.Game
         }
 
         #endregion
-        
+
         #region Game Countdown
 
         /* Cuidado! Si mandas demasiados RPCs en el mismo game loop, el navegador excede su límite de memoria!!
@@ -296,7 +295,7 @@ namespace Photon.Game
                 .GetComponent<PlayerController>().playerInterfaceUI.SetCountdown(time);
         }
         */
-        
+
         //Usando eventos
         //Only server
         private IEnumerator GameStartCountdownCoroutine()
@@ -348,9 +347,9 @@ namespace Photon.Game
                 .GetComponent<PlayerController>().StartGame();
             //LevelInfo.Instance.StartGame();
         }
-        
+
         #endregion
-        
+
         #region Player Methods
 
         [PunRPC] //Called on client side only
@@ -438,7 +437,8 @@ namespace Photon.Game
         {
             //Debug.Log("Player Died: " + actorNumber);
             PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[actorNumber - 1]).GetComponent<PlayerInfo>();
-            playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;
+            //playerInfo.RankPosition = (byte) alivePlayers_ViewIds.Count;    //Only updates masterClient's because it has not authority to override owner's value.
+            playerInfo.photonView.RPC("RpcSetRankPosition", RpcTarget.All, (byte) alivePlayers_ViewIds.Count);
 
             //Si no es el último, borrarlo (esto puede pasar cuando la batalla final está muy ajustada)
             if (alivePlayers_ViewIds.Count != 1)
@@ -451,8 +451,13 @@ namespace Photon.Game
                 SendOptions.SendReliable);
 
             if (alivePlayers_ViewIds.Count <= 1)
+            {
+                //PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerInfo>().RankPosition = (byte) alivePlayers_ViewIds.Count; //Only updates masterClient's because it has not authority to override owner's value.
+                PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerInfo>().photonView
+                    .RPC("RpcSetRankPosition", RpcTarget.All, 1);
                 GameEnd(PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>().photonView.Owner
                     .ActorNumber);
+            }
         }
 
         /* Remove alivePlayer also from client
@@ -509,9 +514,9 @@ namespace Photon.Game
                 .photonView.RPC("RpcSetRespawnPos", photonMessageInfo.Sender,
                     initPos.position, initPos.rotation);
         }
-        
+
         #endregion
-        
+
         #endregion
     }
 }
