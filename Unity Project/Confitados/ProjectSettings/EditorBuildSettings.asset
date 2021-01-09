@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tests/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
@@ -17,46 +17,46 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tests/PhotonMultiplayerScene.unity
     guid: b1c2fd6090aca0d40897f8460f5b6b15
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_00_0_LogIn.unity
     guid: 30d9966d6c98a5e4fa5e86f46d9b63a4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_01_0_MainMenu.unity
     guid: 62172a8fa83ebdb4199b50acf227cfe1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_01_1_0_Tutorial.unity
     guid: c2e426fb93306444a89ba57b4e90bcc8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_01_1_1_TutorialGame.unity
     guid: c6537e17bceeb7143a053b4cd59ecfe2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_01_2_Settings.unity
     guid: d754f2dc2ba586a45956c7a6982c7e54
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_01_3_credits.unity
     guid: 4edef1c01b5fd054fb829cf20c0598f1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_02_0_anteroom.unity
     guid: 1c73d39da5cc79d4d9cda8236febeb21
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_02_1_lobby.unity
     guid: d50d57b7cdd809a4a99e0fdb0dcb0534
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_02_2_game.unity
     guid: 63e7cd2aeb8dd6f42a91d7d804b15a8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_02_2_game_0_galletown.unity
     guid: 3354a94f9263b1b4ca981dbc30e6a965
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_02_3_results.unity
     guid: 2ddfead8cec0ece428de42e237fad299
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_03_0_shop.unity
     guid: 087241f2952c8cc46b7fb1c370a20aa5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_03_1_shop_treasure.unity
     guid: 21e74b6e2ff8eb44080218832cf6877c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Screens/Screen_03_2_shop_skins.unity
     guid: 652e2978b81ff60469cc2c3475d31f67
   m_configObjects: {}
