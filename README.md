@@ -206,7 +206,7 @@ Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma
 
 ## 8. Personajes
 
-Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugadpr elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
+Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugador elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="225">
 Imagen 2D del confite
