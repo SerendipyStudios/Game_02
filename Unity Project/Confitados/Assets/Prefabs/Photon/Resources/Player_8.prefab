@@ -110,7 +110,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c24930986d82f4b41a86403167ce070c, type: 2}
+  - {fileID: 2100000, guid: aeaa04ab0b1d0984ebb8558f9b360c24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -235,7 +235,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48825316a2dfc9946af62404718f3d70, type: 2}
+  - {fileID: 2100000, guid: 09b519fa826594843a3339d99ba24a7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -485,7 +485,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3ee2f61818f0a64796e6e877b37714b, type: 2}
+  - {fileID: 2100000, guid: 68a95a1ac22383a4eb51973e02b86b3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -588,7 +588,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5186e374bbf2e54da1703d5cc9267a2, type: 2}
+  - {fileID: 2100000, guid: 12b7375890356794b8e4b3078de65b50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -689,7 +689,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24f99ff548621fc45ba5d18c7003bda4, type: 2}
+  - {fileID: 2100000, guid: 68a95a1ac22383a4eb51973e02b86b3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -783,7 +783,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f3c717205e9acc84388ee7a7a944acf0, type: 2}
+  - {fileID: 2100000, guid: 932dea3d413cc5242b3ddc3f029329f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 3216132245782938207}
   - component: {fileID: 8173258551299607441}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_8
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
