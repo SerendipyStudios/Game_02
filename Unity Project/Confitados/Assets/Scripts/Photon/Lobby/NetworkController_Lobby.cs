@@ -112,8 +112,12 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
     #region Methods
 
+    //Only server
     public void StartGame()
     {
+        //Set the room to not joinable
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        
         //When multiple levels are made, select between them here
         PhotonNetwork.LoadLevel(Levels.GetScene(choosedLevel));
     }

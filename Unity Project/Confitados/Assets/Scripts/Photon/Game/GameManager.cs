@@ -297,6 +297,7 @@ namespace Photon.Game
         */
         
         //Usando eventos
+        //Only server
         private IEnumerator GameStartCountdownCoroutine()
         {
             //Event init
@@ -324,7 +325,8 @@ namespace Photon.Game
                 raiseEventOptions,
                 SendOptions.SendReliable);
             //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
-            photonView.RPC("RpcStartGame", RpcTarget.All);
+            //photonView.RPC("RpcStartGame", RpcTarget.All);
+            LevelInfo.Instance.StartGame();
 
             //Deactivate countdown
             yield return waitASecond;
