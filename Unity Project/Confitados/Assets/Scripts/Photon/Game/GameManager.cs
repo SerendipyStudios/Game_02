@@ -454,7 +454,7 @@ namespace Photon.Game
             {
                 //PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerInfo>().RankPosition = (byte) alivePlayers_ViewIds.Count; //Only updates masterClient's because it has not authority to override owner's value.
                 PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerInfo>().photonView
-                    .RPC("RpcSetRankPosition", RpcTarget.All, 1);
+                    .RPC("RpcSetRankPosition", RpcTarget.All, (byte) 1);
                 GameEnd(PhotonView.Find(alivePlayers_ViewIds[0]).GetComponent<PlayerController>().photonView.Owner
                     .ActorNumber);
             }
