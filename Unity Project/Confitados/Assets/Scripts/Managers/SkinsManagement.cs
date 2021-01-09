@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkinsManagement : MonoBehaviour
 {
     public GameObject[] playerSkins;
+    public GameObject[] playerSkinsPreviews;
 
     public int skinIndex = 0;
 
@@ -12,7 +14,9 @@ public class SkinsManagement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            playerSkinsPreviews[skinIndex].SetActive(false);
             skinIndex = ++skinIndex < playerSkins.Length ? skinIndex++ : 0;
+            playerSkinsPreviews[skinIndex].SetActive(true);
         }
         else if (Input.GetMouseButtonDown(2))
         {
@@ -20,7 +24,14 @@ public class SkinsManagement : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
+            playerSkinsPreviews[skinIndex].SetActive(false);
             skinIndex = --skinIndex >= 0 ? skinIndex-- : playerSkins.Length - 1;
+            playerSkinsPreviews[skinIndex].SetActive(true);
         }
+    }
+
+    public void UpdateSkinPreview()
+    {
+        
     }
 }
