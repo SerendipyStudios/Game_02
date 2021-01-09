@@ -324,26 +324,44 @@ La propia pantalla de resultados tiene su propio efecto de sonido, siendo éste 
 
 - Música:
 Música de partida: https://freesound.org/people/B_Sean/sounds/421886/
+
 Música de menú: https://freesound.org/people/xsgianni/sounds/388079/
 
 - Efectos de sonido: 
 Pantalla de resultados: https://freesound.org/people/awrecording.it/sounds/547657/
+
 Fin de partida: https://freesound.org/people/PearceWilsonKing/sounds/249524/
+
 Romper muros: https://freesound.org/people/InspectorJ/sounds/429593/
+
 Semáforo de inicio de partida: https://freesound.org/people/Unnecro/sounds/165990/
+
 Caída de la plataforma: https://freesound.org/people/Robinhood76/sounds/326064/
+
 Colisión entre confites: https://freesound.org/people/Lukeo135/sounds/540727/
+
 Subida de nivel de empujón fuerte: https://freesound.org/people/Mativve/sounds/391539/
-Finalización del enfriamiento del empujón (se puede volver a usar): https://freesound.org/people/NenadSimic/sounds/171697/
+
+Finalización del enfriamiento del empujón: https://freesound.org/people/NenadSimic/sounds/171697/
+
 Empujón fuerte: https://freesound.org/people/Maemi_no_yume/sounds/398634/
+
 Empujón débil: https://freesound.org/people/Kastenfrosch/sounds/521999/
+
 Botón de estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+
 Botón de empezar partida: https://freesound.org/people/NenadSimic/sounds/171697/
+
 Botón de cancelar estar listo: https://freesound.org/people/NenadSimic/sounds/171697/
+
 Botón básico: https://freesound.org/people/InspectorJ/sounds/429593/
+
 Pisadas en caramelo: https://freesound.org/people/Breviceps/sounds/447928/
+
 Pisadas en helado: https://freesound.org/people/arnaud%20coutancier/sounds/418238/
+
 Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
+
 
 
 ## 11. Fecha de lanzamiento 
