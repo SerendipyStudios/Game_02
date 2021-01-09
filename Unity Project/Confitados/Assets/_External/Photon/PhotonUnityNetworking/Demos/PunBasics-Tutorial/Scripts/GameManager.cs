@@ -26,9 +26,9 @@ namespace Photon.Pun.Demo.PunBasics
 	public class GameManager : MonoBehaviourPunCallbacks
     {
 
-		#region Public Fields
+        #region Public Fields
 
-		static public GameManager Instance;
+        public static GameManager Instance;
 
 		#endregion
 
