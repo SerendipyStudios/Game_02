@@ -342,7 +342,7 @@ Colisión entre confites: https://freesound.org/people/Lukeo135/sounds/540727/
 
 Subida de nivel de empujón fuerte: https://freesound.org/people/Mativve/sounds/391539/
 
-Finalización del enfriamiento del empujón (se puede volver a usar): https://freesound.org/people/NenadSimic/sounds/171697/
+Finalización del enfriamiento del empujón: https://freesound.org/people/NenadSimic/sounds/171697/
 
 Empujón fuerte: https://freesound.org/people/Maemi_no_yume/sounds/398634/
 
