@@ -59,6 +59,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
             stream.SendNext(isDashing);
             stream.SendNext(isSuperDashing);
             stream.SendNext(isFalling);
+            stream.SendNext(rankPosition);
         }
         else
         {
@@ -67,8 +68,20 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
             this.isDashing = (bool) stream.ReceiveNext();
             this.isSuperDashing = (bool) stream.ReceiveNext();
             this.isFalling = (bool) stream.ReceiveNext();
+            this.rankPosition = (byte) stream.ReceiveNext();
         }
     }
 
+    #endregion
+    
+    #region Methods
+
+    //Called on owner client
+    [PunRPC]
+    public void RpcSetRankPosition(byte position)
+    {
+        RankPosition = position;
+    }
+    
     #endregion
 }

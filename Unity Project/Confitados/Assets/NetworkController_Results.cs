@@ -14,6 +14,7 @@ public class NetworkController_Results : MonoBehaviour
         int viewId = GameManager.Instance.GetPlayerViewId(PhotonNetwork.LocalPlayer.ActorNumber);
         GameObject localPlayer = PhotonView.Find(viewId).gameObject;
         int position = localPlayer.GetComponent<PlayerInfo>().RankPosition;
+        Debug.Log("My position is: " + position);
 
         PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies", 0) + AssignRewards(position));
 
