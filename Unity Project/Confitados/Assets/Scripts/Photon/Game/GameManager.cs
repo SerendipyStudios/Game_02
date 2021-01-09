@@ -325,7 +325,7 @@ namespace Photon.Game
                 raiseEventOptions,
                 SendOptions.SendReliable);
             //photonView.RPC("RpcSetCountdownText", RpcTarget.All, countdownTimeActual);
-            //photonView.RPC("RpcStartGame", RpcTarget.All);
+            photonView.RPC("RpcStartGame", RpcTarget.All);
             LevelInfo.Instance.StartGame();
 
             //Deactivate countdown
@@ -345,7 +345,7 @@ namespace Photon.Game
             gameState = GameStateEnum.Playing;
             PhotonView.Find(allPlayers_ViewIds[PhotonNetwork.LocalPlayer.ActorNumber - 1])
                 .GetComponent<PlayerController>().StartGame();
-            LevelInfo.Instance.StartGame();
+            //LevelInfo.Instance.StartGame();
         }
         
         #endregion
