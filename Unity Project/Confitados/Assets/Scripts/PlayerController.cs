@@ -128,8 +128,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         //Instantiate Controls
         if (PlayerInputUIPrefab != null)
         {
-            PlayerControlUI inputUiGo = Instantiate(PlayerInputUIPrefab);
-            input.Initialize(inputUiGo.GetComponent<PlayerControlUI>());
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                PlayerControlUI inputUiGo = Instantiate(PlayerInputUIPrefab);
+                input.Initialize(inputUiGo.GetComponent<PlayerControlUI>());
+            }
         }
         else
         {
