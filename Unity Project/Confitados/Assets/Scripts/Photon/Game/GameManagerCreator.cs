@@ -13,7 +13,7 @@ public class GameManagerCreator : MonoBehaviourPunCallbacks
     private void Start()
     {
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate(GameManagerPrefab.name, Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.InstantiateRoomObject(GameManagerPrefab.name, Vector3.zero, Quaternion.identity, 0);
         //Destroy(this.gameObject);
     }
 
