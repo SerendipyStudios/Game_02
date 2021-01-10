@@ -34,6 +34,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private Material fallAdviseMaterial;
 
     private GameObject clone;
+    private bool pieceFallCoroutineExecuted = false;
 
     #endregion
 
@@ -184,7 +185,26 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
 
     public void StartGame()
     {
-        StartCoroutine(PieceFallCoroutine());
+        if (!pieceFallCoroutineExecuted)
+        {
+            pieceFallCoroutineExecuted = true;
+
+            if (clone != null)
+            {
+                photonView.RPC("RpcDeleteAdvice", RpcTarget.Others);
+                Destroy(clone);
+            }
+
+            for (int i = worldPieces_Stack.Count; i < worldPieces.Count; i++)
+            {
+                GameObject piece = worldPieces[worldPieces.Count - i -1];
+                Rigidbody rb = piece.GetComponent<Rigidbody>();
+                rb.useGravity = true;
+                rb.constraints -= RigidbodyConstraints.FreezePositionY;
+            }
+            
+            StartCoroutine(PieceFallCoroutine());
+        }
     }
 
     private IEnumerator PieceFallCoroutine()
