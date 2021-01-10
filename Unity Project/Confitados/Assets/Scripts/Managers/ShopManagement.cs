@@ -9,23 +9,31 @@ public class ShopManagement : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
+
+        //Check if the player has that skin
+        for (int i = 0; i < 5; i++)
+        {
+            if(PlayerPrefs.GetInt("PaidSkin_" + (i + 6).ToString()) == 1)
+                buySkinsButtons[i].interactable = false;
+        }
+
         //On click events for all buttons
-        buySkinsButtons[0].onClick.AddListener(() => BuySkin(200, 0, 6));
-        buySkinsButtons[1].onClick.AddListener(() => BuySkin(200, 0, 7));
-        buySkinsButtons[2].onClick.AddListener(() => BuySkin(500, 3, 8));
-        buySkinsButtons[3].onClick.AddListener(() => BuySkin(500, 3, 9));
-        buySkinsButtons[4].onClick.AddListener(() => BuySkin(500, 3, 10));
+        buySkinsButtons[0].onClick.AddListener(() => BuySkin(200, 0, 6, 0));
+        buySkinsButtons[1].onClick.AddListener(() => BuySkin(200, 0, 7, 1));
+        buySkinsButtons[2].onClick.AddListener(() => BuySkin(500, 3, 8, 2));
+        buySkinsButtons[3].onClick.AddListener(() => BuySkin(500, 3, 9, 3));
+        buySkinsButtons[4].onClick.AddListener(() => BuySkin(500, 3, 10, 4));
     }
 
-    public void BuySkin(int priceCookies, int priceChocolates, int unlockIndex)
+    public void BuySkin(int priceCookies, int priceChocolates, int unlockIndex, int buttonIndex)
     {
-        PlayerPrefs.DeleteAll();
         if (PlayerPrefs.GetInt("Cookies") >= priceCookies && PlayerPrefs.GetInt("Chocolates") >= priceChocolates)
         {
             PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies") - priceCookies);
             PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Chocolates") - priceChocolates);
             PlayerPrefs.SetInt("PaidSkin_" + unlockIndex.ToString(), 1); //Unlock skin
-            Debug.Log("SKIN " + "PaidSkin_" + unlockIndex + " UNLOCKED!");
+            buySkinsButtons[buttonIndex].interactable = false;
        }
     }
 }
