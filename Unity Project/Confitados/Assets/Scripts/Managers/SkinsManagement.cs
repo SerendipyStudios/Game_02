@@ -27,7 +27,7 @@ public class SkinsManagement : MonoBehaviour
     public void PreviousSkin()
     {
         skinIndex = --skinIndex >= 0 ? skinIndex-- : playerSkins.Length - 1;
-        if (skinIndex < 0)
+        if (skinIndex > 5)
             PreviousAvailableSkin();
         UpdateSkinPreview();
     }
@@ -39,13 +39,13 @@ public class SkinsManagement : MonoBehaviour
 
     private void NextAvailableSkin()
     {
-        while(PlayerPrefs.GetInt("PaidSkin_" + skinIndex, 0) == 0 || skinIndex > 0)
+        while(PlayerPrefs.GetInt("PaidSkin_" + skinIndex, 0) == 0 && skinIndex > 0)
             skinIndex = ++skinIndex < playerSkins.Length ? skinIndex++ : 0;
     }
 
     private void PreviousAvailableSkin()
     {
-        while (PlayerPrefs.GetInt("PaidSkin_" + skinIndex, 0) == 0 || skinIndex > 5)
-            skinIndex = --skinIndex >= 0 ? skinIndex-- : playerSkins.Length - 1;
+        while (PlayerPrefs.GetInt("PaidSkin_" + skinIndex, 0) == 0 && skinIndex > 5)
+            skinIndex = --skinIndex >= 0 ? skinIndex-- : 5;
     }
 }

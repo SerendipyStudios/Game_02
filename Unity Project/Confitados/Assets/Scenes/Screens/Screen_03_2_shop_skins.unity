@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -201,18 +201,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 123644339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinCookies
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 500
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &123644339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,18 +319,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 211496411}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinChocolates
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 15
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &211496411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.62379986, b: 0.514151, a: 1}
+  m_Color: {r: 0.6415094, g: 0.30562478, b: 0.30884963, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -820,18 +798,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1361434414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinCookies
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 200
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1361434414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,18 +916,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1381870071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinCookies
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 400
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1381870071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,18 +1195,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1649817958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinChocolates
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1649817958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,18 +1387,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1972268296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2132160328}
-        m_MethodName: BuySkinChocolates
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1972268296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,3 +1499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3aa7c58c4c00b48991364afdcc7d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySkinsButtons:
+  - {fileID: 1361434413}
+  - {fileID: 1381870070}
+  - {fileID: 123644338}
+  - {fileID: 1649817957}
+  - {fileID: 1972268295}

@@ -1,25 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManagement : MonoBehaviour
 {
+    public Button[] buySkinsButtons;
 
-    public void BuySkinCookies(int cookies)
+    private void Start()
     {
-        if(PlayerPrefs.GetInt("Cookies") >= cookies)
-        {
-            PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies") - cookies);
-            //Unlock skin
-        }
+        //On click events for all buttons
+        buySkinsButtons[0].onClick.AddListener(() => BuySkin(200, 6, "Cookies"));
+        buySkinsButtons[1].onClick.AddListener(() => BuySkin(400, 7, "Cookies"));
+        buySkinsButtons[2].onClick.AddListener(() => BuySkin(500, 8, "Cookies"));
+        buySkinsButtons[3].onClick.AddListener(() => BuySkin(5, 9, "Chocolates"));
+        buySkinsButtons[4].onClick.AddListener(() => BuySkin(10, 10, "Chocolates"));
     }
 
-    public void BuySkinChocolates(int chocolates)
+    public void BuySkin(int price, int unlockIndex, string type)
     {
-        if (PlayerPrefs.GetInt("Chocolates") >= chocolates)
+        PlayerPrefs.DeleteAll();
+        if (PlayerPrefs.GetInt(type) >= price)
         {
-            PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Cookies") - chocolates);
-            //Unlock skin
-        }
+            PlayerPrefs.SetInt(type, PlayerPrefs.GetInt(type) - price);
+            PlayerPrefs.SetInt("PaidSkin_" + unlockIndex.ToString(), 1); //Unlock skin
+            Debug.Log("SKIN " + "PaidSkin_" + unlockIndex + " UNLOCKED!");
+       }
     }
 }
