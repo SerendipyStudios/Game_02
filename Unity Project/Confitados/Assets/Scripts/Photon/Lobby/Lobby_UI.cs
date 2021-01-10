@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Lobby_UI : MonoBehaviour
+public class Lobby_UI : MonoBehaviourPunCallbacks
 {
     [Header("Play Buttons")]
     [SerializeField] private Button readyButton; 
@@ -22,9 +23,19 @@ public class Lobby_UI : MonoBehaviour
     private void Start()
     {
         playButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        previousLevelButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        nextLevelButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
         playButton.interactable = false;
         
         roomCode.text = PhotonNetwork.CurrentRoom.Name;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        //base.OnPlayerLeftRoom(otherPlayer);
+        playButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        previousLevelButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        nextLevelButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
     }
 
     public void NewPlayer()

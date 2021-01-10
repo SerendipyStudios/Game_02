@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -34,7 +35,8 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     private void Start()
     {
         playerViewIds = new List<int>();
-        playerViewIds.Add(-1);
+        for(int i=0; i<PhotonNetwork.CurrentRoom.PlayerCount; i++)
+            playerViewIds.Add(-1);
 
         PhotonNetwork.Instantiate(playerLobbyInfoPrefab.name, Vector3.zero, Quaternion.identity, 0)
             .GetComponent<Lobby_PlayerInfo>().Initialize(this);
@@ -67,17 +69,17 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        if (!PhotonNetwork.IsMasterClient) return;
-        
         //base.OnPlayerEnteredRoom(newPlayer);
         Debug.Log("Player Entered room");
         playerViewIds.Add(-1);
         CheckAllReady();
+        
+        photonView.RPC("RpcSyncInfo", RpcTarget.All, playerViewIds.ToArray(), readyPlayersCount);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        //if (!PhotonNetwork.IsMasterClient) return;
         
         Debug.Log("Player Left room");
         //base.OnPlayerLeftRoom(otherPlayer);
@@ -89,6 +91,8 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
             readyPlayersCount--;
         }
         
+        photonView.RPC("RpcShowLevel", RpcTarget.All, Levels.GetString(choosedLevel));
+
         CheckAllReady();
     }
 
@@ -151,12 +155,14 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     public void CmdRegister(int actorNumber, int viewId)
     {
         playerViewIds[actorNumber-1] = viewId;
+        photonView.RPC("RpcSyncInfo", RpcTarget.All, playerViewIds.ToArray(), readyPlayersCount);
     }
     
     [PunRPC] //Only server
     public void CmdSetReady(int actorNumber, bool ready)
     {
         this.readyPlayersCount += ready ? 1 : -1;
+        photonView.RPC("RpcSyncInfo", RpcTarget.All, playerViewIds.ToArray(), readyPlayersCount);
 
         CheckAllReady();
     }
@@ -176,6 +182,15 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
         {
             GetComponent<Lobby_UI>().SetReady(false);
         }
+    }
+
+    //Clients
+    [PunRPC]
+    private void RpcSyncInfo(int[] viewIds, int readyPlayers)
+    {
+        Debug.Log("RpcSyncPlayerViews.");
+        playerViewIds = new List<int>(viewIds);
+        readyPlayersCount = readyPlayers;
     }
     
     #endregion
