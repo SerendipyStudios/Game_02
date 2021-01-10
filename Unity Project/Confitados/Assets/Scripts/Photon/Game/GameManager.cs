@@ -170,6 +170,11 @@ namespace Photon.Game
                 .GetComponent<PlayerInfo>();
             if (playerInfo.Lives != 0)
                 CmdPlayerDied(otherPlayer.ActorNumber);
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                LevelInfo.Instance.StartGame();
+            }
         }
 
         public override void OnLeftRoom()
@@ -442,8 +447,10 @@ namespace Photon.Game
 
             //Si no es el último, borrarlo (esto puede pasar cuando la batalla final está muy ajustada)
             if (alivePlayers_ViewIds.Count != 1)
+            {
                 alivePlayers_ViewIds.Remove(allPlayers_ViewIds[actorNumber - 1]);
-            //photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
+                photonView.RPC("RpcRemoveAlivePlayer", RpcTarget.Others, actorNumber);
+            }
 
             //Send event
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions {Receivers = ReceiverGroup.All};
@@ -460,7 +467,7 @@ namespace Photon.Game
             }
         }
 
-        /* Remove alivePlayer also from client
+        //Remove alivePlayer also from client
         //Only in client side
         [PunRPC]
         private void RpcRemoveAlivePlayer(int actorNumber)
@@ -469,7 +476,6 @@ namespace Photon.Game
             //    Execute all related methods in server.
             alivePlayers_ViewIds.Remove(actorNumber);
         }
-        */
 
         #region Player Respawn
 
