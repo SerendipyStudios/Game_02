@@ -314,6 +314,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void OnTriggerEnter(Collider other)
     {
+        //Implement normal floor drag [HERE] 
         //Floors
         if (other.gameObject.tag.CompareTo("IceFloor") == 0)
             rb.drag = iceDrag;
