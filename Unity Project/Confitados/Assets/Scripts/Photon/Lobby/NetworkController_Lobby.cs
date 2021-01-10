@@ -163,7 +163,12 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
     private void CheckAllReady()
     {
-        if (readyPlayersCount == PhotonNetwork.PlayerList.Length)
+        Debug.Log("CheckAllReady: " + readyPlayersCount + "/" + PhotonNetwork.PlayerList.Length);
+        
+        if (
+            readyPlayersCount == PhotonNetwork.PlayerList.Length &&
+            PhotonNetwork.PlayerList.Length != 1
+            )
         {
             GetComponent<Lobby_UI>().SetReady(true);
         }

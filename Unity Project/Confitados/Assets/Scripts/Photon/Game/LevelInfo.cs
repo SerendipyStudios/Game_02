@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Numerics;
 using Photon.Game;
+using Photon.Pun;
 using UnityEngine;
 using Random = System.Random;
+using Vector3 = UnityEngine.Vector3;
 
-public class LevelInfo : MonoBehaviour
+public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region Variables
 
@@ -23,10 +26,14 @@ public class LevelInfo : MonoBehaviour
 
     //World pieces
     [SerializeField] private List<GameObject> worldPieces;
+    private List<float> worldPieces_destiny;
     private Stack<GameObject> worldPieces_Stack;
     [SerializeField] private float pieceFallTime = 10;
     [SerializeField] private float pieceFallAdviceTime = 3;
+    [SerializeField] private float pieceFallMaxStep = 0.001f;
     [SerializeField] private Material fallAdviseMaterial;
+
+    private GameObject clone;
 
     #endregion
 
@@ -58,6 +65,64 @@ public class LevelInfo : MonoBehaviour
         for (var index = worldPieces.Count - 1; index >= 0; index--)
         {
             worldPieces_Stack.Push(worldPieces[index]);
+            //worldPieces_destiny[index] = worldPieces[index].transform.position.y;
+        }
+
+        worldPieces_destiny = new List<float>();
+        foreach (var piece in worldPieces)
+        {
+            worldPieces_destiny.Add(piece.transform.position.y);
+        }
+    }
+
+    //Only server
+    private void FixedUpdate()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        for (var index = 0; index < worldPieces_destiny.Count; index++)
+        {
+            worldPieces_destiny[index] = worldPieces[index].transform.position.y;
+        }
+    }
+
+    //Only clients
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient) return;
+
+        for (var index = 0; index < worldPieces.Count; index++)
+        {
+            var piece = worldPieces[index];
+            piece.transform.position =
+                Vector3.MoveTowards(
+                    piece.transform.position,
+                    Vector3.up * worldPieces_destiny[index],
+                    pieceFallMaxStep);
+        }
+    }
+
+    #endregion
+
+    #region Photon Callbacks
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            foreach (var piece_destiny in worldPieces_destiny)
+            {
+                stream.SendNext(piece_destiny);
+            }
+        }
+        else
+        {
+            // Network player, receive data
+            for (var index = 0; index < worldPieces_destiny.Count; index++)
+            {
+                worldPieces_destiny[index] = (float) stream.ReceiveNext();
+            }
         }
     }
 
@@ -116,7 +181,7 @@ public class LevelInfo : MonoBehaviour
     #endregion
 
     #region WorldPieces Methods
-    
+
     public void StartGame()
     {
         StartCoroutine(PieceFallCoroutine());
@@ -134,6 +199,7 @@ public class LevelInfo : MonoBehaviour
             //worldPieces.Remove(piece);
 
             GameObject piece = worldPieces_Stack.Pop();
+            photonView.RPC("RpcShowAdvice", RpcTarget.Others);
 
             //Show advice (misma geometría con y+0.5 parpadeando)
             GameObject clone = Instantiate(piece, piece.transform);
@@ -142,10 +208,10 @@ public class LevelInfo : MonoBehaviour
                 elem.enabled = false;
             }
 
-                //Mat change
+            //Mat change
             Renderer renderer = clone.GetComponent<Renderer>();
-                if(renderer !=null) renderer.material = fallAdviseMaterial;
-                
+            if (renderer != null) renderer.material = fallAdviseMaterial;
+
             var renderers = clone.GetComponentsInChildren<Renderer>();
             for (var index = 0; index < renderers.Length; index++)
             {
@@ -159,11 +225,45 @@ public class LevelInfo : MonoBehaviour
             Rigidbody rb = piece.GetComponent<Rigidbody>();
             rb.useGravity = true;
             rb.constraints -= RigidbodyConstraints.FreezePositionY;
-            
+
+            photonView.RPC("RpcDeleteAdvice", RpcTarget.Others);
             Destroy(clone);
-                
+
             StartCoroutine(PieceFallCoroutine());
         }
+    }
+
+    //Only clients
+    [PunRPC]
+    private void RpcShowAdvice()
+    {
+        GameObject piece = worldPieces_Stack.Pop();
+
+        //Show advice (misma geometría con y+0.5 parpadeando)
+        clone = Instantiate(piece, piece.transform);
+        foreach (var elem in clone.GetComponentsInChildren<Collider>())
+        {
+            elem.enabled = false;
+        }
+
+        //Mat change
+        Renderer renderer = clone.GetComponent<Renderer>();
+        if (renderer != null) renderer.material = fallAdviseMaterial;
+
+        var renderers = clone.GetComponentsInChildren<Renderer>();
+        for (var index = 0; index < renderers.Length; index++)
+        {
+            renderers[index].material = fallAdviseMaterial;
+        }
+
+        clone.transform.position += new Vector3(0, 0.5f, 0);
+    }
+
+    //Only clients
+    [PunRPC]
+    private void RpcDeleteAdvice()
+    {
+        Destroy(clone);
     }
 
     #endregion

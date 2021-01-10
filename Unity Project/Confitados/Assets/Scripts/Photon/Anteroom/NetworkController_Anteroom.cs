@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
 
     [SerializeField] private byte maxPlayersInRoom = 4;
     [SerializeField] private byte minPlayersInRoom = 2;
+    
+    private static System.Random random = new System.Random();
 
     #endregion
 
@@ -122,17 +125,31 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     //Private room create
     public void CreatePrivateRoom()
     {
-        string _roomCode = if_roomCode_create.text;
-        if (_roomCode.Length < 4)
-        {
-            log.text += "\nEnter a roomCode with a length greater than 4.";
-            return;
-        }
+        //string _roomCode = if_roomCode_create.text;
+        //if (_roomCode.Length < 4)
+        //{
+        //    log.text += "\nEnter a roomCode with a length greater than 4.";
+        //    return;
+        //}
+        
+        string _roomCode;
+        bool done = false;
 
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.IsVisible = false;
-        roomOptions.MaxPlayers = maxPlayersInRoom;
-        PhotonNetwork.CreateRoom(_roomCode, roomOptions, TypedLobby.Default);
+        while (!done)
+        {
+            _roomCode = GetRandomRoomCode(6);
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.IsVisible = false;
+            roomOptions.MaxPlayers = maxPlayersInRoom;
+            done = PhotonNetwork.CreateRoom(_roomCode, roomOptions, TypedLobby.Default);
+        }
+    }
+
+    private string GetRandomRoomCode(int length)
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
     }
 
     //Private room join

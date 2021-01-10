@@ -16,10 +16,15 @@ public class Lobby_UI : MonoBehaviour
     [SerializeField] private Button previousLevelButton;
     [SerializeField] private Button nextLevelButton;
     
+    [Header("Room Code")]
+    [SerializeField] private Text roomCode;
+    
     private void Start()
     {
         playButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
         playButton.interactable = false;
+        
+        roomCode.text = PhotonNetwork.CurrentRoom.Name;
     }
 
     public void NewPlayer()
