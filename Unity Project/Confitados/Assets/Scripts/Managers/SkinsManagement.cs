@@ -6,17 +6,22 @@ using UnityEngine.UI;
 public class SkinsManagement : MonoBehaviour
 {
     public GameObject[] playerSkins;
-    public GameObject[] playerSkinsPreviews;
+    public Sprite[] playerSkinsPreviews;
+    public Image playerSkinImage;
 
-    public int skinIndex = 0;
+    [HideInInspector] public int skinIndex = 0; //[HERE] this index must be sent to game manager (How?)
+
+    private void Start()
+    {
+        UpdateSkinPreview();
+    }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            playerSkinsPreviews[skinIndex].SetActive(false);
             skinIndex = ++skinIndex < playerSkins.Length ? skinIndex++ : 0;
-            playerSkinsPreviews[skinIndex].SetActive(true);
+            UpdateSkinPreview();
         }
         else if (Input.GetMouseButtonDown(2))
         {
@@ -24,14 +29,13 @@ public class SkinsManagement : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            playerSkinsPreviews[skinIndex].SetActive(false);
             skinIndex = --skinIndex >= 0 ? skinIndex-- : playerSkins.Length - 1;
-            playerSkinsPreviews[skinIndex].SetActive(true);
+            UpdateSkinPreview();
         }
     }
 
     public void UpdateSkinPreview()
     {
-        
+        playerSkinImage.sprite = playerSkinsPreviews[skinIndex];
     }
 }
