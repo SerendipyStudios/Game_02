@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2813,6 +2813,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerSkinImage: {fileID: 0}
   skinIndex: 0
 --- !u!224 &1191371833 stripped
 RectTransform:
@@ -3637,6 +3638,11 @@ PrefabInstance:
     - target: {fileID: 8016238185680841772, guid: 73dc39e044f3057449fb04323f5d2b00,
         type: 3}
       propertyPath: platform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016238185680841772, guid: 73dc39e044f3057449fb04323f5d2b00,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8016238185680841775, guid: 73dc39e044f3057449fb04323f5d2b00,
