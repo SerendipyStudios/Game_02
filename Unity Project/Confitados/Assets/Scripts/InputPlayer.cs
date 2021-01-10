@@ -7,7 +7,7 @@ public enum Platforms { PC, Mobile }
 
 public class InputPlayer : MonoBehaviourPunCallbacks
 {
-    public Platforms platform;
+    //public Platforms platform;
 
     private Joystick joystick;
     public float inputX{ get; private set; }
@@ -40,9 +40,9 @@ public class InputPlayer : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        switch (platform)
+        switch (SystemInfo.deviceType)
         {
-            case Platforms.PC:
+            case  (DeviceType.Desktop):
                 //Inputs check
                 inputX = Input.GetAxis("Horizontal");
                 inputZ = Input.GetAxis("Vertical");
@@ -59,7 +59,8 @@ public class InputPlayer : MonoBehaviourPunCallbacks
                 }
                 break;
 
-            case Platforms.Mobile:
+            //case Platforms.Mobile:
+            case (DeviceType.Handheld):
                 //Inputs check
                 inputX = joystick.Horizontal;
                 inputZ = joystick.Vertical;
