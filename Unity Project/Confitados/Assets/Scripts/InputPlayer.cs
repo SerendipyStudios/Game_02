@@ -10,8 +10,8 @@ public class InputPlayer : MonoBehaviourPunCallbacks
     //public Platforms platform;
 
     private Joystick joystick;
-    public float inputX{ get; private set; }
-    public float inputZ{ get; private set; }
+    public float inputX { get; private set; }
+    public float inputZ { get; private set; }
     public float inputX_RAW { get; private set; }
     public float inputZ_RAW { get; private set; }
     public bool dashInput { get; private set; }
@@ -40,53 +40,57 @@ public class InputPlayer : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        switch (SystemInfo.deviceType)
+        if (SystemInfo.operatingSystem.Contains("Windows") || SystemInfo.operatingSystem.Contains("Mac"))
         {
-            case  (DeviceType.Desktop):
-                //Inputs check
-                inputX = Input.GetAxis("Horizontal");
-                inputZ = Input.GetAxis("Vertical");
-                inputX_RAW = Input.GetAxisRaw("Horizontal");
-                inputZ_RAW = Input.GetAxisRaw("Vertical");
-                dashInput = Input.GetButtonDown("Dash");
-                superDashInput = Input.GetButtonDown("SuperDash");
+            //Inputs check
+            inputX = Input.GetAxis("Horizontal");
+            inputZ = Input.GetAxis("Vertical");
+            inputX_RAW = Input.GetAxisRaw("Horizontal");
+            inputZ_RAW = Input.GetAxisRaw("Vertical");
+            dashInput = Input.GetButtonDown("Dash");
+            superDashInput = Input.GetButtonDown("SuperDash");
 
-                //Face direction update
-                if (inputX_RAW != 0 || inputZ_RAW != 0)
-                {
-                    faceDirection.x = inputX_RAW;
-                    faceDirection.z = inputZ_RAW;
-                }
-                break;
+            //Face direction update
+            if (inputX_RAW != 0 || inputZ_RAW != 0)
+            {
+                faceDirection.x = inputX_RAW;
+                faceDirection.z = inputZ_RAW;
+            }
 
-            //case Platforms.Mobile:
-            case (DeviceType.Handheld):
-                //Inputs check
-                inputX = joystick.Horizontal;
-                inputZ = joystick.Vertical;
+        }
+        //case Platforms.Mobile:
+        else if (SystemInfo.operatingSystem.Contains("Android") || SystemInfo.operatingSystem.Contains("iPhone"))
+        {
+            //Inputs check
+            inputX = joystick.Horizontal;
+            inputZ = joystick.Vertical;
+            inputX_RAW = joystick.Horizontal;
+            inputZ_RAW = joystick.Vertical;
+            if (joystick.SnapX && joystick.SnapY)
+            {
                 inputX_RAW = joystick.Horizontal;
                 inputZ_RAW = joystick.Vertical;
-                if (joystick.SnapX && joystick.SnapY)
-                {
-                    inputX_RAW = joystick.Horizontal;
-                    inputZ_RAW = joystick.Vertical;
-                }
+            }
 
-                dashInput = dashMobile;
-                superDashInput = superDashMobile;
+            dashInput = dashMobile;
+            superDashInput = superDashMobile;
 
-                //Face direction update
-                joystick.SnapX = true;
-                joystick.SnapY = true;
+            //Face direction update
+            joystick.SnapX = true;
+            joystick.SnapY = true;
 
-                if (inputX_RAW != 0 || inputZ_RAW != 0)
-                {
-                    faceDirection.x = joystick.Horizontal;
-                    faceDirection.z = joystick.Vertical;
-                    joystick.SnapX = false;
-                    joystick.SnapY = false;
-                }
-                break;
+            if (inputX_RAW != 0 || inputZ_RAW != 0)
+            {
+                faceDirection.x = joystick.Horizontal;
+                faceDirection.z = joystick.Vertical;
+                joystick.SnapX = false;
+                joystick.SnapY = false;
+            }
+
+        }
+        else
+        {
+            throw new System.Exception("Unsoported operating system");
         }
     }
 
