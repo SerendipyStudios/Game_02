@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviourPunCallbacks
+public class PlayerInfo : MonoBehaviourPunCallbacks, IPunObservable
 {
     //Player variables
     [SerializeField] private int lives = 3;
@@ -64,7 +64,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks
         else
         {
             // Network player, receive data
-            this.lives = (byte) stream.ReceiveNext();
+            this.lives = (int) stream.ReceiveNext();
             this.isDashing = (bool) stream.ReceiveNext();
             this.isSuperDashing = (bool) stream.ReceiveNext();
             this.isFalling = (bool) stream.ReceiveNext();
