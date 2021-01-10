@@ -90,7 +90,7 @@ public class InputPlayer : MonoBehaviourPunCallbacks
         }
         else
         {
-            throw new System.Exception("Unsoported operating system");
+            throw new System.Exception("Unsupported operating system");
         }
     }
 
