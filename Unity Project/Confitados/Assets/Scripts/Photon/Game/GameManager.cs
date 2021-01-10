@@ -15,7 +15,8 @@ namespace Photon.Game
 
         //Game
         public static GameManager Instance;
-        [SerializeField] public GameObject playerPrefab;
+        //[SerializeField] public GameObject playerPrefab;
+        public GameObject[] playerPrefab;
         [SerializeField] private int countdownTime = 3;
         private int countdownTimeActual;
         WaitForSeconds waitASecond = new WaitForSeconds(1);
@@ -356,7 +357,7 @@ namespace Photon.Game
         private void RpcInstantiatePlayer(Vector3 initPos, Quaternion initRot)
         {
             Debug.Log("Instantiating my player...");
-            PhotonNetwork.Instantiate(this.playerPrefab.name, initPos, initRot,
+            PhotonNetwork.Instantiate(this.playerPrefab[0].name, initPos, initRot, //[HERE] this.playerPrefab[X], where X should be the index from the lobby scene
                 0);
         }
 
