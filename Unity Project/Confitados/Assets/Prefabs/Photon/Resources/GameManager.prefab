@@ -44,8 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e840e6329f3b5a4788edbca544b23c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8016238185680841775, guid: 73dc39e044f3057449fb04323f5d2b00,
-    type: 3}
+  playerPrefab:
+  - {fileID: 8016238185680841775, guid: 73dc39e044f3057449fb04323f5d2b00, type: 3}
+  - {fileID: 8016238185680841775, guid: b5e97b19ac249d5428edaa8ffca518fe, type: 3}
+  - {fileID: 8016238185680841775, guid: be2a46dc736a8844bbff0a4acb0f3c52, type: 3}
+  - {fileID: 8016238185680841775, guid: 95b75725b29cec747af998e0f8169dee, type: 3}
+  - {fileID: 8016238185680841775, guid: f8bbf8a31427e7a4b88887c68d87bde9, type: 3}
+  - {fileID: 8016238185680841775, guid: 7e15da599df4f0249ab2a2ad71ae27b3, type: 3}
+  - {fileID: 8016238185680841775, guid: 4626232ce16f83c4cac1a1f464a6079c, type: 3}
+  - {fileID: 8016238185680841775, guid: 82c02c68d591c074cadcaa26566cbdec, type: 3}
+  - {fileID: 8016238185680841775, guid: 6251e80492667f84198c9dfbe4690612, type: 3}
+  - {fileID: 8016238185680841775, guid: 2f7ecad035ece754597596d1f1e7cb0b, type: 3}
+  - {fileID: 8016238185680841775, guid: 0f1ba886de161284199bb2d149834f98, type: 3}
   countdownTime: 3
   gameState: 0
 --- !u!114 &-2673842057743455813
