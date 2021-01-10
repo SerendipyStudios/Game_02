@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class Lobby_PlayerInfo : MonoBehaviourPunCallbacks
+public class Lobby_PlayerInfo : MonoBehaviourPunCallbacks, IPunObservable
 {
     private string name;
     private bool ready = false;

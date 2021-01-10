@@ -168,7 +168,7 @@ namespace Photon.Game
             //Check if he was alive
             PlayerInfo playerInfo = PhotonView.Find(allPlayers_ViewIds[otherPlayer.ActorNumber - 1])
                 .GetComponent<PlayerInfo>();
-            if (playerInfo.Lives == 0)
+            if (playerInfo.Lives != 0)
                 CmdPlayerDied(otherPlayer.ActorNumber);
         }
 

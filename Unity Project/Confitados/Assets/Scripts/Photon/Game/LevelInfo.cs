@@ -30,8 +30,10 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     private Stack<GameObject> worldPieces_Stack;
     [SerializeField] private float pieceFallTime = 10;
     [SerializeField] private float pieceFallAdviceTime = 3;
-    [SerializeField] private float pieceFallMaxStep = 1;
+    [SerializeField] private float pieceFallMaxStep = 0.001f;
     [SerializeField] private Material fallAdviseMaterial;
+
+    private GameObject clone;
 
     #endregion
 
@@ -65,7 +67,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
             worldPieces_Stack.Push(worldPieces[index]);
             //worldPieces_destiny[index] = worldPieces[index].transform.position.y;
         }
-        
+
         worldPieces_destiny = new List<float>();
         foreach (var piece in worldPieces)
         {
@@ -77,7 +79,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     private void FixedUpdate()
     {
         if (!PhotonNetwork.IsMasterClient) return;
-        
+
         for (var index = 0; index < worldPieces_destiny.Count; index++)
         {
             worldPieces_destiny[index] = worldPieces[index].transform.position.y;
@@ -88,13 +90,13 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     private void Update()
     {
         if (PhotonNetwork.IsMasterClient) return;
-        
+
         for (var index = 0; index < worldPieces.Count; index++)
         {
             var piece = worldPieces[index];
             piece.transform.position =
                 Vector3.MoveTowards(
-                    piece.transform.position, 
+                    piece.transform.position,
                     Vector3.up * worldPieces_destiny[index],
                     pieceFallMaxStep);
         }
@@ -197,6 +199,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
             //worldPieces.Remove(piece);
 
             GameObject piece = worldPieces_Stack.Pop();
+            photonView.RPC("RpcShowAdvice", RpcTarget.Others);
 
             //Show advice (misma geometría con y+0.5 parpadeando)
             GameObject clone = Instantiate(piece, piece.transform);
@@ -223,10 +226,44 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
             rb.useGravity = true;
             rb.constraints -= RigidbodyConstraints.FreezePositionY;
 
+            photonView.RPC("RpcDeleteAdvice", RpcTarget.Others);
             Destroy(clone);
 
             StartCoroutine(PieceFallCoroutine());
         }
+    }
+
+    //Only clients
+    [PunRPC]
+    private void RpcShowAdvice()
+    {
+        GameObject piece = worldPieces_Stack.Pop();
+
+        //Show advice (misma geometría con y+0.5 parpadeando)
+        clone = Instantiate(piece, piece.transform);
+        foreach (var elem in clone.GetComponentsInChildren<Collider>())
+        {
+            elem.enabled = false;
+        }
+
+        //Mat change
+        Renderer renderer = clone.GetComponent<Renderer>();
+        if (renderer != null) renderer.material = fallAdviseMaterial;
+
+        var renderers = clone.GetComponentsInChildren<Renderer>();
+        for (var index = 0; index < renderers.Length; index++)
+        {
+            renderers[index].material = fallAdviseMaterial;
+        }
+
+        clone.transform.position += new Vector3(0, 0.5f, 0);
+    }
+
+    //Only clients
+    [PunRPC]
+    private void RpcDeleteAdvice()
+    {
+        Destroy(clone);
     }
 
     #endregion
