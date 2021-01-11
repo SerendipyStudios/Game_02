@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Game;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkController_Results : MonoBehaviour
 {
+    public Text[] names;
+
     private void Start()
     {
         //Se corre localmente este script
@@ -14,17 +17,30 @@ public class NetworkController_Results : MonoBehaviour
         int viewId = GameManager.Instance.GetPlayerViewId(PhotonNetwork.LocalPlayer.ActorNumber);
         GameObject localPlayer = PhotonView.Find(viewId).gameObject;
         int position = localPlayer.GetComponent<PlayerInfo>().RankPosition;
-        Debug.Log("My position is: " + position);
 
         PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies", 0) + AssignRewards(position));
+        PlayerPrefs.SetInt("Experience", PlayerPrefs.GetInt("Experience", 0) + AssignRewards(position));
+        if (PlayerPrefs.GetInt("Experience") >= 200) //Every 200xp the player levels up
+            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level", 1) + 1);
 
         //Si quieres que solo pase el servidor (cliente que hace de servidor)
         //if (PhotonNetwork.IsMasterClient) ;
 
-        //Si quieres que solo pase el que posee el objeto actual (pista, solo erres propietario si lo instancias tu con PhotonNetwork.Instantiate)
-        //if (photonView.IsMine) ;
+            //Si quieres que solo pase el que posee el objeto actual (pista, solo erres propietario si lo instancias tu con PhotonNetwork.Instantiate)
+            //if (photonView.IsMine) ;
 
-        //Pasarselo
+            //Pasarselo
+
+
+        //Poner a cada uno en su lugar
+        foreach(var player in PhotonNetwork.PlayerList)
+        {
+            int viewIdOther = GameManager.Instance.GetPlayerViewId(player.ActorNumber);
+            GameObject localPlayerOther = PhotonView.Find(viewId).gameObject;
+            int positionOther = localPlayer.GetComponent<PlayerInfo>().RankPosition;
+
+            string name = player.NickName;
+        }
     }
 
     private int AssignRewards(int rank)
