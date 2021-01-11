@@ -2167,8 +2167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 13, y: -53.00008}
-  m_SizeDelta: {x: 318, y: 77.8}
+  m_AnchoredPosition: {x: 5, y: -53.00008}
+  m_SizeDelta: {x: 421.7, y: 77.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113641434
 MonoBehaviour:
@@ -2202,7 +2202,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Room code
+  m_Text: "C\xF3digo de la sala"
 --- !u!222 &2113641435
 CanvasRenderer:
   m_ObjectHideFlags: 0

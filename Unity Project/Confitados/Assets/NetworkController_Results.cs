@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class NetworkController_Results : MonoBehaviour
 {
     public Text[] names;
+    private GameObject localPlayer;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class NetworkController_Results : MonoBehaviour
 
         //Coger el local player
         int viewId = GameManager.Instance.GetPlayerViewId(PhotonNetwork.LocalPlayer.ActorNumber);
-        GameObject localPlayer = PhotonView.Find(viewId).gameObject;
+        localPlayer = PhotonView.Find(viewId).gameObject;
         int position = localPlayer.GetComponent<PlayerInfo>().RankPosition;
 
         PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies", 0) + AssignRewards(position));
@@ -36,10 +37,10 @@ public class NetworkController_Results : MonoBehaviour
         foreach(var player in PhotonNetwork.PlayerList)
         {
             int viewIdOther = GameManager.Instance.GetPlayerViewId(player.ActorNumber);
-            GameObject localPlayerOther = PhotonView.Find(viewId).gameObject;
-            int positionOther = localPlayer.GetComponent<PlayerInfo>().RankPosition;
-
-            string name = player.NickName;
+            GameObject localPlayerOther = PhotonView.Find(viewIdOther).gameObject;
+            int positionOther = localPlayerOther.GetComponent<PlayerInfo>().RankPosition;
+            string nameOther = player.NickName;
+            names[positionOther - 1].text = positionOther + ". " + nameOther + ": +" + AssignRewards(positionOther) + " Galletas / +" + AssignRewards(positionOther) + " Exp";
         }
     }
 
