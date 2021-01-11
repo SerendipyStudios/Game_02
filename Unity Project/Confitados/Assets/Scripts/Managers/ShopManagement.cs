@@ -21,9 +21,9 @@ public class ShopManagement : MonoBehaviour
         //On click events for all buttons
         buySkinsButtons[0].onClick.AddListener(() => BuySkin(200, 0, 6, 0));
         buySkinsButtons[1].onClick.AddListener(() => BuySkin(200, 0, 7, 1));
-        buySkinsButtons[2].onClick.AddListener(() => BuySkin(500, 3, 8, 2));
-        buySkinsButtons[3].onClick.AddListener(() => BuySkin(500, 3, 9, 3));
-        buySkinsButtons[4].onClick.AddListener(() => BuySkin(500, 3, 10, 4));
+        buySkinsButtons[2].onClick.AddListener(() => BuySkin(500, 0, 8, 2));
+        buySkinsButtons[3].onClick.AddListener(() => BuySkin(500, 0, 9, 3));
+        buySkinsButtons[4].onClick.AddListener(() => BuySkin(0, 3, 10, 4));
     }
 
     public void BuySkin(int priceCookies, int priceChocolates, int unlockIndex, int buttonIndex)
