@@ -434,7 +434,7 @@ MonoBehaviour:
   - {fileID: 6260753402516479559}
   pieceFallTime: 5
   pieceFallAdviceTime: 3
-  pieceFallMaxStep: 0.001
+  pieceFallMaxStep: 0.1
   fallAdviseMaterial: {fileID: 2100000, guid: d64ea3c71ddd51148b288aaba6cdc2f3, type: 2}
 --- !u!114 &1911435620600930445
 MonoBehaviour:

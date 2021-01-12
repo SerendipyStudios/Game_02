@@ -6,6 +6,7 @@ using System.Numerics;
 using Photon.Game;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using Random = System.Random;
 using Vector3 = UnityEngine.Vector3;
 
@@ -80,7 +81,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     private void FixedUpdate()
     {
         if (!PhotonNetwork.IsMasterClient) return;
-
+        
         for (var index = 0; index < worldPieces_destiny.Count; index++)
         {
             worldPieces_destiny[index] = worldPieces[index].transform.position.y;
@@ -92,6 +93,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (PhotonNetwork.IsMasterClient) return;
 
+        Debug.Log(worldPieces_destiny[0]);
         for (var index = 0; index < worldPieces.Count; index++)
         {
             var piece = worldPieces[index];
@@ -119,6 +121,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
+            Debug.Log(PhotonNetwork.IsMasterClient);
             // Network player, receive data
             for (var index = 0; index < worldPieces_destiny.Count; index++)
             {
