@@ -9,9 +9,14 @@ public class EconomyManagement : MonoBehaviour
     public Image[] buyButtons;
     public Button nextButton;
     public Button backButton;
+    public Text cookies;
+    public Text chocolates;
 
     private void Start()
     {
+        //Show current cookies and chocolates
+        UpdateCurrency();
+
         //On click events for all buttons
         exchangeButtons[0].onClick.AddListener(() => CookiesToChocolates(300, 1));
         exchangeButtons[1].onClick.AddListener(() => CookiesToChocolates(800, 3));
@@ -28,6 +33,7 @@ public class EconomyManagement : MonoBehaviour
         {
             PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies") - cookies);
             PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Chocolates") + chocolatesChange);
+            UpdateCurrency();
         }
     }
     public void ChocolatesToChookies(int chocolates, int cookiesChange)
@@ -36,7 +42,14 @@ public class EconomyManagement : MonoBehaviour
         {
             PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Chocolates") - chocolates);
             PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies") + cookiesChange);
+            UpdateCurrency();
         }
+    }
+
+    private void UpdateCurrency()
+    {
+        cookies.text = PlayerPrefs.GetInt("Cookies", 0).ToString();
+        chocolates.text = PlayerPrefs.GetInt("Chocolates", 0).ToString();
     }
 
     public void ChangeDisplayedButtons(bool b)

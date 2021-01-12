@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public Text playerName;
     public Text cookies;
     public Text chocolates;
     public Text level;
@@ -12,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     public Image currentExperience_Fill;
     private void Start()
     {
+        playerName.text = PhotonNetwork.NickName;
         cookies.text = PlayerPrefs.GetInt("Cookies", 0).ToString();
         chocolates.text = PlayerPrefs.GetInt("Chocolates", 0).ToString();
         level.text = "Nivel: " + PlayerPrefs.GetInt("Level", 1).ToString();
