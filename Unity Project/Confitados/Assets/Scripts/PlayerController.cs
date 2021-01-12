@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     //Animations
     [Header("Animations")] private int runHashCode;
+    private int dashHashCode;
     public float fallTime = 1f;
 
     //Identity variables
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
         runHashCode = Animator.StringToHash("Movement");
+        dashHashCode = Animator.StringToHash("Dash");
     }
 
     private void Start()
@@ -172,6 +174,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             playerInfo.IsDashing = true;
             dashDirection = input.faceDirection;
             dashAgainCooldownAux = dashAgainCooldown;
+            anim.SetTrigger(dashHashCode);
             SoundManager.sharedInstance.dash_SND.Play();
         }
 
@@ -182,6 +185,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             playerInfo.IsSuperDashing = true;
             dashDirection = input.faceDirection;
             superDashAgainCooldownAux = superDashAgainCooldown;
+            anim.SetTrigger(dashHashCode);
             SoundManager.sharedInstance.superDash_SND.Play();
         }
 
@@ -236,8 +240,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
             collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
         }
-        if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
-            rb.drag = 2.5f;
+        //if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            //rb.drag = 2.5f;
     }
 
     public void OnEnable()
@@ -322,7 +326,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             rb.drag = iceDrag;
         if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = stickyDrag;
-
+        if (other.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            rb.drag = 2.5f;
         if (other.gameObject.tag.CompareTo("Limit") == 0)
             return;
     }
