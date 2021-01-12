@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class ShopManagement : MonoBehaviour
 {
     public Button[] buySkinsButtons;
+    public Text cookies;
+    public Text chocolates;
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //Show current cookies and chocolates
+        UpdateCurrency();
 
         //Check if the player has that skin
         for (int i = 0; i < 5; i++)
@@ -26,6 +29,12 @@ public class ShopManagement : MonoBehaviour
         buySkinsButtons[4].onClick.AddListener(() => BuySkin(0, 3, 10, 4));
     }
 
+    private void UpdateCurrency()
+    {
+        cookies.text = PlayerPrefs.GetInt("Cookies", 0).ToString();
+        chocolates.text = PlayerPrefs.GetInt("Chocolates", 0).ToString();
+    }
+
     public void BuySkin(int priceCookies, int priceChocolates, int unlockIndex, int buttonIndex)
     {
         if (PlayerPrefs.GetInt("Cookies") >= priceCookies && PlayerPrefs.GetInt("Chocolates") >= priceChocolates)
@@ -34,6 +43,7 @@ public class ShopManagement : MonoBehaviour
             PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Chocolates") - priceChocolates);
             PlayerPrefs.SetInt("PaidSkin_" + unlockIndex.ToString(), 1); //Unlock skin
             buySkinsButtons[buttonIndex].interactable = false;
+            UpdateCurrency();
        }
     }
 }
