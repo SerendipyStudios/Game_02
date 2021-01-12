@@ -240,8 +240,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
             collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
         }
-        if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
-            rb.drag = 2.5f;
+        //if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            //rb.drag = 2.5f;
     }
 
     public void OnEnable()
@@ -326,7 +326,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             rb.drag = iceDrag;
         if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = stickyDrag;
-
+        if (other.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            rb.drag = 2.5f;
         if (other.gameObject.tag.CompareTo("Limit") == 0)
             return;
     }
