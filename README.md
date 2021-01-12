@@ -87,7 +87,7 @@ Para representar el modelo de negocio, se ha creado un business model canvas par
 
 ### 2.2. Tabla de productos y precios
 
-| Precio | Prodcuto |
+| Precio | Producto |
 | ------------- | ------------- |
 | 0,49€ | 200 galletas |
 | 1,49€ | 5 bombones |
@@ -106,7 +106,7 @@ El equipo estará compuesto por los siguientes integrantes con sus respectivos r
 - David González Bella: Programador
 - Clara Bartolomé Pereira: Artista y programadora (auxiliar)
 - Julen Justo Neira: Programador y compositor
-- Alexandra Izquierdo Esteban: Artista
+- Alexandra Izquierdo Esteban: Artista y community manager
 - Javier Morales López: Gestor, community manager y artista (auxiliar)
 
 ### 3.2. Estimación temporal de desarrollo
@@ -126,7 +126,7 @@ Cada artista cobrará 800€ al mes, por lo que en 2 años será 19200€. Hay 2
 
 El level designer/game designer cobrará 800€ al mes, por lo que en 2 años será 19200€.
 
-El community manager ganará 750€ al mes, por lo que en 2 años será 18000€
+El community manager ganará 750€ al mes, por lo que en 2 años será 18000€. Hay 2 community manager, por lo que en total 36000€.
 
 El gestor ganará 800€ al mes, por lo que en 2 años será 19200€.
 
@@ -136,7 +136,7 @@ Licencia de Unity de Empresa: 165€/mes por puesto. Lo usarán los programadore
 
 Licencia de Visual Studio: 37€/mes. Lo usarán los 2 programadores, por lo que en total: 888€
 
-En total: 154581
+En total: 172581€
 
 
 ## 4. Mecánica
