@@ -14,8 +14,6 @@ public class EconomyManagement : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
-
         //Show current cookies and chocolates
         UpdateCurrency();
 
@@ -31,7 +29,7 @@ public class EconomyManagement : MonoBehaviour
 
     public void CookiesToChocolates(int cookies, int chocolatesChange)
     {
-        if(PlayerPrefs.GetInt("Cookies") >= cookies)
+        if (PlayerPrefs.GetInt("Cookies") >= cookies)
         {
             PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies") - cookies);
             PlayerPrefs.SetInt("Chocolates", PlayerPrefs.GetInt("Chocolates") + chocolatesChange);
@@ -56,7 +54,7 @@ public class EconomyManagement : MonoBehaviour
 
     public void ChangeDisplayedButtons(bool b)
     {
-        for(int i = 0; i < exchangeButtons.Length; i++)
+        for (int i = 0; i < exchangeButtons.Length; i++)
             exchangeButtons[i].gameObject.SetActive(!b);
         for (int i = 0; i < buyButtons.Length; i++)
             buyButtons[i].gameObject.SetActive(b);
