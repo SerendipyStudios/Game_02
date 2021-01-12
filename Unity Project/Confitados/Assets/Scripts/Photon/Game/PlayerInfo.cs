@@ -11,7 +11,7 @@ public class PlayerInfo : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private bool isDashing = false;
     [SerializeField] private bool isSuperDashing = false;
     [SerializeField] private bool isFalling = false;
-    
+
     [SerializeField] private byte rankPosition = Byte.MaxValue;
 
     #region Getters/Setters

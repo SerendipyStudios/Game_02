@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 3216132245782938207}
   - component: {fileID: 8173258551299607441}
   m_Layer: 0
-  m_Name: Player_11
+  m_Name: Player_10
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,10 +898,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 87dea0c9388b20e4bbfc5c6fb9406e0a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.96742505
-  m_Height: 2.054102
+  m_Radius: 1.248606
+  m_Height: 2.497212
   m_Direction: 1
-  m_Center: {x: 0.012296975, y: 1.3321095, z: 0.61511415}
+  m_Center: {x: 0.012297034, y: 1.5294173, z: 0.0022227764}
 --- !u!95 &8944780062287510649
 Animator:
   serializedVersion: 3
@@ -967,7 +967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb7ce544fd2de440acf91213cf9b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: 0
   faceDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4602959155221127720
 MonoBehaviour:
@@ -988,6 +987,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 3216132245782938207}
   - {fileID: 8173258551299607441}
   viewIdField: 0
   InstantiationId: 0

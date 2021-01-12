@@ -238,7 +238,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         }
         if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
             rb.drag = 2.5f;
-
     }
 
     public void OnEnable()

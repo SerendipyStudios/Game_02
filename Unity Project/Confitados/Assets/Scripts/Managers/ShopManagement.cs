@@ -9,8 +9,6 @@ public class ShopManagement : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
-
         //Check if the player has that skin
         for (int i = 0; i < 5; i++)
         {

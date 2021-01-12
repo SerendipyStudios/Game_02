@@ -35,6 +35,7 @@ public class SkinsManagement : MonoBehaviour
     public void UpdateSkinPreview()
     {
         playerSkinImage.sprite = playerSkinsPreviews[skinIndex];
+        PlayerPrefs.SetInt("SkinIndex", skinIndex);
     }
 
     private void NextAvailableSkin()

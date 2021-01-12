@@ -362,7 +362,8 @@ namespace Photon.Game
         private void RpcInstantiatePlayer(Vector3 initPos, Quaternion initRot)
         {
             Debug.Log("Instantiating my player...");
-            PhotonNetwork.Instantiate(this.playerPrefab[0].name, initPos, initRot, //[HERE] this.playerPrefab[X], where X should be the index from the lobby scene
+            //int skinIndex = 
+            PhotonNetwork.Instantiate(this.playerPrefab[PlayerPrefs.GetInt("SkinIndex", 0)].name, initPos, initRot, //[HERE] this.playerPrefab[X], where X should be the index from the lobby scene
                 0);
         }
 
