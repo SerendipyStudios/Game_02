@@ -6,6 +6,6 @@ public class AboutUsMangement : MonoBehaviour
 {
 public void GoToURL(string url)
     {
-        Application.OpenURL(url);
+        Application.ExternalEval("window.open('" + url + "', '_blank')");
     }
 }

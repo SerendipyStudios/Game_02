@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -828,7 +828,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0270714f83af254aa2a01df7776fab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldLimit: -5
   initialPositions_GameObject: {fileID: 2020554290}
+  worldPieces: []
+  pieceFallTime: 10
+  pieceFallAdviceTime: 3
+  pieceFallMaxStep: 0.001
+  fallAdviseMaterial: {fileID: 0}
 --- !u!1 &1179368818
 GameObject:
   m_ObjectHideFlags: 0
