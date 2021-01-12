@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     private void Update()
     {
         if (GameManager.Instance.gameState != GameManager.GameStateEnum.Playing) return;
-        
+
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
@@ -208,9 +208,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     private void FixedUpdate()
     {
         if (GameManager.Instance.gameState != GameManager.GameStateEnum.Playing) return;
-        
+
         //Check if I'm dead
-        if(playerInfo.Lives == 0) return;
+        if (playerInfo.Lives == 0) return;
 
         //Check if I'm falling
         if (executeFall)
@@ -235,13 +235,36 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Touching in general");
+
         if (collision.gameObject.tag.CompareTo("Player") == 0)
         {
             Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
             collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
         }
+        //Floors
+        if (collision.gameObject.tag.CompareTo("IceFloor") == 0)
+        {
+            Debug.Log("Touching ice");
+            rb.drag = iceDrag;
+        }
+
+        else if (collision.gameObject.tag.CompareTo("StickyFloor") == 0)
+        {
+            Debug.Log("Touching sticky");
+            rb.drag = stickyDrag;
+        }
+
+        else if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
+        {
+            Debug.Log("Touching default");
+            rb.drag = 2.5f;
+        }
+
+        //if (collision.gameObject.tag.CompareTo("Limit") == 0)
+        //return;
         //if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
-            //rb.drag = 2.5f;
+        //rb.drag = 2.5f;
     }
 
     public void OnEnable()
@@ -273,15 +296,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         switch (eventCode)
         {
             case GameManager.CountdownCode:
-                datas = ((object[]) photonEvent.CustomData);
-                playerInterfaceUI.SetCountdown((int) datas[0]);
+                datas = ((object[])photonEvent.CustomData);
+                playerInterfaceUI.SetCountdown((int)datas[0]);
                 break;
             case GameManager.PlayerDeadCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
                 if (cameraFollow.GetCameraMode() != CameraFollow.CameraModeEnum.Win)
                 {
-                    datas = ((object[]) photonEvent.CustomData);
-                    _actorNumber = (int) datas[0];
+                    datas = ((object[])photonEvent.CustomData);
+                    _actorNumber = (int)datas[0];
                     if (_actorNumber == cameraFollow.GetPlayer())
                         ChangeCameraSpectatorPlayer(true);
                 }
@@ -289,8 +312,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
                 break;
             case GameManager.WinCode:
                 Debug.Log("Camera Spectator: PlayerDeadCode received.");
-                datas = ((object[]) photonEvent.CustomData);
-                _actorNumber = (int) datas[0];
+                datas = ((object[])photonEvent.CustomData);
+                _actorNumber = (int)datas[0];
 
                 //Paralyze all players
                 rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -322,22 +345,22 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         //Implement normal floor drag [HERE] 
         //Floors
-        if (other.gameObject.tag.CompareTo("IceFloor") == 0)
-            rb.drag = iceDrag;
-        if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
-            rb.drag = stickyDrag;
-        if (other.gameObject.tag.CompareTo("DefaultFloor") == 0)
-            rb.drag = 2.5f;
-        if (other.gameObject.tag.CompareTo("Limit") == 0)
-            return;
+        //if (other.gameObject.tag.CompareTo("IceFloor") == 0)
+        //    rb.drag = iceDrag;
+        //if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
+        //    rb.drag = stickyDrag;
+        //if (other.gameObject.tag.CompareTo("DefaultFloor") == 0)
+        //    rb.drag = 2.5f;
+        //if (other.gameObject.tag.CompareTo("Limit") == 0)
+        //    return;
     }
 
     void OnTriggerExit(Collider other)
     {
         //Floors
         //En realidad, el suelo por defecto debería ser un tipo de suelo también
-        if (other.gameObject.tag.CompareTo("IceFloor") == 0 || other.gameObject.tag.CompareTo("StickyFloor") == 0)
-            rb.drag = 2.5f;
+        //if (other.gameObject.tag.CompareTo("IceFloor") == 0 || other.gameObject.tag.CompareTo("StickyFloor") == 0)
+        //rb.drag = 2.5f;
 
     }
 
@@ -428,9 +451,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             //Dejar de sincronizar su posición
             Random random = new Random();
             photonView.RPC("RpcSetRagdoll", RpcTarget.All,
-                ((float) random.Next(0, 100)) / 100f,
-                ((float) random.Next(0, 100)) / 100f,
-                ((float) random.Next(0, 100)) / 100f
+                ((float)random.Next(0, 100)) / 100f,
+                ((float)random.Next(0, 100)) / 100f,
+                ((float)random.Next(0, 100)) / 100f
             );
 
             //Modo observador si no (Linkar cámara a otro jugador)

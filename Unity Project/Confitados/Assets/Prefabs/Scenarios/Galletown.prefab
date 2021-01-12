@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 147124673144831966}
   - component: {fileID: 2747787835279662297}
   - component: {fileID: 5347259473509800696}
+  - component: {fileID: 2472568929962894222}
   m_Layer: 0
   m_Name: Caramel_Int1
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2472568929962894222
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34666144955824481}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3703570591881257896, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &48547125513061360
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +105,10 @@ GameObject:
   - component: {fileID: 4316690808872743617}
   - component: {fileID: 8032749398422115645}
   - component: {fileID: 5742011986146686252}
+  - component: {fileID: 1202976116882434413}
   m_Layer: 0
   m_Name: Caramel_ Ext1
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +174,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1202976116882434413
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48547125513061360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5020233605805644867, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &116492398012059553
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,9 +199,10 @@ GameObject:
   - component: {fileID: 421107377994104753}
   - component: {fileID: 976209669386969289}
   - component: {fileID: 9152375528175381070}
+  - component: {fileID: 5951813858023000880}
   m_Layer: 0
   m_Name: Ice_Medio3
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,6 +268,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5951813858023000880
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116492398012059553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3798927037367788028, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &337216600365036716
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,9 +293,10 @@ GameObject:
   - component: {fileID: 7540387248433882558}
   - component: {fileID: 8017003228155836624}
   - component: {fileID: 171101167229243629}
+  - component: {fileID: 4305501253741766979}
   m_Layer: 0
   m_Name: TartaAnilloExt
-  m_TagString: Untagged
+  m_TagString: DefaultFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +362,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4305501253741766979
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337216600365036716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3821604104450104948, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &509442973902785795
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,9 +387,10 @@ GameObject:
   - component: {fileID: 6868027561542158733}
   - component: {fileID: 3511030020255413013}
   - component: {fileID: 2338531930719125125}
+  - component: {fileID: 88072992884131966}
   m_Layer: 0
   m_Name: TartaAnilloInt
-  m_TagString: Untagged
+  m_TagString: DefaultFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,6 +456,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &88072992884131966
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509442973902785795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7067895316506984077, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &914047640944755563
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,9 +481,10 @@ GameObject:
   - component: {fileID: 1855322007468705834}
   - component: {fileID: 8626204063993521386}
   - component: {fileID: 7807305999943457457}
+  - component: {fileID: 1826329492833263751}
   m_Layer: 0
   m_Name: Caramel_Medio2
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,6 +550,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1826329492833263751
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914047640944755563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7074146940668586278, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &1142142442365649636
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,9 +575,10 @@ GameObject:
   - component: {fileID: 8062742425045727652}
   - component: {fileID: 8077241521001869183}
   - component: {fileID: 2150261048704715895}
+  - component: {fileID: 3406180247666821399}
   m_Layer: 0
   m_Name: Ice_Int
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,6 +644,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3406180247666821399
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142142442365649636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7395625080824699922, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &1361503430127921805
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,9 +669,10 @@ GameObject:
   - component: {fileID: 6966434832276832568}
   - component: {fileID: 3941284308759750462}
   - component: {fileID: 2667535390654775097}
+  - component: {fileID: 4801810319494737857}
   m_Layer: 0
   m_Name: Ice_Ext3
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,6 +738,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4801810319494737857
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361503430127921805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 892150196988525468, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2072866930064765794
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,9 +763,10 @@ GameObject:
   - component: {fileID: 2837734006150945374}
   - component: {fileID: 1255296533031152906}
   - component: {fileID: 883272762610955898}
+  - component: {fileID: 8046250928667824022}
   m_Layer: 0
   m_Name: TartaAnilloCentro
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,6 +832,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8046250928667824022
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072866930064765794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1789545516801809413, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2124633174119523860
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,9 +857,10 @@ GameObject:
   - component: {fileID: 1425774876078348480}
   - component: {fileID: 2911550114772858611}
   - component: {fileID: 7626651864189390206}
+  - component: {fileID: 5055962387307736035}
   m_Layer: 0
   m_Name: Ice_Ext5
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,6 +926,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5055962387307736035
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124633174119523860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4965002204199132926, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2219845343218755863
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,9 +951,10 @@ GameObject:
   - component: {fileID: 4037538129687639809}
   - component: {fileID: 2893775242009101416}
   - component: {fileID: 5246636888135587293}
+  - component: {fileID: 6024804888359057411}
   m_Layer: 0
   m_Name: Ice_Ext8
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,6 +1020,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6024804888359057411
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219845343218755863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1100831949982008764, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2294364840137135151
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,9 +1045,10 @@ GameObject:
   - component: {fileID: 7737692330899306135}
   - component: {fileID: 7495125027699281118}
   - component: {fileID: 2107137491392912034}
+  - component: {fileID: 1101989412672308625}
   m_Layer: 0
   m_Name: Ice_Medio2
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -948,6 +1114,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1101989412672308625
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2294364840137135151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6250491980503699492, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2387927296456510406
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,9 +1170,10 @@ GameObject:
   - component: {fileID: 6026744535225272659}
   - component: {fileID: 6971997795737254041}
   - component: {fileID: 2123298219447270761}
+  - component: {fileID: 6467617146963099799}
   m_Layer: 0
   m_Name: TartaAnilloMedio
-  m_TagString: Untagged
+  m_TagString: DefaultFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1058,6 +1239,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6467617146963099799
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852708723386446589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5768802323156419630, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &2910110376114269804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,9 +1264,10 @@ GameObject:
   - component: {fileID: 1801788635938895969}
   - component: {fileID: 3347202032883854668}
   - component: {fileID: 3208867590162556032}
+  - component: {fileID: 1993091491273843076}
   m_Layer: 0
   m_Name: Ice_Ext6
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1137,6 +1333,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1993091491273843076
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910110376114269804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5486195250567263349, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &3951139055666593953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,9 +1432,10 @@ GameObject:
   - component: {fileID: 5612749650158576212}
   - component: {fileID: 3450268780676274872}
   - component: {fileID: 8338086459014751360}
+  - component: {fileID: 346289948597966537}
   m_Layer: 0
   m_Name: Ice_Ext4
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1290,6 +1501,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &346289948597966537
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342986573039876854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1392555331466509370, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &4386825041002642735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,9 +1526,10 @@ GameObject:
   - component: {fileID: 8977709459804103159}
   - component: {fileID: 2150730875070971007}
   - component: {fileID: 2028836213737118993}
+  - component: {fileID: 6968575516278504296}
   m_Layer: 0
   m_Name: Caramel_Medio3
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1369,6 +1595,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6968575516278504296
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386825041002642735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 728127633388336397, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &4797458128989621461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,9 +1620,10 @@ GameObject:
   - component: {fileID: 241884388022311206}
   - component: {fileID: 3577383947412399776}
   - component: {fileID: 3579273744196120259}
+  - component: {fileID: 8221505797347536345}
   m_Layer: 0
   m_Name: Caramel_Medio1
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,6 +1689,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8221505797347536345
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4797458128989621461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7234992636799836266, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &4928242391761614188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,9 +1714,10 @@ GameObject:
   - component: {fileID: 5902721002475939980}
   - component: {fileID: 3301860632268103749}
   - component: {fileID: 7842979608644367594}
+  - component: {fileID: 6325537135799631614}
   m_Layer: 0
   m_Name: Ice_Ext9
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,6 +1783,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6325537135799631614
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928242391761614188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8535672666348540705, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &5057276905146597830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,9 +1808,10 @@ GameObject:
   - component: {fileID: 2870129545937013467}
   - component: {fileID: 897057502062385240}
   - component: {fileID: 3764227228387519335}
+  - component: {fileID: 7497680206637061375}
   m_Layer: 0
   m_Name: Caramel_Ext2
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1606,6 +1877,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7497680206637061375
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057276905146597830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5475235767379248325, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &5963352191136934933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,9 +1902,10 @@ GameObject:
   - component: {fileID: 7599465273343262344}
   - component: {fileID: 7055142424730531147}
   - component: {fileID: 7825478336248883609}
+  - component: {fileID: 206002883474906816}
   m_Layer: 0
   m_Name: Ice_Ext1
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1685,6 +1971,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &206002883474906816
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5963352191136934933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6473475882251929313, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &6078641694250408392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,9 +1996,10 @@ GameObject:
   - component: {fileID: 5223584813288167151}
   - component: {fileID: 7392474949966924446}
   - component: {fileID: 9148657933605539826}
+  - component: {fileID: 8007955215260106672}
   m_Layer: 0
   m_Name: Ice_Ext2
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1764,6 +2065,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8007955215260106672
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078641694250408392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9029035609724836461, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &7401251874667293263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,9 +2162,10 @@ GameObject:
   - component: {fileID: 4774201078114034593}
   - component: {fileID: 1501970767673089895}
   - component: {fileID: 5527286868081187465}
+  - component: {fileID: 1451858701256974992}
   m_Layer: 0
   m_Name: Caramel_Medio4
-  m_TagString: Untagged
+  m_TagString: StickyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1915,6 +2231,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1451858701256974992
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974275457713689623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4128758388826939411, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
 --- !u!1 &9129050888181814658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,9 +2256,10 @@ GameObject:
   - component: {fileID: 2730979149613144057}
   - component: {fileID: 6764474087345096965}
   - component: {fileID: 1545128603329651165}
+  - component: {fileID: 8686690146877607960}
   m_Layer: 0
   m_Name: Ice_Medio1
-  m_TagString: Untagged
+  m_TagString: IceFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1994,3 +2325,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8686690146877607960
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9129050888181814658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1086096875405655287, guid: e66efca4e4a0d55409e763e7ec942956, type: 3}
