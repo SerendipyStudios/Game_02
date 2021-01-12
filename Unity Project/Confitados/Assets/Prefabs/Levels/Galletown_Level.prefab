@@ -12,7 +12,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -124,7 +124,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -234,7 +234,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -361,7 +361,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -495,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 88072992884131966, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 116492398012059553, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 206002883474906816, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337216600365036716, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 346289948597966537, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 509442973902785795, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -570,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 1101989412672308625, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1142142442365649636, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -590,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 1202976116882434413, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1202976116882434413, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -615,17 +615,17 @@ PrefabInstance:
     - target: {fileID: 1451858701256974992, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1826329492833263751, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1993091491273843076, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2072866930064765794, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -690,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 2472568929962894222, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2749357447532738569, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -730,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 3406180247666821399, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3951139055666593953, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -745,7 +745,7 @@ PrefabInstance:
     - target: {fileID: 4305501253741766979, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4342986573039876854, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -795,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 4801810319494737857, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4928242391761614188, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -815,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 5055962387307736035, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5057276905146597830, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -835,7 +835,7 @@ PrefabInstance:
     - target: {fileID: 5951813858023000880, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5963352191136934933, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -855,7 +855,7 @@ PrefabInstance:
     - target: {fileID: 6024804888359057411, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6078641694250408392, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -880,12 +880,12 @@ PrefabInstance:
     - target: {fileID: 6325537135799631614, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467617146963099799, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6937658344940942307, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -960,7 +960,7 @@ PrefabInstance:
     - target: {fileID: 6968575516278504296, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7401251874667293263, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -970,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 7497680206637061375, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7713631716623706457, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
@@ -1000,17 +1000,22 @@ PrefabInstance:
     - target: {fileID: 8007955215260106672, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046250928667824022, guid: 545897219663fd14fadcd9f61a358083,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8221505797347536345, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8686690146877607960, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9129050888181814658, guid: 545897219663fd14fadcd9f61a358083,
         type: 3}

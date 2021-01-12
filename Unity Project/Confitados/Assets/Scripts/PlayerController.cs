@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     //Surfaces interaction
     [Header("Surfaces interaction")] public float iceDrag;
     public float stickyDrag;
+    public float defaultDrag;
+    //public LayerMask iceLayer;
 
     //References
     [HideInInspector] public Rigidbody rb;
@@ -157,6 +159,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (GameManager.Instance.gameState != GameManager.GameStateEnum.Playing) return;
 
+        //Check materials drag
+        IsTouchingIce();
+        IsTouchingSticky();
+        IsTouchingDefault();
+
         //Calculate movement
         movement = new Vector3(input.inputX, 0f, input.inputZ) * moveSpeed;
 
@@ -235,36 +242,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Touching in general");
-
         if (collision.gameObject.tag.CompareTo("Player") == 0)
         {
             Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
             collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
         }
-        //Floors
-        if (collision.gameObject.tag.CompareTo("IceFloor") == 0)
-        {
-            Debug.Log("Touching ice");
-            rb.drag = iceDrag;
-        }
-
-        else if (collision.gameObject.tag.CompareTo("StickyFloor") == 0)
-        {
-            Debug.Log("Touching sticky");
-            rb.drag = stickyDrag;
-        }
-
-        else if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
-        {
-            Debug.Log("Touching default");
-            rb.drag = 2.5f;
-        }
-
-        //if (collision.gameObject.tag.CompareTo("Limit") == 0)
-        //return;
-        //if (collision.gameObject.tag.CompareTo("DefaultFloor") == 0)
-        //rb.drag = 2.5f;
     }
 
     public void OnEnable()
@@ -346,22 +328,20 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         //Implement normal floor drag [HERE] 
         //Floors
         //if (other.gameObject.tag.CompareTo("IceFloor") == 0)
+        //{
         //    rb.drag = iceDrag;
+        //    Debug.Log("ICEEE");
+        //}
         //if (other.gameObject.tag.CompareTo("StickyFloor") == 0)
+        //{
         //    rb.drag = stickyDrag;
+        //    Debug.Log("STICKKYY");
+        //}
         //if (other.gameObject.tag.CompareTo("DefaultFloor") == 0)
+        //{
         //    rb.drag = 2.5f;
-        //if (other.gameObject.tag.CompareTo("Limit") == 0)
-        //    return;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        //Floors
-        //En realidad, el suelo por defecto debería ser un tipo de suelo también
-        //if (other.gameObject.tag.CompareTo("IceFloor") == 0 || other.gameObject.tag.CompareTo("StickyFloor") == 0)
-        //rb.drag = 2.5f;
-
+        //    Debug.Log("DEFAUULT");
+        //}
     }
 
     #endregion
@@ -541,6 +521,29 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     #endregion
 
     #region Interaction Methods
+
+    private void IsTouchingIce()
+    {
+        RaycastHit info;
+        Physics.Raycast(transform.position + (new Vector3 (0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.collider.gameObject.tag.CompareTo("IceFloor") == 0)
+            rb.drag = iceDrag;
+    }
+    private void IsTouchingSticky()
+    {
+        RaycastHit info;
+        Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.collider.gameObject.tag.CompareTo("StickyFloor") == 0)
+            rb.drag = stickyDrag;
+    }
+
+    private void IsTouchingDefault()
+    {
+        RaycastHit info;
+        Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.collider.gameObject.tag.CompareTo("DefaultFloor") == 0)
+            rb.drag = defaultDrag;
+    }
 
     public void ImproveSuperDash()
     {

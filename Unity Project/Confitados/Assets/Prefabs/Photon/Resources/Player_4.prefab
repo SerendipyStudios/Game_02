@@ -942,6 +942,7 @@ MonoBehaviour:
   superDashAgainCooldown: 3
   iceDrag: 1
   stickyDrag: 8
+  defaultDrag: 2.5
   rb: {fileID: 0}
   fallTime: 1
   PlayerUIPrefab: {fileID: 8291213710839660956, guid: acd190ee7ac61ce4d8cf1cc742691b39,
