@@ -14,6 +14,8 @@ public class EconomyManagement : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
+
         //Show current cookies and chocolates
         UpdateCurrency();
 
