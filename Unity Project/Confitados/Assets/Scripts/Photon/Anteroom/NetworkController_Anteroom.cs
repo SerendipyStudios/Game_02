@@ -12,18 +12,19 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     #region Variables
 
     [SerializeField] private GameObject connectingDialog;
-    
+
     [SerializeField] private Button createPrivateButton;
     [SerializeField] private Button joinPrivateButton;
-    
-    [SerializeField] private InputField if_roomCode_create;
-    [SerializeField] private InputField if_roomCode_join;
+
+    private InputField if_roomCode_join;
+    [SerializeField] private InputField if_roomCode_join_PC;
+    [SerializeField] private InputField if_roomCode_join_Mobile;
 
     [SerializeField] private Text log;
 
     [SerializeField] private byte maxPlayersInRoom = 4;
     [SerializeField] private byte minPlayersInRoom = 2;
-    
+
     private static System.Random random = new System.Random();
 
     #endregion
@@ -40,10 +41,16 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        if_roomCode_join_PC.gameObject.SetActive(SystemInfo.operatingSystem.Contains("Windows") || SystemInfo.operatingSystem.Contains("Mac"));
+        if_roomCode_join_Mobile.gameObject.SetActive(SystemInfo.operatingSystem.Contains("Android") || SystemInfo.operatingSystem.Contains("iPhone"));
+
+        //Stablish the input text
+        if_roomCode_join = if_roomCode_join_PC.gameObject.activeSelf ? if_roomCode_join_PC : if_roomCode_join_Mobile;
+
         //Disable the buttons
         createPrivateButton.interactable = false;
         joinPrivateButton.interactable = false;
-        
+
         //Connect
         if (!PhotonNetwork.IsConnected)
         {
@@ -131,7 +138,7 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
         //    log.text += "\nEnter a roomCode with a length greater than 4.";
         //    return;
         //}
-        
+
         string _roomCode;
         bool done = false;
 
