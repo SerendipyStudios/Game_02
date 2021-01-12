@@ -11,11 +11,11 @@ public class PlayerNameInputField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string defaultName = string.Empty;
+        string defaultName = "Confite";
         InputField _inputField = this.GetComponent<InputField>();
         if (_inputField != null)
         {
-            if (PlayerPrefs.HasKey(playerNamePrefKey))
+            if (PlayerPrefs.HasKey(playerNamePrefKey) && (PlayerPrefs.GetString(playerNamePrefKey).CompareTo("Confite") == 1))
             {
                 defaultName = PlayerPrefs.GetString(playerNamePrefKey);
                 _inputField.text = defaultName;
@@ -27,7 +27,7 @@ public class PlayerNameInputField : MonoBehaviour
 
     public void SetPlayerName(string value)
     {
-        if(string.IsNullOrEmpty(value))
+        if (string.IsNullOrEmpty(value))
         {
             //Debug.Log("Error. Player Name is null or empty.");
             //return;
