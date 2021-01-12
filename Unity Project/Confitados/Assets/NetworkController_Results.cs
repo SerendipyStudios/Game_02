@@ -22,7 +22,10 @@ public class NetworkController_Results : MonoBehaviour
         PlayerPrefs.SetInt("Cookies", PlayerPrefs.GetInt("Cookies", 0) + AssignRewards(position));
         PlayerPrefs.SetInt("Experience", PlayerPrefs.GetInt("Experience", 0) + AssignRewards(position));
         if (PlayerPrefs.GetInt("Experience") >= 200) //Every 200xp the player levels up
+        { 
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level", 1) + 1);
+            PlayerPrefs.SetInt("Experience", 0);
+        }
 
         //Si quieres que solo pase el servidor (cliente que hace de servidor)
         //if (PhotonNetwork.IsMasterClient) ;
