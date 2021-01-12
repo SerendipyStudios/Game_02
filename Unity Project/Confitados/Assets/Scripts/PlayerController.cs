@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     //Animations
     [Header("Animations")] private int runHashCode;
+    private int dashHashCode;
     public float fallTime = 1f;
 
     //Identity variables
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
         runHashCode = Animator.StringToHash("Movement");
+        dashHashCode = Animator.StringToHash("Dash");
     }
 
     private void Start()
@@ -172,6 +174,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             playerInfo.IsDashing = true;
             dashDirection = input.faceDirection;
             dashAgainCooldownAux = dashAgainCooldown;
+            anim.SetTrigger(dashHashCode);
             SoundManager.sharedInstance.dash_SND.Play();
         }
 
@@ -182,6 +185,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             playerInfo.IsSuperDashing = true;
             dashDirection = input.faceDirection;
             superDashAgainCooldownAux = superDashAgainCooldown;
+            anim.SetTrigger(dashHashCode);
             SoundManager.sharedInstance.superDash_SND.Play();
         }
 
