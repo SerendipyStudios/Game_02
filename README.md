@@ -369,7 +369,7 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 - Sergio: La organización y el flujo de trabajo ha sido bastante buena gracias al uso de Microsotf Project y Trello pero quizá la idea ha sido un tanto ambiciosa para el tiempo de desarrollo que teníamos.
 
-- Clara:
+- Clara: La organización ha mejorado respecto al proyecto anterior, lo cual nos ha dejado más cuerda para dedicarle tiempo a otras asignaturas. Si bien el proyecto inicial fue demasiado ambiciosa respecto al tiempo disponible y la carga de trabajo de otras asignaturas que no tuvimos en cuenta.
 
 - David:
 
