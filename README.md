@@ -168,8 +168,19 @@ La cámara será fija, y no podrá ser controlada por el personaje. Esta cámara
 
 Los power ups que los jugadores pueden encontrarse en confitados son potenciadores del empujón fuerte. De esta forma, cada vez que el jugador consiga un potenciador del empujón fuerte, éste ganará más fuerza, por lo que le será más fácil arrojar enemigos de la plataforma. El empujón pequeño esté pensado para esquivar y moverse rápido, por lo que no tiene sentido que se potencia, puesto que si fuese más fuerte se convertiría automáticamente en el empujón fuerte. Potenciando el empujón fuerte se le otorga una clara ventaja a quien consiga el power up, siendo éste el único power up de todo el juego.
 
-### 4.5. Arquitectura del Software (DAVID Y/O JULEN OS TOCA ESTO)
+### 4.5. Arquitectura del Software
 
+El videojuego ha sido desarrollado en Unity con la extensión de WebGl, con los problemas que ello conlleva. La realización de un juego multijugador compatible con móvil y webGl con esta plataforma hace que el rendimiento de móvil sea muy pobre dadas las restricciones en cuanto a componentes y coste computacional. Sin ir más lejos, uno de los problemas encontrados se ilustra en el inputField donde introducimos el nombre al inicio del juego, ya que el componente nativo de Unity no es compatible con móviles y se ha tenido que implementar una versión alternativa compatible con WebGl, la cual funciona a pesar de mostrar un error en su primer uso.
+
+En cuanto al desarrollo del propio juego, se ha desarrollado el modo multijugador con la ayuda de Photon 2; librería que simplifica enormemente la implementación de este apartado. Gracias a esta, se han implementado salas privadas donde poder invitar a jugadores conocidos mediante un código de sala establecido por el propio juego. Así pues, el tamaño de dichas salas es limitado; 6 jugadores como máximo; y se cierra al público al empezar la partida.
+
+Por otro lado, se ha implementado un sistema de migración de host. En caso de que un jugador deje la sala siendo el host, el código contempla la situación y transfiere las estructuras de datos y los métodos o rutinas que se estuviesen ejecutando para poder continuar su transcurso en el siguiente host; tanto en el Lobby como en la propia partida.
+
+En cuanto a las mecánicas del jugador, se utiliza un modelo de controlador sencillo para moverlo sobre el mundo. Respecto a sus funcionalidades añadidas, encontramos los suelos de diferentes coeficientes de rozamiento, los cuales han sido desarrollados de manera local; mientras que las colisiones con objetos de la escena; como galletas rompibles; u otros jugadores; son tratados en el servidor mediante llamadas RPCs y eventos.
+
+De cara a realizar el respawn de los jugadores de manera sincronizada, es el propio jugador el que notifica al servidor que ha muerto, mientras que es este el que le proporciona una posición válida reservando el slot y comprobando que la posición esté libre. De la misma manera, la cuenta atrás pre partida se realiza de forma sincronizada desde el servidor mediante SyncEvents. La elección de esta herramienta no es banal, pues de hacerlo con RPCs los clientes se saturarían y el juego no funcionaría.
+
+También se han implementado un sistema de progresión de niveles de experiencia, proporcionando puntos dependiendo de la posición en la que quedemos en cada partida. De la misma manera, también recibimos galletas y bombones que se podrán canjear por skins en la tienda que, alternativamente, podrán ser compradas con dinero real. 
 
 ## 5. Pantallas
 
