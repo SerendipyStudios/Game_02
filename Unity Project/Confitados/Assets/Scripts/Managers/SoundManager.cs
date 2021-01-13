@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SoundManager : MonoBehaviour
 
     //References
     public PlayerController player;
+    private float musicVolumeVariable = 0.5f;
+    private float sfxVolumeVariable = 0.5f;
 
     //Themes
     [Header("Themes")]
@@ -49,6 +52,9 @@ public class SoundManager : MonoBehaviour
         if (sharedInstance == null)
             sharedInstance = this;
        // this.transform.SetParent(GameObject.Find("--Managers--").transform, false);
+       
+       SetVolumeMusic(musicVolumeVariable);
+       SetVolumeSfx(sfxVolumeVariable);
     }
     
 
@@ -89,5 +95,49 @@ public class SoundManager : MonoBehaviour
             step = cakeStep_SND;
         step.PlayOneShot(step.clip);
         OnPlayerSteps -= PlayStepSound;
+    }
+
+    public void SetVolumeMusic(float value)
+    {
+        Debug.Log("Volume " + value);
+        musicVolumeVariable = value;
+        
+        //Set volume values
+        inGameMusic_MUSIC.volume = value;
+        menuMusic_MUSIC.volume = value;
+    }
+    
+    public void SetVolumeSfx(float value)
+    {
+        sfxVolumeVariable = value;
+        
+        //Set volume values
+        basicButton_SND.volume = value;
+        breakWalls_SND.volume = value;
+        cakeStep_SND.volume = value;
+        caramelStep_SND.volume = value;
+        collisionConfites_SND.volume = value;
+        dash_SND.volume = value;
+        endCooldown_SND.volume = value;
+        endGame_SND.volume = value;
+        fallDown_SND.volume = value;
+        iceStep_SND.volume = value;
+        levelUpSuperDash_SND.volume = value;
+        notReadyButton_SND.volume = value;
+        readyButton_SND.volume = value;
+        scoreMusic_SND.volume = value;
+        semaphore_SND.volume = value;
+        startButton_SND.volume = value;
+        superDash_SND.volume = value;
+    }
+
+    public float GetMusicVolume()
+    {
+        return musicVolumeVariable;
+    }
+
+    public float GetSfxVolume()
+    {
+        return sfxVolumeVariable;
     }
 }

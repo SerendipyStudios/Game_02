@@ -95,7 +95,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: dad468b3f55d743408bb357a4b9bc535, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -192,7 +192,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 12a7e3b94c4a47443b96a0b17f3760f9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -289,7 +289,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 543226237a72eda418feb589d84577b2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -386,7 +386,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 042adf90a132a4e4c9f933b2f5c9ea28, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -483,7 +483,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8169ed9389c54f442b204a2a14f9aef3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -580,7 +580,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: aaf6de4d7c862f6469c00a41a79a2954, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0
   m_Pitch: 1.47
   Loop: 0
   Mute: 0
@@ -677,7 +677,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2acf238e2c824474191ad0911b846420, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -774,7 +774,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8f12aea9d48f61b4ca4ffa57c9df317e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -871,7 +871,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a403e3aefb56e63489b0e2654442a422, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -968,7 +968,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 7db07843a675e494eacb2f47eb367c1b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1065,7 +1065,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: daa6e73c8a63e814db425e7d48db48b5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1162,7 +1162,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: cdb10cde1727fb1449aa2de040393bd0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1259,7 +1259,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ec893e60fe38b164ba2159fdc1ed0977, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1356,7 +1356,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c06dfc94f82e9a34ebb19d7100df9125, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1453,7 +1453,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d4072dd300d3ec34e9d88be18cfb7a6c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1550,7 +1550,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: dc757466bc0f1be479846a5308efcf95, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1647,7 +1647,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e58f329b9fa4a4144ab4ceeeac24d480, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1744,7 +1744,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0d56a2e59ca4a164fa422e5654fee09b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1841,7 +1841,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 64fbb7894917ed34e8290fb1582e7a23, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
