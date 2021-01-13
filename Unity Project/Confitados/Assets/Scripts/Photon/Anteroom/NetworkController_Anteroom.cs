@@ -72,6 +72,7 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Ahora estamos conectados al servidor de la región: " + PhotonNetwork.CloudRegion);
+        log.text+= "\nConectado al servidor de la región: " + PhotonNetwork.CloudRegion;
 
         //Enable the join room button
         createPrivateButton.interactable = true;
@@ -83,7 +84,7 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     {
         //base.OnJoinedRoom();
 
-        log.text += "\nJoined to room " + PhotonNetwork.CurrentRoom.Name + ".";
+        log.text += "\nUnido a la sala " + PhotonNetwork.CurrentRoom.Name + ".";
 
         //Disable the join room button to prevent the user from joining multiple rooms.
         createPrivateButton.interactable = false;
@@ -105,14 +106,14 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     {
         //base.OnJoinRoomFailed(returnCode, message);
 
-        log.text += "\nError. Unable to join the desired room.";
+        log.text += "\nError. No se pudo unir a la sala indicada.";
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         //base.OnDisconnected(cause);
 
-        log.text += "\nDisconnected.";
+        log.text += "\nDesconectado.";
 
         ScreenManager.GoToScreen("Screen_01_0_MainMenu");
     }
@@ -124,9 +125,9 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     public void Connect()
     {
         if (PhotonNetwork.ConnectUsingSettings())
-            log.text += "\nConnection to server established";
+            log.text += "\nConexión con el servidor establecida.";
         else
-            log.text += "\nError. Couldn't connect to server...";
+            log.text += "\nError. No se pudo conectar al servidor...";
     }
 
     //Private room create
@@ -164,7 +165,7 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     {
         string _roomCode = if_roomCode_join.text;
         if (_roomCode.Length == 0)
-            log.text += "\nEnter a valid room code";
+            log.text += "\nIntroduce un código de sala.";
         else
             PhotonNetwork.JoinRoom(_roomCode);
     }

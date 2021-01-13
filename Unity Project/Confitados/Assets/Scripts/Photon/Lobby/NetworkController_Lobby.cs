@@ -55,7 +55,9 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
             foreach (var player in PhotonNetwork.CurrentRoom.Players)
             {
-                playerCount.text += "\nPlayer " + player.Key + ": " + player.Value.NickName;
+                playerCount.text += "\nPlayer " + player.Key + " (" + player.Value.NickName + "): " 
+                                    + (PhotonView.Find(playerViewIds[player.Value.ActorNumber-1]).
+                                        gameObject.GetComponent<Lobby_PlayerInfo>().GetReady() ? "Listo" : "No listo");
                 Canvas.ForceUpdateCanvases();
                 scrollViewObject.verticalNormalizedPosition = 1f;
             }
@@ -73,7 +75,8 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         //base.OnPlayerEnteredRoom(newPlayer);
-        Debug.Log("Player Entered room");
+        Debug.Log("Nuevo jugador se unió a la sala: " + newPlayer.NickName);
+        log.text += "Nuevo jugador se unió a la sala: " + newPlayer.NickName;
         playerViewIds.Add(-1);
         CheckAllReady();
         
@@ -84,7 +87,8 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     {
         //if (!PhotonNetwork.IsMasterClient) return;
         
-        Debug.Log("Player Left room");
+        Debug.Log("Un jugador dejó la sala: " + otherPlayer.NickName);
+        log.text += "Un jugador dejó la sala: " + otherPlayer.NickName;
         //base.OnPlayerLeftRoom(otherPlayer);
 
         bool wasReady = PhotonView.Find(playerViewIds[otherPlayer.ActorNumber - 1]).GetComponent<Lobby_PlayerInfo>().GetReady();
@@ -110,7 +114,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     {
         //base.OnDisconnected(cause);
 
-        log.text += "\nDisconnected.";
+        log.text += "\nDesconectado del servidor.";
 
         ScreenManager.GoToScreen("Screen_01_0_MainMenu");
     }
@@ -173,6 +177,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     private void CheckAllReady()
     {
         Debug.Log("CheckAllReady: " + readyPlayersCount + "/" + PhotonNetwork.PlayerList.Length);
+        
         
         if (
             readyPlayersCount == PhotonNetwork.PlayerList.Length &&
