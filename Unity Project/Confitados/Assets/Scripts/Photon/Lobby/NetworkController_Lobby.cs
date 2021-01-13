@@ -58,8 +58,6 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
                 playerCount.text += "Player " + player.Key + " (" + player.Value.NickName + "): " 
                                     + (PhotonView.Find(playerViewIds[player.Value.ActorNumber-1]).
                                         gameObject.GetComponent<Lobby_PlayerInfo>().GetReady() ? "Listo\n" : "No listo\n");
-                Canvas.ForceUpdateCanvases();
-                scrollViewObject.verticalNormalizedPosition = 1f;
             }
         }
         else
