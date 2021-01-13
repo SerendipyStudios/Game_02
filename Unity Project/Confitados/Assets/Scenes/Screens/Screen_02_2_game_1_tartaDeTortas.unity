@@ -843,6 +843,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5076734357175731664, guid: ea79db7554dc39a469fbeabec002ba2c,
+        type: 3}
+      propertyPath: pieceFallTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5559011404062623570, guid: ea79db7554dc39a469fbeabec002ba2c,
         type: 3}
       propertyPath: m_IsActive

@@ -941,7 +941,7 @@ MonoBehaviour:
   dashAgainCooldown: 1
   superDashAgainCooldown: 3
   iceDrag: 1
-  stickyDrag: 8
+  stickyDrag: 5
   defaultDrag: 2.5
   rb: {fileID: 0}
   fallTime: 1

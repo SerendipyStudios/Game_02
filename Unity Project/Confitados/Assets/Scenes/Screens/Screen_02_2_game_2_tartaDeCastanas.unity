@@ -423,6 +423,11 @@ PrefabInstance:
       propertyPath: worldLimit
       value: -8.75
       objectReference: {fileID: 0}
+    - target: {fileID: 3503251293923769038, guid: 1ce96aa1462098240b3b25651b8a66ac,
+        type: 3}
+      propertyPath: pieceFallTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3575552073879067621, guid: 1ce96aa1462098240b3b25651b8a66ac,
         type: 3}
       propertyPath: m_LocalScale.y
