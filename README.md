@@ -52,9 +52,9 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 | 800 | 3 |
 | 2500 | 10 |
 
-### 1.5. Tecnología (incluir software de modelado)
+### 1.5. Tecnología
 
-  Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint.
+  Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint. Para el modelado de personajes y mapas, se ha usado Blender.
 
 ### 1.6. Estética
 
@@ -291,7 +291,19 @@ Galleta de power up
 
 ### 9.6. DLCs
 
-### 9.7. Conceptart y referencias
+Los DLCs que Confitados contendrá serán totalmente gratuitos, dada su naturaleza. Todos ellos son funcionalidades que al equipo de desarrollo les hubiera gustado incluir en la salida del juego, pero que fue completamente imposible dado el tiempo que había para el desarrollo del juego. Estos DLCs, serían los siguientes:
+- Misiones diarias: El juego presentará retos diarios, tales como “empuja 5 enemigos en una misma partida”.
+- Perfiles de usuario con contraseña: Los usuarios quedarían registrados en una base de datos, a los cuales se podrá acceder desde cualquier dispositivo.
+- Contador de bajas en partida: Se incluirá un contador que registre el número de jugadores a los que se empujen fuera del mapa.
+- Modo caos: Modos de juego diferentes en los que las mecánicas se modifican para que las partidas sean más frenéticas y locas (modo rápido, muerte súbita, modo superhielo, modo super dash siempre cargado…).
+- Logros: Misiones generales del juego con metas a largo plazo, por ejemplo, eliminar a mil rivales. Al ser completadas, el jugador recibirá una recompensa.
+- Modelo de juego por equipos: Dotar al juego la posibilidad de formar equipos de 2 o 3 personas.
+- Partidas públicas: Se podrá jugar con jugadores aleatorios.
+- Modo torneo: Se incluirá un modo en el que, si se gana el torneo, se obtendrán sustanciales recompensas.
+- Pase de batalla (este elemento es de pago): Se incluirá un pase de batalla opcional (el jugador puede elegir si comprarlo o no) mediante el cual el jugador podrá desbloquear logros extras.
+
+
+### 9.7. Conceptart
 
 - Personajes:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="175">
