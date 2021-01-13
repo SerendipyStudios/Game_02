@@ -52,9 +52,9 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 | 800 | 3 |
 | 2500 | 10 |
 
-### 1.5. Tecnología (incluir software de modelado)
+### 1.5. Tecnología
 
-  Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint.
+  Confitados será desarrollado usando Unity 3D, por lo que se programará en C#. Para editar los efectos de sonido y la música se usará Audacity. Para el diseño de elementos 2D (interfaz y pantallas de menú) se usará Clip Studio Paint. Para el modelado de personajes y mapas, se ha usado Blender.
 
 ### 1.6. Estética
 
