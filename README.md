@@ -303,7 +303,7 @@ Los DLCs que Confitados contendrá serán totalmente gratuitos, dada su naturale
 - Pase de batalla (este elemento es de pago): Se incluirá un pase de batalla opcional (el jugador puede elegir si comprarlo o no) mediante el cual el jugador podrá desbloquear logros extras.
 
 
-### 9.7. Conceptart y referencias
+### 9.7. Conceptart
 
 - Personajes:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="175">
