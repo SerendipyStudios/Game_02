@@ -9,15 +9,15 @@
 
 ### 1.2. Sinopsis de Jugabilidad y Contenido
 
-  En el jueo, todos los elemtos, incluidos personajes y escenarios, son chuches. Si bien hay varios personajes disponibles, ninguno de ellos tiene una mecánica especial y diferente ddel resto, simplemente permiten escoger al usuario aquel personaje que sea más de su gusto. En cuanto a los mapas, cada uno de ellos tiene una una característica especial, que hará que cada partida se sienta diferente de la anterior.
+  En el juego, todos los elementos, incluidos personajes y escenarios, son chuches. Si bien hay varios personajes disponibles, ninguno de ellos tiene una mecánica especial y diferente del resto, simplemente permiten escoger al usuario aquel personaje que sea más de su gusto. En cuanto a los mapas, cada uno de ellos tiene una característica especial, que hará que cada partida se sienta diferente de la anterior.
 
 ### 1.3. Mecánica (descripción general)
 
-  La mecánica principal del juego es impulsarse de dos formas diferentes: la primera forma se verá reflejada como un pequeño impulso que estará disponible la mayor parte del tiempo. Este pequeño impulso está pensado para esquivar a los demás jugadores. El otro impulso es otro más potente, pero que tendrá más tiempo de enfriamiento antes de poder usarse. Este gran impulso está pensado para proporcionar un fuerte golpe a otro juegador y tirarlo del mapa. No obstante, también se puede empujar a los demás jugadores simplemente empujándolos sin usar ningún impulso.
+  La mecánica principal del juego es impulsarse de dos formas diferentes: la primera forma se verá reflejada como un pequeño impulso que estará disponible la mayor parte del tiempo. Este pequeño impulso está pensado para esquivar a los demás jugadores. El otro impulso es otro más potente, pero que tendrá más tiempo de enfriamiento antes de poder usarse. Este gran impulso está pensado para proporcionar un fuerte golpe a otro jugador y tirarlo del mapa. No obstante, también se puede empujar a los demás jugadores simplemente empujándolos sin usar ningún impulso.
   
 ### 1.4. Economía del juego
 
-En confitados distinguiremos dos tipos de monetas; las galletas y los bombones. Las galletas se obtendrán al terminar una partida, ganando más o menos en función de la posición en la que quede el jugador. Los bombones se conseguirán al subir de nivel, obteniendo un único bombón por nivel.
+En confitados distinguiremos dos tipos de monedas; las galletas y los bombones. Las galletas se obtendrán al terminar una partida, ganando más o menos en función de la posición en la que quede el jugador. Los bombones se conseguirán al subir de nivel, obteniendo un único bombón por nivel.
 
 Las galletas se conseguirán de la siguiente forma en función de la posición:
 
@@ -30,7 +30,7 @@ Las galletas se conseguirán de la siguiente forma en función de la posición:
 | 5º | 5 bombones + 5 xp |
 | 6º | 5 bombones + 5 xp |
 
-En cuanto a los produtos que se podrán comprar con la moneda del juego, el jugador podrá adquirir los siguientes elementos:
+En cuanto a los productos que se podrán comprar con la moneda del juego, el jugador podrá adquirir los siguientes elementos:
 
 | Producto | Precio |
 | ------------- | ------------- |
@@ -60,7 +60,7 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 
   La estética de todo el juego será muy amigable e infantil, siendo los personajes pequeñas chuches, sin haber más violencia más allá del empuje para tirar a otro personaje. Los mapas y los distintos elementos del juego también tendrán forma de dulces o postres. Predominarán los elementos con dinámica de forma circular.
 
-### 1.7. Públco objetivo
+### 1.7. Público objetivo
 
   Dada la amigable estética y mecánicas de juego, Confitados es apto para casi todo el público, pero no para todos, puesto que su mecánica principal consiste en empujones, por lo que hay violencia, aunque no demasiada. Por estas razones, se le da un pegi 7.
 
@@ -80,7 +80,7 @@ También puede haber conversión de un tipo de monedas en otras, tal y cómo se 
 
 ### 2.1. Tipo de modelo de negocio
 
-Para representar el modelo de negocio, se ha creado un business model canvas para que toda la infromación quede bien representada:
+Para representar el modelo de negocio, se ha creado un business model canvas para que toda la información quede bien representada:
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Management/modelo%20de%20negocio%20nuevo.PNG" width="1000">
 
@@ -145,17 +145,17 @@ En total: 172581€
 
 El jugador podrá moverse por todo el mapa corriendo. La mecánica principal y lo que distingue al juego son los empujones. Podemos distinguir 2 tipos de empujones:
 - Empujón débil, pensado para esquivar de forma rápida. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Este empujón impulsará al jugador en una pequeña distancia. Si choca con otro jugador, será empujando mínimamente. Este empujón podrá efectuarse cada muy pocos segundos.
-- Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntanto a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al culisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamento (tiempo sin poder usarse) algo mayor que el empujón débil.
+- Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntando a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al colisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamiento (tiempo sin poder usarse) algo mayor que el empujón débil.
 
 Asimismo, el usuario podrá usar los distintos elementos de los mapas a su favor. Un buen ejemplo puede ser el hecho de llevar al rival a una zona pegajosa para que se mueva más lento, para posteriormente tirarlo del mapa.
 
 ### 4.2. Controles
 
-En cuanto a los controles, serán diferente dependiendo de si el usuario está jugando en un dispósitivo móvil o en pc:
+En cuanto a los controles, serán diferente dependiendo de si el usuario está jugando en un dispositivo móvil o en pc:
 
 - En dispositivos móviles y tablets, los usuarios tendrán disponible un joystick virtual en la parte inferior izquierda de la pantalla para el movimiento básico del personaje. Para los empujones, tendrá disponibles dos botones en la parte inferior derecha de la pantalla. Un botón corresponderá al empujón débil, mientras que el otro corresponderá al empujón fuerte.
 
-- En pc esto cambia, ya que no se dispone de una pantalla táctil. Para el movimiento básico del personaje, el usuario usará las teclas W (arriba), S (abajo), A (izquierda) y D (derecha). Para los empujones, los controles serán los siguientes: para usar el empujón débil, el usuario pulsará la barra espaciadora. Para el empujón fuerde, se hará uso de la tecla de intro.
+- En pc esto cambia, ya que no se dispone de una pantalla táctil. Para el movimiento básico del personaje, el usuario usará las teclas W (arriba), S (abajo), A (izquierda) y D (derecha). Para los empujones, los controles serán los siguientes: para usar el empujón débil, el usuario pulsará la tecla ALT. Para el empujón fuerte, se hará uso de la barra espaciadora.
 
 ### 4.3. Cámara
 
@@ -170,14 +170,15 @@ Los power ups que los jugadores pueden encontrarse en confitados son potenciador
 
 ## 5. Pantallas
 
-Confitados cuenta con un gran número de pantallas, estando todas ella conectadas entre sí. El diseño de pantalla se mantiene uniforme y homogéneo, compartiendo la misma temática de dulces en todo momento. También, algo que comparte la gran mayoría de las pantallas (todas, expeto la de introducir nombre y las minipantallas de confirmación para salir) es el botón de ajustes, situado en la parte superior derecha de la pantalla. De esta forma, el usuario tendrá a su disposición en todo momento las opciones necesarias para modificar los parámetros de Confitados al gusto. Existen varios tipos de pantalla:
+Confitados cuenta con un gran número de pantallas, estando todas ella conectadas entre sí. El diseño de pantalla se mantiene uniforme y homogéneo, compartiendo la misma temática de dulces en todo momento. También, algo que comparte la gran mayoría de las pantallas (todas, excepto la de introducir nombre y las minipantallas de confirmación para salir) es el botón de ajustes, situado en la parte superior derecha de la pantalla. De esta forma, el usuario tendrá a su disposición en todo momento las opciones necesarias para modificar los parámetros de Confitados al gusto. Existen varios tipos de pantalla:
 
 - Pantalla de escoger nombre. Dicha pantalla se mostrará al principio de la aplicación, y el usuario podrá introducir el nombre que desee.
-- Menú principal. Esta pantalla será a la que conducirá la pantalla de escoger nombre. En esta pantalla, el jugador podrá ver la apariencia de su confite, sus galletas y bombones y su nombre. Asímismo, se mostraran 5 botones; jugar, cómo jugar, créditos, salir y tienda. Si se pulsa en salir, aparecerá un mensaje en forma de una pequeña pantalla que se superpone con la anterior para preguntar al jugador si está seguro que quiere salir del juego. Si se pulsa en cómo jugar, empezará el tutorial, que le emlicará al usuario los controles básicos mientras juega en un escenario para probarlo. La pantalla de créditos lleva a la siguiente pantalla.
-- Pantalla de créditos. En esta pantalla apareceran imágenes y roles de los integrantes del grupo, así como un enlace a la cuenta de Twitter de Serendipy Studios.
-- Pantalla de creación o unión de partida. Al pulsar sobre el botón de jugar en el menú principal, el jugador será llevado a una pantalla donde podrá escoger si desea crear una partida o si desea unirse a alguna ya creada. En ambas opcones, las partidas serán privadas, por lo que si desea unirse a una partida, tendrá que introducir el código correspondiente para unirse a la sala ya creada.
+- Menú principal. Esta pantalla será a la que conducirá la pantalla de escoger nombre. En esta pantalla, el jugador podrá ver la apariencia de su confite, sus galletas y bombones y su nombre. Asimismo, se mostraran 5 botones; jugar, cómo jugar, créditos, salir y tienda. Si se pulsa en salir, aparecerá un mensaje en forma de una pequeña pantalla que se superpone con la anterior para preguntar al jugador si está seguro que quiere salir del juego. Si se pulsa en cómo jugar, se conducirá a la pantalla de cómo jugar.
+- Pantalla de cómo jugar: En esta pantalla aparecerán pequeños cuadros de texto con imágenes, que explicarán los controles al usuario, tanto si está jugando en un dispositivo móvil como en pc.
+- Pantalla de créditos. En esta pantalla aparecerán imágenes y roles de los integrantes del grupo, así como un enlace a la cuenta de Twitter de Serendipy Studios.
+- Pantalla de creación o unión de partida. Al pulsar sobre el botón de jugar en el menú principal, el jugador será llevado a una pantalla donde podrá escoger si desea crear una partida o si desea unirse a alguna ya creada. En ambas opciones, las partidas serán privadas, por lo que si desea unirse a una partida, tendrá que introducir el código correspondiente para unirse a la sala ya creada.
 - Pantalla de lobby. En esta pantalla, el jugador podrá cambiar de personaje antes de empezar. También habrá un botón a la derecha, justo debajo del botón de ajustes, en el que si el jugador pulsa, se abrirá un desplegable, en el que se podrá observar los jugadores que estén listos para empezar a justar. En la esquina superior izquierda aparecerá el código de la sala. En la esquina inferior izquierda aparecerá un botón de volver atrás, para abandonar la sala. En la parte inferior de la pantalla hay dos botones: el botón de listo, que se pulsará cuando el jugador esté disponible para jugar, y el botón de empezar, que solo podrá ser pulsado por el jugador que creó la sala, el jugador 1.
-- Pantalla de juego. Al empezar la partida, el jugador pasará a esta pantalla. En dicha interfaz se pueden observar varios elementos: en la parte superior izquierda, apareceran tantas imágenes del jugador como vidas tenga, empezando en 3. Más a la derecha, aparecerá un contandor inverso de tiempo, es decir, un contador decreciente. Más a la derecha se encuentra un contador que indica el número de contringantes que el jugador ha tirado del mapa. En la parte derecha se encuentra el botón de ajustes. En la parte inferior izquierda de la pantalla, se encuentra un joystick virtual (no aparecerá si se juega en PC). En la parte inferior derecha de la pantalla, se pueden observar dos botones: el pequeño es el botón de acción del empujón débil, por lo que estará disponible durante más tiempo que el del empujón fuerte, que está situado justo a su derecha.
+- Pantalla de juego. Al empezar la partida, el jugador pasará a esta pantalla. En dicha interfaz se pueden observar varios elementos: en la parte superior izquierda, aparecerán tantas imágenes del jugador como vidas tenga, empezando en 3. Más a la derecha, aparecerá un contador inverso de tiempo, es decir, un contador decreciente. Más a la derecha se encuentra un contador que indica el número de contrincantes que el jugador ha tirado del mapa. En la parte derecha se encuentra el botón de ajustes. En la parte inferior izquierda de la pantalla, se encuentra un joystick virtual (no aparecerá si se juega en PC). En la parte inferior derecha de la pantalla, se pueden observar dos botones: el pequeño es el botón de acción del empujón débil, por lo que estará disponible durante más tiempo que el del empujón fuerte, que está situado justo a su derecha.
 - Pantalla de fin de partida. En esta pantalla se mostrará un ranking de la partida anterior, indicando el número de galletas ganadas en función de la posición. En esta pantalla se encuentran dos botones en la parte inferior de la pantalla: a la izquierda está el botón de volver al menú, que llevará al usuario a la pantalla del menú principal, y en la derecha el de volver a la sala, que llevará al usuario a la pantalla de lobby.
 - Pantalla de ajustes. En dicha pantalla el jugador podrá modificar el volumen general del juego, así como el de SFX. En la parte inferior habrá un botón que conducirá a la pantalla del menú principal, siempre y cuando el jugador haya confirmado en la minipantalla que le preguntará si está seguro.
 - Pantalla de tienda: En esta pantalla aparecerán dos secciones: tesoro y skins. Si se pulsa sobre la sección de tesoro, el juego conducirá al jugador a la pantalla de compra de monedas del juego con dinero real, pudiendo volver en todo momento hacia atrás. Si se pulsa sobre la sección de skins, se accederá a la pantalla de compra de skins con dinero del juego, pudiendo volver atrás en todo momento. En esta pantalla de tienda, se podrá volver al menú principal si se pulsa en el botón situado en la esquina inferior izquierda.
@@ -191,7 +192,7 @@ En cuanto al botón de ajustes, si el jugador lo pulsa en mitad de una partida, 
 
 Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma de jugar variará en función del nivel que toque en cada partida. Dicha elección de nivel es aleatoria, por lo que ningún jugador sabrá en que escenario se va a desarrollar la acción hasta que no haya empezado la partida. Estos niveles son:
 
-- Tutorial: El tutorial está compuesto por 3 zonas mou diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es tarta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lenta, puesto que el suelo está pegajoso.
+- Tutorial: El tutorial está compuesto por 3 zonas muy diferenciadas, para que el jugador las distinga bien y sepa distinguirlas. La zona rosa es helado, zona en la cual el jugador resbalará. La zona del medio es tarta, por lo que el movimiento será el normal, no habiendo fuerzas extras que dificulten el movimiento. La parte de naranja está hecha de caramelo, por lo que el movimiento será más lento, puesto que el suelo está pegajoso.
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial.PNG" width="250">
 
 - Galletown: Este nivel está diseñado de tal forma que los movimientos se escapen del control de los usuarios al haber tanta zona de helado (zona azul), aunque las zonas de caramelo (zonas naranja oscuro) hará que se paren en seco, puesto que se quedarán muy pegados al suelo. Cuando el mapa empiece a caerse, lo hará en círculos, de fuera hacia dentro, por lo que la zona central está diseñada con mucha zona helada precisamente para añadirle dinamismo a la partida.
@@ -206,7 +207,7 @@ Habrá 3 niveles, teniendo todos ellos un diseño diferente, por lo que la forma
 
 ## 8. Personajes
 
-Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugador elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese agusto con el personaje y nadie se sintiese amenazano u ofendido.
+Los personajes serán llamados Confites. Si bien su diseño varía según la skin que el jugador elija, por lo general son pequeños dulces o chuches con patas. Se ha escogido un diseño amigable, puesto que al tener un pegi tan bajo, se requería que todo el mundo se sintiese a gusto con el personaje y nadie se sintiese amenazado u ofendido.
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="225">
 Imagen 2D del confite
@@ -233,7 +234,7 @@ Dado que todos los elementos del juego son chuches y postres, habrá todo tipo d
 
 ### 9.3. Mapas
 
-Los mapas varian en cuanto a diseño y forma, así como la distribución de los distintos elementos que componen el suelo.
+Los mapas varían en cuanto a diseño y forma, así como la distribución de los distintos elementos que componen el suelo.
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/tutorial_model.PNG" width="250">
 Tutorial sin texturas
@@ -261,7 +262,7 @@ Tarta de castañas con texturas
 
 ### 9.4. Personajes
 
-Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sean aptos para jugar a Confitados.
+Los Confites tienen una estética amigable, teniendo un tamaño pequeño, con ojos grandes y pequeñas extremidades. Este diseño hace que la violencia que hay dentro del juego (empujones) se sienta menos agresiva, lo que hace que un espectro más amplio de jugadores sea apto para jugar a Confitados.
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render1.png" width="225">
 Render del confite
@@ -271,7 +272,7 @@ Render de skins de los confites
 
 ### 9.5. PowerUps
 
-El power up de pontenciación del empujón fuerte queda representado como una galleta, que aparecerá en algún punto aleatoria del mapa.
+El power up de potenciación del empujón fuerte queda representado como una galleta, que aparecerá en algún punto aleatoria del mapa.
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/powerUp.PNG" width="175">
 Galleta de power up
@@ -312,11 +313,11 @@ Dada la temática de Confitados, se ha escogido una música animada para las par
 ### 10.1. Música
 
 Puesto que Confitados es un juego con acción frenética, se ha decidido que la música a incluir en las partidas incite aun más a la acción. Por ello, se ha escogido una música rápida, amigable y que potencia la rivalidad contra los oponentes del jugador. También se ha escogido teniendo en cuenta que no cause estrés o ansiedad en el jugador, ni que aburra cuando se escuche durante varios minutos.
-Para todas las demás pantallas (a excepción de la pantalla de resultados), se ha escogido una música amigalbe y animada, aunque mucho más relajada que la de las partidas. De esta forma, creamos un ambiente que causa una buena sensación al usuario mientras se pasea por las pantallas, animándole a jugar.
+Para todas las demás pantallas (a excepción de la pantalla de resultados), se ha escogido una música amigable y animada, aunque mucho más relajada que la de las partidas. De esta forma, creamos un ambiente que causa una buena sensación al usuario mientras se pasea por las pantallas, animándole a jugar.
 
 ### 10.2. Efectos sonoros
 
-En cuanto a efectos sonoros, cabe destacar que Confitados incluye efectos de sonido para todas las acciones que el usuario pueda hacer en el juego. En los menús, un click sobre cualquier botón emitirá su efecto de sonido correspondiente, diferenciandose varios efectos diferentes (por ejemplo, el botón de estar listo emitirá uno diferente del de ajustes o del de empezar partida). Asimismo, en la pantalla de partida, también se encuentran varias pistas de efectos sonoros asociados a todas las acciones que puede realizar el usuario.
+En cuanto a efectos sonoros, cabe destacar que Confitados incluye efectos de sonido para todas las acciones que el usuario pueda hacer en el juego. En los menús, un clic sobre cualquier botón emitirá su efecto de sonido correspondiente, diferenciándose varios efectos diferentes (por ejemplo, el botón de estar listo emitirá uno diferente del de ajustes o del de empezar partida). Asimismo, en la pantalla de partida, también se encuentran varias pistas de efectos sonoros asociados a todas las acciones que puede realizar el usuario.
 Todos estos efectos se han buscado y modificado para que se adapten a la estética de dulces que tiene el propio juego. Un buen ejemplo sería que algunos de los botones tuviesen efecto de sonido de morder galleta, que los pasos del personaje varíen según esté pisando helado, tarta o caramelo o que al caer de la plataforma un personaje suene una voz aguda, acorde con su diminuto cuerpo.
 La propia pantalla de resultados tiene su propio efecto de sonido, siendo éste una pequeña melodía triunfal de fin de partida. 
 
