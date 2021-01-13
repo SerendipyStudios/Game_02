@@ -62,9 +62,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Player UI")] public PlayerUI PlayerUIPrefab;
     public PlayerControlUI PlayerInputUIPrefab;
     public PlayerCameraSpectatorUI PlayerCameraSpectatorUIPrefab;
+    public PlayerCameraWinUI PlayerCameraWinUIPrefab;
     public PlayerInterfaceUI PlayerInterfaceUIPrefab;
 
     public PlayerInterfaceUI playerInterfaceUI;
+
+    private PlayerCameraSpectatorUI playerCameraSpectatorUiInstance;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -310,6 +313,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
                 //Paralyze all players
                 rb.constraints = RigidbodyConstraints.FreezeAll;
 
+                //Delete spectator ui if there was
+                if(playerCameraSpectatorUiInstance != null)
+                    Destroy(playerCameraSpectatorUiInstance);
+                
+                //Instantiate playerCameraWinUi
+                Instantiate(PlayerCameraWinUIPrefab).Initialize(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber))
+                    .GetComponent<PlayerController>());
+                
                 //Set close-up camera
                 cameraFollow.SetPlayer(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber))
                     .GetComponent<PlayerController>());
@@ -458,7 +469,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
             );
 
             //Show camera spectator GUI
-            Instantiate(PlayerCameraSpectatorUIPrefab).Initialize(this);
+            playerCameraSpectatorUiInstance = Instantiate(PlayerCameraSpectatorUIPrefab);
+            playerCameraSpectatorUiInstance.Initialize(this);
         }
     }
 
