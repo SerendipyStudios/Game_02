@@ -16,6 +16,6 @@ public class PlayerCameraWinUI : MonoBehaviour
     // Update is called once per frame
     public void Initialize(PlayerController _playerController)
     {
-        winPlayerText.text = "¡" + _playerController.GetComponent<PlayerInfo>().name + " ha ganado!";
+        winPlayerText.text = "¡" + _playerController.GetComponent<PlayerInfo>().photonView.Owner.NickName + " ha ganado!";
     }
 }

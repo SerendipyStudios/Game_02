@@ -372,6 +372,7 @@ namespace Photon.Game
         private void CmdRegisterPlayer(int actorNumber, int viewId)
         {
             PlayerInfo playerInfo = PhotonView.Find(viewId).gameObject.GetComponent<PlayerInfo>();
+            Debug.Log("CmdRegisterPlayer with actorNumber: " + actorNumber);
             allPlayers_ViewIds[actorNumber - 1] = viewId;
             alivePlayers_ViewIds.Add(viewId);
 

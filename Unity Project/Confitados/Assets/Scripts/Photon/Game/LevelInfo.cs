@@ -121,7 +121,7 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            Debug.Log(PhotonNetwork.IsMasterClient);
+            //Debug.Log(PhotonNetwork.IsMasterClient);
             // Network player, receive data
             for (var index = 0; index < worldPieces_destiny.Count; index++)
             {

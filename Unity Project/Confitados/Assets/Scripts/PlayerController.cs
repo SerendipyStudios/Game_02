@@ -65,9 +65,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     public PlayerCameraWinUI PlayerCameraWinUIPrefab;
     public PlayerInterfaceUI PlayerInterfaceUIPrefab;
 
-    public PlayerInterfaceUI playerInterfaceUI;
-
-    private PlayerCameraSpectatorUI playerCameraSpectatorUiInstance;
+    private PlayerInterfaceUI playerInterfaceUI;
+    public PlayerCameraSpectatorUI playerCameraSpectatorUiInstance;
 
     [Header("Sound")] public SoundManager SoundManagerPrefab;
 
@@ -306,7 +305,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 break;
             case GameManager.WinCode:
-                Debug.Log("Camera Spectator: PlayerDeadCode received.");
+                Debug.Log("Camera Spectator: PlayerWinCode received.");
                 datas = ((object[])photonEvent.CustomData);
                 _actorNumber = (int)datas[0];
 
@@ -315,7 +314,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 //Delete spectator ui if there was
                 if(playerCameraSpectatorUiInstance != null)
-                    Destroy(playerCameraSpectatorUiInstance);
+                    Destroy(playerCameraSpectatorUiInstance.gameObject);
                 
                 //Instantiate playerCameraWinUi
                 Instantiate(PlayerCameraWinUIPrefab).Initialize(PhotonView.Find(GameManager.Instance.GetPlayerViewId(_actorNumber))
@@ -548,7 +547,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         RaycastHit info;
         Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
-        if (info.transform == null) return;
+        if (info.transform == null)
+        {
+            rb.drag = defaultDrag;
+            return;
+        }
         if (info.collider.gameObject.tag.CompareTo("IceFloor") == 0)
             rb.drag = iceDrag;
     }
@@ -556,7 +559,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         RaycastHit info;
         Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
-        if (info.transform == null) return;
+        if (info.transform == null)
+        {
+            rb.drag = defaultDrag;
+            return;
+        }
         if (info.collider.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = stickyDrag;
     }
@@ -565,7 +572,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         RaycastHit info;
         Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
-        if (info.transform == null) return;
+        if (info.transform == null)
+        {
+            rb.drag = defaultDrag;
+            return;
+        }
         if (info.collider.gameObject.tag.CompareTo("DefaultFloor") == 0)
             rb.drag = defaultDrag;
     }

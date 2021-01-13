@@ -126,6 +126,8 @@ public class CameraFollow : MonoBehaviour
                 TeleportCamera(followOffset);
                 break;
             case CameraModeEnum.Win:
+                if(player.playerCameraSpectatorUiInstance != null)
+                    Destroy(player.playerCameraSpectatorUiInstance.gameObject);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

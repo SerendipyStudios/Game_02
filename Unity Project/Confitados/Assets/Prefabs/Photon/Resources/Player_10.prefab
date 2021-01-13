@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 3216132245782938207}
   - component: {fileID: 8173258551299607441}
   m_Layer: 0
-  m_Name: Player_9
+  m_Name: Player_10
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,11 +951,11 @@ MonoBehaviour:
     type: 3}
   PlayerCameraSpectatorUIPrefab: {fileID: 1793729970329116518, guid: 9754b69cdb530894897d85e8d1a3e8b1,
     type: 3}
+  PlayerCameraWinUIPrefab: {fileID: 8445705926254044156, guid: 9813c9dea1ed25e4a8ddbbc80bbb3a55,
+    type: 3}
   PlayerInterfaceUIPrefab: {fileID: 6016479596591847941, guid: 09c9cb5ad953b4949922fe74d996a7eb,
     type: 3}
-  exitMessage: {fileID: 4856206846476800745, guid: 6a12eac236e46634f94143c527549a98,
-    type: 3}
-  playerInterfaceUI: {fileID: 0}
+  playerCameraSpectatorUiInstance: {fileID: 0}
   SoundManagerPrefab: {fileID: 4053661352139720574, guid: 6d44c625afde14147abb3d47f0d4262f,
     type: 3}
 --- !u!114 &8016238185680841772
