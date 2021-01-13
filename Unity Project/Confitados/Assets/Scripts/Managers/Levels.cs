@@ -9,18 +9,19 @@ public class Levels : MonoBehaviour
     {
         Galletown = 0,
         TartaDeTortas = 1,
+        TartaDeCastanas = 2,
     }
 
     public static string GetScene(LevelsEnum level)
     {
-        switch (level)
+        switch (level)//
         {
             case LevelsEnum.Galletown:
                 return "Screen_02_2_game_0_galletown";
-                break;
             case LevelsEnum.TartaDeTortas:
                 return "Screen_02_2_game_1_tartaDeTortas";
-                break;
+            case LevelsEnum.TartaDeCastanas:
+                return "Screen_02_2_game_2_tartaDeCastanas";
             default:
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
         }
@@ -32,10 +33,10 @@ public class Levels : MonoBehaviour
         {
             case LevelsEnum.Galletown:
                 return LevelsEnum.TartaDeTortas;
-                break;
             case LevelsEnum.TartaDeTortas:
+                return LevelsEnum.TartaDeCastanas;
+            case LevelsEnum.TartaDeCastanas:
                 return LevelsEnum.Galletown;
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
         }
@@ -46,11 +47,11 @@ public class Levels : MonoBehaviour
         switch (level)
         {
             case LevelsEnum.Galletown:
-                return LevelsEnum.TartaDeTortas;
-                break;
+                return LevelsEnum.TartaDeCastanas;
             case LevelsEnum.TartaDeTortas:
                 return LevelsEnum.Galletown;
-                break;
+            case LevelsEnum.TartaDeCastanas:
+                return LevelsEnum.TartaDeTortas;
             default:
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
         }
@@ -62,10 +63,10 @@ public class Levels : MonoBehaviour
         {
             case LevelsEnum.Galletown:
                 return "Galletown";
-                break;
             case LevelsEnum.TartaDeTortas:
                 return "Tarta de tortas";
-                break;
+            case LevelsEnum.TartaDeCastanas:
+                return "Tarta de castañas";
             default:
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
         }

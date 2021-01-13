@@ -9,11 +9,10 @@ public class PlayerInterfaceUI : MonoBehaviour
 {
     private PlayerController playerController;
     
-    
     //Interface elements
     [SerializeField] public Button exitGameButton;
     [SerializeField] private Text countdownText;
-    
+
     private void Awake()
     {
         this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
@@ -22,8 +21,8 @@ public class PlayerInterfaceUI : MonoBehaviour
     public void Initialize(PlayerController _playerController)
     {
         playerController = _playerController;
-        
-        exitGameButton.onClick.AddListener(() => GameManager.Instance.LeaveGame());
+        exitGameButton.onClick.AddListener(() => GetComponent<ExitConfirmation_Message>().ShowMessage(true));
+        //exitGameButton.onClick.AddListener(() => GameManager.Instance.LeaveGame());
     }
     
     public void SetCountdown(int time)

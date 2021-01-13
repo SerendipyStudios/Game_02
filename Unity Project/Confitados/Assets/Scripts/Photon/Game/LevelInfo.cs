@@ -202,7 +202,8 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
             {
                 GameObject piece = worldPieces[worldPieces.Count - i -1];
                 Rigidbody rb = piece.GetComponent<Rigidbody>();
-                rb.useGravity = true;
+                //rb.useGravity = true;
+                rb.AddForce(new Vector3(0f, -9.8f, 0f));
                 rb.constraints -= RigidbodyConstraints.FreezePositionY;
             }
             

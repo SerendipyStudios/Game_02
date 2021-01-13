@@ -58,7 +58,6 @@ public class InputPlayer : MonoBehaviourPunCallbacks
             }
 
         }
-        //case Platforms.Mobile:
         else if (SystemInfo.operatingSystem.Contains("Android") || SystemInfo.operatingSystem.Contains("iPhone"))
         {
             //Inputs check
