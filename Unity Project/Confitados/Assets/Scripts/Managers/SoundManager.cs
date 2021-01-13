@@ -68,6 +68,16 @@ public class SoundManager : MonoBehaviour
         basicButton_SND.Play();
     }
 
+    public void PlayReadyButton()
+    {
+        readyButton_SND.Play();
+    }
+
+    public void PlayNotReadyButton()
+    {
+        notReadyButton_SND.Play();
+    }
+
     public void PlayStepSound()
     {
         AudioSource step;
