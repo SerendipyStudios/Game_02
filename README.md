@@ -145,7 +145,7 @@ En total: 172581€
 
 El jugador podrá moverse por todo el mapa corriendo. La mecánica principal y lo que distingue al juego son los empujones. Podemos distinguir 2 tipos de empujones:
 - Empujón débil, pensado para esquivar de forma rápida. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Este empujón impulsará al jugador en una pequeña distancia. Si choca con otro jugador, será empujando mínimamente. Este empujón podrá efectuarse cada muy pocos segundos.
-- Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntando a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al colisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamiento (tiempo sin poder usarse) algo mayor que el empujón débil.
+- Empujón fuerte, pensado para tirar a los rivales fuera del mapa. El jugador elegirá la dirección en la que quiera impulsarse y, dando a la tecla o botón que le corresponda, se efectuará el empujón. Impulsará al jugador en una gran distancia, por lo que se debe de tener en cuenta cuándo usarlo y en qué dirección, ya que si se usa apuntando a una parte del mapa en el que éste se acaba, el jugador se tirará del mapa. Está pensado para apuntar hacia otro jugador, ya que al colisionar con éste, el jugador que ha sido impulsado se parará, transmitiendo así el impulso al otro jugador, que saldrá disparado del mapa. Al ser una mecánica tan poderosa, tiene un tiempo de enfriamiento (tiempo sin poder usarse) algo mayor que el empujón débil. Este empujón fuerte puede mejorarse si el jugador coge los power ups que aparecerán aleatoriamente por el mapa, haciendo que este empujón sea aun más fuerte.
 
 Asimismo, el usuario podrá usar los distintos elementos de los mapas a su favor. Un buen ejemplo puede ser el hecho de llevar al rival a una zona pegajosa para que se mueva más lento, para posteriormente tirarlo del mapa.
 
@@ -178,7 +178,7 @@ Confitados cuenta con un gran número de pantallas, estando todas ella conectada
 - Pantalla de créditos. En esta pantalla aparecerán imágenes y roles de los integrantes del grupo, así como un enlace a la cuenta de Twitter de Serendipy Studios.
 - Pantalla de creación o unión de partida. Al pulsar sobre el botón de jugar en el menú principal, el jugador será llevado a una pantalla donde podrá escoger si desea crear una partida o si desea unirse a alguna ya creada. En ambas opciones, las partidas serán privadas, por lo que si desea unirse a una partida, tendrá que introducir el código correspondiente para unirse a la sala ya creada.
 - Pantalla de lobby. En esta pantalla, el jugador podrá cambiar de personaje antes de empezar. También habrá un botón a la derecha, justo debajo del botón de ajustes, en el que si el jugador pulsa, se abrirá un desplegable, en el que se podrá observar los jugadores que estén listos para empezar a justar. En la esquina superior izquierda aparecerá el código de la sala. En la esquina inferior izquierda aparecerá un botón de volver atrás, para abandonar la sala. En la parte inferior de la pantalla hay dos botones: el botón de listo, que se pulsará cuando el jugador esté disponible para jugar, y el botón de empezar, que solo podrá ser pulsado por el jugador que creó la sala, el jugador 1.
-- Pantalla de juego. Al empezar la partida, el jugador pasará a esta pantalla. En dicha interfaz se pueden observar varios elementos: en la parte superior izquierda, aparecerán tantas imágenes del jugador como vidas tenga, empezando en 3. Más a la derecha, aparecerá un contador inverso de tiempo, es decir, un contador decreciente. Más a la derecha se encuentra un contador que indica el número de contrincantes que el jugador ha tirado del mapa. En la parte derecha se encuentra el botón de ajustes. En la parte inferior izquierda de la pantalla, se encuentra un joystick virtual (no aparecerá si se juega en PC). En la parte inferior derecha de la pantalla, se pueden observar dos botones: el pequeño es el botón de acción del empujón débil, por lo que estará disponible durante más tiempo que el del empujón fuerte, que está situado justo a su derecha.
+- Pantalla de juego. Al empezar la partida, el jugador pasará a esta pantalla. En dicha interfaz se pueden observar varios elementos: en la parte superior izquierda, aparecerán tantas imágenes del jugador como vidas tenga, empezando en 3. Más a la derecha, aparecerá un contador inverso de tiempo, es decir, un contador decreciente. En la parte derecha se encuentra el botón de ajustes. En la parte inferior izquierda de la pantalla, se encuentra un joystick virtual (no aparecerá si se juega en PC). En la parte inferior derecha de la pantalla, se pueden observar dos botones: el pequeño es el botón de acción del empujón débil, por lo que estará disponible durante más tiempo que el del empujón fuerte, que está situado justo a su derecha.
 - Pantalla de fin de partida. En esta pantalla se mostrará un ranking de la partida anterior, indicando el número de galletas ganadas en función de la posición. En esta pantalla se encuentran dos botones en la parte inferior de la pantalla: a la izquierda está el botón de volver al menú, que llevará al usuario a la pantalla del menú principal, y en la derecha el de volver a la sala, que llevará al usuario a la pantalla de lobby.
 - Pantalla de ajustes. En dicha pantalla el jugador podrá modificar el volumen general del juego, así como el de SFX. En la parte inferior habrá un botón que conducirá a la pantalla del menú principal, siempre y cuando el jugador haya confirmado en la minipantalla que le preguntará si está seguro.
 - Pantalla de tienda: En esta pantalla aparecerán dos secciones: tesoro y skins. Si se pulsa sobre la sección de tesoro, el juego conducirá al jugador a la pantalla de compra de monedas del juego con dinero real, pudiendo volver en todo momento hacia atrás. Si se pulsa sobre la sección de skins, se accederá a la pantalla de compra de skins con dinero del juego, pudiendo volver atrás en todo momento. En esta pantalla de tienda, se podrá volver al menú principal si se pulsa en el botón situado en la esquina inferior izquierda.
@@ -359,3 +359,23 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 ## 11. Fecha de lanzamiento 
 
 13/01/2021
+
+
+## 12. Postmorten
+
+### 12.1. Postmorten individual
+
+- Javier: Ha habido una organización muy óptima, lo cual ha dado pie a realizar una serie de tareas que han dado fruto a un trabajo muy completo, aunque quizás la idea base podría ser incluso muy ambiciosa, lo que ha hecho que hayamos tenido que trabajar más horas de las deseadas.
+
+- Sergio: La organización y el flujo de trabajo ha sido bastante buena gracias al uso de Microsotf Project y Trello pero quizá la idea ha sido un tanto ambiciosa para el tiempo de desarrollo que teníamos.
+
+- Clara:
+
+- David:
+
+- Alexandra:
+
+- Julen:
+
+
+### 12.2. Postmorten conjunto
