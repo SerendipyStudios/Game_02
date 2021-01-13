@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     [Header("Surfaces interaction")] public float iceDrag;
     public float stickyDrag;
     public float defaultDrag;
-    //public LayerMask iceLayer;
 
     //References
     [HideInInspector] public Rigidbody rb;
