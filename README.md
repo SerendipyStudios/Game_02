@@ -426,3 +426,7 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 
 ### 12.2. Postmorten conjunto
+
+
+### 12.3. Errores de los que somos conscientes
+Error a la hora de meter por primera vez el nombre: debido a la plantilla de WebGL utilizada para introducir el nombre en el campo de texto, la primera vez que introduces un nombre produce un error por conflictos de la plantilla. Si vuelves a meter un nombre funciona perfectamente.
