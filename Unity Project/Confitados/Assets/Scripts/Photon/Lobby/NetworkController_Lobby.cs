@@ -16,7 +16,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     [SerializeField] private Text log;
     
     //Player configurations
-    [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
+    [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created\n")]
     [SerializeField] private byte maxPlayersInRoom = 6;
     [SerializeField] private byte minPlayersInRoom = 2;
     [SerializeField] private int currentPlayersInRoom = 0;
@@ -55,9 +55,9 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
 
             foreach (var player in PhotonNetwork.CurrentRoom.Players)
             {
-                playerCount.text += "\nPlayer " + player.Key + " (" + player.Value.NickName + "): " 
+                playerCount.text += "Player " + player.Key + " (" + player.Value.NickName + "): " 
                                     + (PhotonView.Find(playerViewIds[player.Value.ActorNumber-1]).
-                                        gameObject.GetComponent<Lobby_PlayerInfo>().GetReady() ? "Listo" : "No listo");
+                                        gameObject.GetComponent<Lobby_PlayerInfo>().GetReady() ? "Listo\n" : "No listo\n");
                 Canvas.ForceUpdateCanvases();
                 scrollViewObject.verticalNormalizedPosition = 1f;
             }
@@ -76,7 +76,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     {
         //base.OnPlayerEnteredRoom(newPlayer);
         Debug.Log("Nuevo jugador se unió a la sala: " + newPlayer.NickName);
-        log.text += "Nuevo jugador se unió a la sala: " + newPlayer.NickName;
+        log.text += "Nuevo jugador se unió a la sala: " + newPlayer.NickName +"\n";
         playerViewIds.Add(-1);
         CheckAllReady();
         
@@ -88,7 +88,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
         //if (!PhotonNetwork.IsMasterClient) return;
         
         Debug.Log("Un jugador dejó la sala: " + otherPlayer.NickName);
-        log.text += "Un jugador dejó la sala: " + otherPlayer.NickName;
+        log.text += "Un jugador dejó la sala: " + otherPlayer.NickName + "\n";
         //base.OnPlayerLeftRoom(otherPlayer);
 
         bool wasReady = PhotonView.Find(playerViewIds[otherPlayer.ActorNumber - 1]).GetComponent<Lobby_PlayerInfo>().GetReady();

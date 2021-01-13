@@ -198,15 +198,15 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
                 Destroy(clone);
             }
 
-            for (int i = worldPieces_Stack.Count; i < worldPieces.Count; i++)
-            {
-                GameObject piece = worldPieces[worldPieces.Count - i -1];
-                Rigidbody rb = piece.GetComponent<Rigidbody>();
-                //rb.useGravity = true;
-                rb.AddForce(new Vector3(0f, -9.8f, 0f));
-                rb.constraints -= RigidbodyConstraints.FreezePositionY;
-            }
-            
+            //for (int i = worldPieces_Stack.Count; i < worldPieces.Count; i++)
+            //{
+            //    GameObject piece = worldPieces[worldPieces.Count - i - 1];
+            //    Rigidbody rb = piece.GetComponent<Rigidbody>();
+            //    rb.useGravity = true;
+            //    Debug.Log("WTF AM I DOING HERE????????????");
+            //    rb.constraints -= RigidbodyConstraints.FreezePositionY;
+            //}
+
             StartCoroutine(PieceFallCoroutine());
         }
     }
@@ -246,9 +246,20 @@ public class LevelInfo : MonoBehaviourPunCallbacks, IPunObservable
 
             yield return new WaitForSeconds(pieceFallAdviceTime);
 
+
             Rigidbody rb = piece.GetComponent<Rigidbody>();
-            rb.useGravity = true;
+
+            foreach (Transform child in piece.gameObject.GetComponentInChildren<Transform>())
+            {
+                if (child.gameObject.GetComponent<MeshCollider>() != null)
+                {
+                    child.gameObject.GetComponent<MeshCollider>().enabled = false;
+                }
+            }
+
             rb.constraints -= RigidbodyConstraints.FreezePositionY;
+            rb.isKinematic = false;
+            rb.useGravity = true;
 
             photonView.RPC("RpcDeleteAdvice", RpcTarget.Others);
             Destroy(clone);

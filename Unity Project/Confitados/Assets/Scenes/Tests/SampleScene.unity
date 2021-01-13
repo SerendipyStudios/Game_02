@@ -3614,6 +3614,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 449840174, guid: aebcde3a7a2aa544daa6190964fd92a5, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449840174, guid: aebcde3a7a2aa544daa6190964fd92a5, type: 3}
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
@@ -3774,6 +3778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Convex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206940026232239077, guid: aebcde3a7a2aa544daa6190964fd92a5,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6206940026232239077, guid: aebcde3a7a2aa544daa6190964fd92a5,
         type: 3}

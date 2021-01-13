@@ -125,9 +125,9 @@ public class NetworkController_Anteroom : MonoBehaviourPunCallbacks
     public void Connect()
     {
         if (PhotonNetwork.ConnectUsingSettings())
-            log.text += "\nConexión con el servidor establecida.";
+            log.text += "Conexión con el servidor establecida.\n";
         else
-            log.text += "\nError. No se pudo conectar al servidor...";
+            log.text += "Error. No se pudo conectar al servidor...\n";
     }
 
     //Private room create

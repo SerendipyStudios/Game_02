@@ -44,14 +44,13 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        this.transform.SetParent(GameObject.Find("--Managers--").transform, false);
-    }
-    
-    private void Start()
-    {
+        DontDestroyOnLoad(this.gameObject);
+
         if (sharedInstance == null)
             sharedInstance = this;
+       // this.transform.SetParent(GameObject.Find("--Managers--").transform, false);
     }
+    
 
     public void Initialize(PlayerController _playerController)
     {
@@ -62,6 +61,11 @@ public class SoundManager : MonoBehaviour
     {
         OnBreakWalls?.Invoke();
         OnPlayerSteps?.Invoke();
+    }
+
+    public void PlayBasicButton()
+    {
+        basicButton_SND.Play();
     }
 
     public void PlayStepSound()

@@ -20,5 +20,10 @@ public class MainMenuManager : MonoBehaviour
         level.text = "Nivel: " + PlayerPrefs.GetInt("Level", 1).ToString();
         currentExperience_Txt.text = PlayerPrefs.GetInt("Experience", 0) + "/200 EXP";
         currentExperience_Fill.fillAmount = (float)PlayerPrefs.GetInt("Experience", 0) / 200f;
+
+        foreach(GameObject b in GameObject.FindGameObjectsWithTag("BasicButton"))
+        {
+            b.GetComponent<Button>().onClick.AddListener(() => SoundManager.sharedInstance.PlayBasicButton());
+        }
     }
 }

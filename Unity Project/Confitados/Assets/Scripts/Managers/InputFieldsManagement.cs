@@ -7,6 +7,7 @@ public class InputFieldsManagement : MonoBehaviour
     public GameObject InputPc;
     public GameObject InputMobile;
 
+
     private void Start()
     {
         InputPc.SetActive(SystemInfo.operatingSystem.Contains("Windows") || SystemInfo.operatingSystem.Contains("Mac"));

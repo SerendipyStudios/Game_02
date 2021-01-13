@@ -146,15 +146,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         }
 
         //Instantiate SoundManager
-        if (SoundManagerPrefab != null)
-        {
-            SoundManager soundManager = Instantiate(SoundManagerPrefab);
-            soundManager.Initialize(this);
-        }
-        else
-        {
-            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
-        }
+        //if (SoundManagerPrefab != null)  //[HERE]
+        //{
+        //    SoundManager soundManager = Instantiate(SoundManagerPrefab);
+            SoundManager.sharedInstance.Initialize(this);
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerInputUIPrefab reference on player Prefab.", this);
+        //}
     }
 
     private void Update()

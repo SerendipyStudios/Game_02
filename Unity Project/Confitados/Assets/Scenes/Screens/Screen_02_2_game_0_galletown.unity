@@ -824,15 +824,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1258670784030916558, guid: aebcde3a7a2aa544daa6190964fd92a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1911435620600930445, guid: aebcde3a7a2aa544daa6190964fd92a5,
         type: 3}
       propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689497616235484448, guid: aebcde3a7a2aa544daa6190964fd92a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703483606789695150, guid: aebcde3a7a2aa544daa6190964fd92a5,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6077925782116931282, guid: aebcde3a7a2aa544daa6190964fd92a5,
         type: 3}
       propertyPath: m_Name
       value: Galletown_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260753402516479559, guid: aebcde3a7a2aa544daa6190964fd92a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aebcde3a7a2aa544daa6190964fd92a5, type: 3}

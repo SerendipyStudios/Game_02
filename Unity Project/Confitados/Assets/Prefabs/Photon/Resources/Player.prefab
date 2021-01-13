@@ -951,6 +951,7 @@ MonoBehaviour:
     type: 3}
   PlayerCameraSpectatorUIPrefab: {fileID: 1793729970329116518, guid: 9754b69cdb530894897d85e8d1a3e8b1,
     type: 3}
+  PlayerCameraWinUIPrefab: {fileID: 0}
   PlayerInterfaceUIPrefab: {fileID: 6016479596591847941, guid: 09c9cb5ad953b4949922fe74d996a7eb,
     type: 3}
   playerInterfaceUI: {fileID: 0}
