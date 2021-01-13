@@ -20,6 +20,7 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
     [SerializeField] private byte maxPlayersInRoom = 6;
     [SerializeField] private byte minPlayersInRoom = 2;
     [SerializeField] private int currentPlayersInRoom = 0;
+    [SerializeField] private ScrollRect scrollViewObject;
     [SerializeField] private Text playerCount;
     
     private int readyPlayersCount = 0;
@@ -55,6 +56,8 @@ public class NetworkController_Lobby : MonoBehaviourPunCallbacks
             foreach (var player in PhotonNetwork.CurrentRoom.Players)
             {
                 playerCount.text += "\nPlayer " + player.Key + ": " + player.Value.NickName;
+                Canvas.ForceUpdateCanvases();
+                scrollViewObject.verticalNormalizedPosition = 1f;
             }
         }
         else
