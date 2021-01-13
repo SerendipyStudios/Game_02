@@ -264,22 +264,25 @@ Render del confite
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Renders/Render3.png" width="225">
 Render de skins de los confites
 
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/Rigging.png" width="225">
+Rigging del confite
+
 Los confites tendrán diferentes skins, teniendo estas un precio que se puede pagar con la moneda virtual del juego. Estos son:
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Unity%20Project/Confitados/Assets/Sprites/Buttons/Shop/frame_shop_skins_01.png" width="225">
-Skin rosa
+Skin Gominola
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Unity%20Project/Confitados/Assets/Sprites/Buttons/Shop/frame_shop_skins_02.png" width="225">
-Skin amarilla
+Skin SS
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Unity%20Project/Confitados/Assets/Sprites/Buttons/Shop/frame_shop_skins_03.png" width="225">
-Skin azul
+Skin Acuática
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Unity%20Project/Confitados/Assets/Sprites/Buttons/Shop/frame_shop_skins_04.png" width="225">
-Skin morada
+Skin Fantasía
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Unity%20Project/Confitados/Assets/Sprites/Buttons/Shop/frame_shop_skins_05.png" width="225">
-Skin estelar
+Skin Estelar
 
 
 ### 9.5. PowerUps
@@ -303,7 +306,7 @@ Los DLCs que Confitados contendrá serán totalmente gratuitos, dada su naturale
 - Pase de batalla (este elemento es de pago): Se incluirá un pase de batalla opcional (el jugador puede elegir si comprarlo o no) mediante el cual el jugador podrá desbloquear logros extras.
 
 
-### 9.7. Conceptart
+### 9.7. Concept art
 
 - Personajes:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/characterSketch.jpg" width="175">
@@ -314,6 +317,9 @@ Estudio de Color
 
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/finalCharacterPNG.png" width="175">
 Diseño Final del Confite
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Character/Render4.png" width="175">
+Primer Modelado del Confite
 
 - Mapas:
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Level%20Design/Maps/galletown.png" width="175">
@@ -329,6 +335,14 @@ Primer Diseño de Tarta de Castañas
 <img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Pantallas/Main%20screen/conceptmainScreen.png" width="175">
 Primer Diseño de la pantalla principal
 
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/conceptmainScreen2.jpg" width="175">
+Segundo Diseño de la pantalla principal
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/conceptmainScreen3.jpg" width="175">
+Tercer Diseño de la pantalla principal
+
+<img src="https://github.com/SerendipyStudiosWeb/Confitados/blob/main/Concept/Escenarios/conceptmainScreen4.jpg" width="175">
+Cuarto Diseño de la pantalla principal
 
 ## 10. Música y sonidos
 
@@ -406,9 +420,13 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 - David:
 
-- Alexandra:
+- Alexandra:La comunicación entre los diversos departamentos ha sido excepcional. En todo momento se sabía en qué estaba trabajando cada persona, lo cual facilitaba mucho todo. Sin embargo, la idea inicial del proyecto fue tan ambiciosa que, por tiempo, han tenido que ser eliminadas algunas cosas.
 
 - Julen:
 
 
 ### 12.2. Postmorten conjunto
+
+
+### 12.3. Errores de los que somos conscientes
+Error a la hora de meter por primera vez el nombre: debido a la plantilla de WebGL utilizada para introducir el nombre en el campo de texto, la primera vez que introduces un nombre produce un error por conflictos de la plantilla. Si vuelves a meter un nombre funciona perfectamente.
