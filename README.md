@@ -429,8 +429,6 @@ Pisadas en tarta: https://freesound.org/people/InspectorJ/sounds/416967/
 
 - Clara: La organización ha mejorado respecto al proyecto anterior, lo cual nos ha dejado más cuerda para dedicarle tiempo a otras asignaturas. Si bien el proyecto inicial fue demasiado ambiciosa respecto al tiempo disponible y la carga de trabajo de otras asignaturas que no tuvimos en cuenta.
 
-- David:
-
 - Alexandra: La comunicación entre los diversos departamentos ha sido excepcional. En todo momento se sabía en qué estaba trabajando cada persona, lo cual facilitaba mucho todo. Sin embargo, la idea inicial del proyecto fue tan ambiciosa que, por tiempo, han tenido que ser eliminadas algunas cosas.
 
 - Julen: Se han sufrido ligeros restrasos comprensibles, lo cual hace destacar que la organización ha sido todo un éxito pues hemos sabido reaccionar ante los diversos problemas que se han puesto ante nosotros. La cohesión y coordinación entre el equipo ha sido notablemente buena, al igual que el entendimiento entre los integrantes en las diferentes reuniones celebradas durante el proyecto. Un gran trabajo. 
