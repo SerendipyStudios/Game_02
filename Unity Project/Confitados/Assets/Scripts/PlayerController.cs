@@ -244,8 +244,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
         if (collision.gameObject.tag.CompareTo("Player") == 0)
         {
             Vector3 dir = new Vector3(collision.GetContact(0).point.x - transform.position.x, 0, collision.GetContact(0).point.z - transform.position.z); //Calculate direction vector
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
+
+            //collision.gameObject.GetComponent<Rigidbody>().AddForce(dir.normalized * collision.rigidbody.velocity.magnitude * pushImpulse); //Push the other player in that direction
+            collision.gameObject.GetComponent<PlayerController>().photonView.RPC("RpcAddCollisionForce", RpcTarget.All,
+                dir.normalized * Vector3.Dot(collision.rigidbody.velocity, dir.normalized) * pushImpulse); //Push the other player in that direction
         }
+    }
+
+    [PunRPC]
+    private void RpcAddCollisionForce(Vector3 force)
+    {
+        Debug.Log("Force received");
+        rb.AddForce(force);
     }
 
     public void OnEnable()
@@ -524,7 +534,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     private void IsTouchingIce()
     {
         RaycastHit info;
-        Physics.Raycast(transform.position + (new Vector3 (0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.transform == null) return;
         if (info.collider.gameObject.tag.CompareTo("IceFloor") == 0)
             rb.drag = iceDrag;
     }
@@ -532,6 +543,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         RaycastHit info;
         Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.transform == null) return;
         if (info.collider.gameObject.tag.CompareTo("StickyFloor") == 0)
             rb.drag = stickyDrag;
     }
@@ -540,6 +552,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         RaycastHit info;
         Physics.Raycast(transform.position + (new Vector3(0f, 0.5f, 0f)), Vector3.down, out info, 10f);
+        if (info.transform == null) return;
         if (info.collider.gameObject.tag.CompareTo("DefaultFloor") == 0)
             rb.drag = defaultDrag;
     }
