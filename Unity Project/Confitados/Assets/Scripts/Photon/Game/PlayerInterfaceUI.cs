@@ -9,7 +9,6 @@ public class PlayerInterfaceUI : MonoBehaviour
 {
     private PlayerController playerController;
     
-    
     //Interface elements
     [SerializeField] public Button exitGameButton;
     [SerializeField] private Text countdownText;
